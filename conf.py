@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'python-ucticee'
-copyright = 'MMXXX. Hecho con ❤️ por <a href="sdelquin.me">Sergio</a>'
+copyright = 'MMXXX <a href="https://sdelquin.me">Sergio Delgado Quintero</a>'
 author = 'Sergio Delgado Quintero'
 
 
@@ -53,11 +53,13 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 html_theme = 'alabaster'
 
 html_theme_options = {
-    'show_powered_by': False,
+    'logo': 'python-solo-logo-3D.png',
+    'show_powered_by': True,
     'github_user': 'sdelquin',
     'github_repo': 'python-ucticee',
     'github_banner': True,
-    'show_related': False,
+    'description': '¡Aprende a programar usando el fantástico lenguaje Python!',
+    'donate_url': 'https://paypal.me/sdelquin',
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -67,3 +69,5 @@ html_static_path = ['_static']
 
 html_show_sourcelink = False
 html_show_sphinx = False
+
+html_sidebars = {'**': ['about.html', 'navigation.html', 'searchbox.html', 'donate.html']}
