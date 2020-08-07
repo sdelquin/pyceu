@@ -60,6 +60,8 @@ html_theme_options = {
     'github_banner': True,
     'description': '¡Aprende a programar usando el fantástico lenguaje Python!',
     'donate_url': 'https://paypal.me/sdelquin',
+    'fixed_sidebar': True,
+    'page_width': '1008px',
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
