@@ -9,8 +9,9 @@ Introducción a la programación con Python (UCTICEE)
 Materiales para el curso de introducción a la programación con Python dentro del proyecto `UCTICEE`_ (Uso y Calidad de las TIC en el entorno educativo) cofinanciado al 85% por el `Fondo Europeo de Desarrollo Regional`_, en el marco del `Plan Canario de Formación del profesorado`_ de la `Consejería de Educación del Gobierno de Canarias`_.
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :hidden:
+
+   introduction
 
 .. _UCTICEE: http://www3.gobiernodecanarias.org/medusa/ecoescuela/ucticee/
 .. _Fondo Europeo de Desarrollo Regional: https://ec.europa.eu/regional_policy/es/funding/erdf/
