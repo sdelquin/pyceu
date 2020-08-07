@@ -18,6 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'python-ucticee'
+description = 'Introducción a la programación con Python (UCTICEE)'
 copyright = 'MMXXX <a href="https://sdelquin.me">Sergio Delgado Quintero</a>'
 author = 'Sergio Delgado Quintero'
 
@@ -73,3 +74,9 @@ html_show_sourcelink = False
 html_show_sphinx = False
 
 html_sidebars = {'**': ['about.html', 'navigation.html', 'searchbox.html', 'donate.html']}
+
+latex_elements = {'pointsize': '12pt'}
+
+latex_logo = '_static/python-solo-logo-3D.png'
+
+latex_documents = [('index', 'main.tex', description, author, 'manual',)]
