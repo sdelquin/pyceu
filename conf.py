@@ -18,6 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'python-ucticee'
+# Description just for Latex purposes
 description = 'Introducción a la programación con Python (UCTICEE)'
 copyright = 'MMXXX <a href="https://sdelquin.me">Sergio Delgado Quintero</a>'
 author = 'Sergio Delgado Quintero'
@@ -54,7 +55,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 html_theme = 'alabaster'
 
 html_theme_options = {
-    'logo': 'python-solo-logo-3D.png',
+    'logo': 'img/python-solo-logo-3D.png',
     'show_powered_by': True,
     'github_user': 'sdelquin',
     'github_repo': 'python-ucticee',
@@ -77,6 +78,6 @@ html_sidebars = {'**': ['about.html', 'navigation.html', 'searchbox.html', 'dona
 
 latex_elements = {'pointsize': '12pt'}
 
-latex_logo = '_static/python-solo-logo-3D.png'
+latex_logo = '_static/img/python-solo-logo-3D.png'
 
 latex_documents = [('index', 'main.tex', description, author, 'manual',)]
