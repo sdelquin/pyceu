@@ -4,3 +4,8 @@
    contain the root `toctree` directive.
 
 .. include:: README.rst
+
+.. toctree::
+   :hidden:
+
+   introduction
