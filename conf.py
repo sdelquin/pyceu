@@ -60,6 +60,7 @@ html_theme_options = {
     'fixed_sidebar': True,
     'page_width': '1008px',
     'show_powered_by': True,
+    'note_bg': '#fae4b1',
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -72,7 +73,12 @@ html_show_sphinx = False
 
 html_sidebars = {'**': ['about.html', 'navigation.html', 'searchbox.html', 'donate.html']}
 
-latex_elements = {'pointsize': '12pt'}
+latex_elements = {
+    'pointsize': '12pt',
+    'preamble': r'''
+        \usepackage[labelformat=empty]{caption}
+    ''',
+}
 
 latex_logo = '_static/img/python-solo-logo-3D.png'
 
