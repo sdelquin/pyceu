@@ -3,8 +3,6 @@ Introducción
 ============
 
 .. image:: _static/img/jon-tyson-8MMtYM_3xMY-unsplash.jpg
-    :alt: Foto original por Jon Tyson en Unsplash
-    :target: https://unsplash.com/photos/8MMtYM_3xMY
 
 Este capítulo es una introducción a la programación para conocer, desde un enfoque sencillo pero aclaratorio, los mecanismos que hay detrás de ello.
 
@@ -94,6 +92,10 @@ Algo de historia
 
 Cualquier tiempo pasado fue anterior.
 
+.. rubric:: Créditos
+
+* Foto original de portada por `Jon Tyson`_ en Unsplash.
+* Iconos originales del diagrama de compiladores en `Flaticon`_.
 
 .. --------------- Hyperlinks ---------------
 
@@ -104,3 +106,5 @@ Cualquier tiempo pasado fue anterior.
 .. _C: https://es.wikipedia.org/wiki/C_(lenguaje_de_programaci%C3%B3n)
 .. _Python: https://es.wikipedia.org/wiki/Python
 .. _compiladores: https://es.wikipedia.org/wiki/Compilador
+.. _Jon Tyson: https://unsplash.com/@jontyson?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText
+.. _Flaticon: http://flaticon.com/
