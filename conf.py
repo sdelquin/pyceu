@@ -55,15 +55,11 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 html_theme = 'alabaster'
 
 html_theme_options = {
-    'logo': 'img/python-solo-logo-3D.png',
-    'show_powered_by': True,
-    'github_user': 'sdelquin',
-    'github_repo': 'python-ucticee',
-    'github_banner': True,
     'description': '¡Aprende a programar usando el fantástico lenguaje Python!',
-    'donate_url': 'https://paypal.me/sdelquin',
+    'logo': 'img/python-solo-logo-3D.png',
     'fixed_sidebar': True,
     'page_width': '1008px',
+    'show_powered_by': True,
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
