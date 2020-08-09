@@ -139,8 +139,6 @@ El avance de la computación está íntimamente relacionado con el desarrollo de
     :widths: 30, 70
     :header-rows: 1
 
-|
-
 .. --------------- Footnotes ---------------
 
 .. [#hello] Foto original de portada por `Jon Tyson`_ en Unsplash.
@@ -148,8 +146,6 @@ El avance de la computación está íntimamente relacionado con el desarrollo de
 .. [#adalovelace] Fuente: `Meatze`_
 .. [#prog-history] Fuente: `Universidad Técnica del Norte`_
 .. [#proglangs-creators] Fuente: `Wikipedia <https://es.wikipedia.org/wiki/Historia_de_los_lenguajes_de_programaci%C3%B3n>`_
-
-|
 
 .. --------------- Hyperlinks ---------------
 
