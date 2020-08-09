@@ -56,7 +56,7 @@ html_theme = 'alabaster'
 
 html_theme_options = {
     'description': '¡Aprende a programar usando el fantástico lenguaje Python!',
-    'logo': 'img/python-solo-logo-3D.png',
+    'logo': 'python-solo-logo-3D.png',
     'fixed_sidebar': True,
     'page_width': '1008px',
     'show_powered_by': True,
