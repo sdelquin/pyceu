@@ -72,7 +72,7 @@ html_show_sphinx = False
 
 html_sidebars = {
     'index': ['about.html', 'toptoc.html', 'searchbox.html'],
-    '**': ['about.html', 'navigation.html', 'searchbox.html'],
+    '**': ['about.html', 'gohome.html', 'navigation.html', 'searchbox.html'],
 }
 
 latex_elements = {
