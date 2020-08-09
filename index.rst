@@ -8,4 +8,4 @@
 .. toctree::
    :hidden:
 
-   introduction
+   intro/index

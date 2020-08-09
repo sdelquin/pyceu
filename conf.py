@@ -80,6 +80,6 @@ latex_elements = {
     ''',
 }
 
-latex_logo = '_static/img/python-solo-logo-3D.png'
+latex_logo = '_static/python-solo-logo-3D.png'
 
 latex_documents = [('index', 'main.tex', description, author, 'manual',)]

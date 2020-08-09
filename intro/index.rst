@@ -2,7 +2,7 @@
 Introducción
 ============
 
-.. image:: _static/img/jon-tyson-8MMtYM_3xMY-unsplash.jpg
+.. image:: img/jon-tyson-8MMtYM_3xMY-unsplash.jpg
 
 Este capítulo es una introducción a la programación para conocer, desde un enfoque sencillo pero aclaratorio, los mecanismos que hay detrás de ello. [#hello]_
 
@@ -80,7 +80,7 @@ Compiladores
 
 Los `compiladores`_ son programas que convierten un lenguaje "cualquiera" en *código máquina*. Se pueden ver como traductores, permitiendo a la máquina interpretar lo que queremos hacer.
 
-.. figure:: _static/img/compiler.png
+.. figure:: img/compiler.png
 
     Esquema de funcionamiento de un compilador [#compiler]_
 
@@ -97,7 +97,7 @@ Computadores
 
 La historia de la programación está relacionada directamente con la aparición de los computadores, que ya desde el siglo XV tuvo sus inicios con la construcción de una máquina que realizaba operaciones básicas y raíces cuadradas (`Gottfried Wilheml von Leibniz`_); aunque en realidad la primera gran influencia hacia la creación de los computadores fue la  máquina diferencial para el cálculo de polinomios, proyecto no concluido de `Charles Babbage`_ (1793-1871)  con el apoyo de `Lady Ada Countess of Lovelace`_ (1815-1852), primera persona que incursionó en la programación y de quien proviene el nombre del lenguaje de programación `ADA`_ creado por el DoD (Departamento de defensa de Estados Unidos) en la década de 1970.
 
-.. figure:: _static/img/ada-lovelace.jpg
+.. figure:: img/ada-lovelace.jpg
 
     Ada Lovelace: primera programadora de la historia [#adalovelace]_
 
@@ -107,7 +107,7 @@ Hitos de la computación
 La siguiente tabla es un resumen de los principales hitos en la historia de la computación:
 
 .. csv-table::
-    :file: prog_milestones.csv
+    :file: tables/prog_milestones.csv
     :widths: 30, 60, 10
     :header-rows: 1
 
@@ -125,7 +125,7 @@ Cronología de lenguajes de programación
 
 Desde la década de los 1950 se han sucedido multitud de lenguajes de programación que cada vez incorporan más funcionalidades destinadas a cubrir las necesidades del desarrollo de aplicaciones. A continuación se muestra una tabla con la historia de los lenguajes de programación más destacados:
 
-.. figure:: _static/img/proglangs.png
+.. figure:: img/proglangs.png
 
     Cronología de los lenguajes de programación más destacados
 
@@ -135,7 +135,7 @@ Creadores de lenguajes de programación
 El avance de la computación está íntimamente relacionado con el desarrollo de los lenguajes de programación. Sus creadores y creadoras juegan un *rol fundamental* en la historia tecnológica. Veamos algunas de estas personas: [#proglangs-creators]_
 
 .. csv-table::
-    :file: proglangs_creators.csv
+    :file: tables/proglangs_creators.csv
     :widths: 30, 70
     :header-rows: 1
 
