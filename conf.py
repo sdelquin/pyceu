@@ -60,6 +60,7 @@ html_theme_options = {
     'page_width': '1008px',
     'show_powered_by': True,
     'note_bg': '#fae4b1',
+    'fixed_sidebar': True,
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -72,7 +73,7 @@ html_show_sphinx = False
 
 html_sidebars = {
     'index': ['about.html', 'toptoc.html', 'searchbox.html'],
-    '**': ['about.html', 'gohome.html', 'navigation.html', 'searchbox.html'],
+    '**': ['customabout.html', 'navigation.html', 'searchbox.html'],
 }
 
 latex_elements = {

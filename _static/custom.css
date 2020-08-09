@@ -14,7 +14,7 @@ ul.toptoc {
   font-size: 18px;
 }
 
-div.gohome {
-  font-size: 17px;
-  padding-bottom: 0.5rem;
+div.customabout a,
+div.customabout a:hover {
+  border-bottom: none;
 }
