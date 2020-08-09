@@ -70,13 +70,13 @@ html_static_path = ['_static']
 html_show_sourcelink = False
 html_show_sphinx = False
 
-html_sidebars = {'**': ['about.html', 'navigation.html', 'searchbox.html', 'donate.html']}
+html_sidebars = {
+    'index': ['about.html', 'toptoc.html', 'searchbox.html'],
+    '**': ['about.html', 'navigation.html', 'searchbox.html'],
+}
 
 latex_elements = {
     'pointsize': '12pt',
-    'preamble': r'''
-        \usepackage[labelformat=empty]{caption}
-    ''',
 }
 
 latex_logo = '_static/python-solo-logo-3D.png'

@@ -1,7 +1,15 @@
+html {
+  scroll-behavior: smooth;
+}
+
 dl.footnote {
   margin-top: 4rem;
 }
 
 div.footer {
   margin-top: 4rem;
+}
+
+ul.toptoc {
+  font-size: 18px;
 }
