@@ -18,3 +18,4 @@ Este capítulo es una introducción a la programación para conocer, desde un en
 
    introduction/machine
    introduction/history
+   introduction/python
