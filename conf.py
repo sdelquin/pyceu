@@ -72,8 +72,8 @@ html_show_sourcelink = False
 html_show_sphinx = False
 
 html_sidebars = {
-    'index': ['about.html', 'toptoc.html', 'searchbox.html'],
-    '**': ['customabout.html', 'breadcrumbs.html', 'innertoc.html', 'searchbox.html'],
+    'index': ['about.html', 'navigation.html', 'searchbox.html'],
+    '**': ['customabout.html', 'innertoc.html', 'searchbox.html'],
 }
 
 latex_elements = {
