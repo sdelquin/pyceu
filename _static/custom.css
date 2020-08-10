@@ -18,3 +18,9 @@ div.customabout a,
 div.customabout a:hover {
   border-bottom: none;
 }
+
+div.breadcrumbs {
+  color: grey;
+  font-size: 10pt;
+  text-align: center;
+}
