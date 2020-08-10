@@ -9,7 +9,7 @@ Los ordenadores son dispositivos complejos pero están diseñados para hacer una
 Código máquina
 ==============
 
-Pero aún seguimos con el problema de cómo hacer que un ordenador (o máquina) entienda el lenguaje de programación. A priori podríamos decir que un ordenador sólo entiende un lenguaje muy "simple" denominado `código máquina`_. En este lenguaje se utilizan únicamente los símbolos **0** y **1** en representación de los *niveles de tensión* alto y bajo, que al fin y al cabo, son los estados que puede manejar un circuito digital. Hablamos de `sistema binario`_. Si tuviéramos que escribir programas de ordenador en este formato sería una tarea ardua, pero afortunadamente se han ido creando con el tiempo lenguajes de programación intermedios que, posteriormente, son convertidos a código máquina.
+Pero aún seguimos con el problema de cómo hacer que un ordenador (o máquina) entienda el lenguaje de programación. A priori podríamos decir que un ordenador sólo entiende un lenguaje muy "simple" denominado `código máquina <https://es.wikipedia.org/wiki/Lenguaje_de_m%C3%A1quina>`__. En este lenguaje se utilizan únicamente los símbolos **0** y **1** en representación de los *niveles de tensión* alto y bajo, que al fin y al cabo, son los estados que puede manejar un circuito digital. Hablamos de `sistema binario`_. Si tuviéramos que escribir programas de ordenador en este formato sería una tarea ardua, pero afortunadamente se han ido creando con el tiempo lenguajes de programación intermedios que, posteriormente, son convertidos a código máquina.
 
 Si intentamos visualizar un programa en código máquina, únicamente obtendríamos una secuencia de ceros y unos:
 
@@ -47,7 +47,7 @@ Aunque resulte difícil de creer, lo "único" que hace este programa es mostrar 
 C
 =
 
-Aunque el lenguaje ensamblador nos facilita un poco la tarea de desarrollar programas, sigue siendo bastante complicado ya que las instrucciones son muy específicas y no proporcionan una semántica entendible. Uno de los lenguajes que vino a suplir -- en parte -- estos obstáculos fue `C`_. Considerado para muchas personas como un referente en cuanto a los lenguajes de programación, permite hacer uso de instrucciones más claras y potentes. El mismo ejemplo anterior del programa *"Hello, World"* se escribiría así en lenguaje *C*:
+Aunque el lenguaje ensamblador nos facilita un poco la tarea de desarrollar programas, sigue siendo bastante complicado ya que las instrucciones son muy específicas y no proporcionan una semántica entendible. Uno de los lenguajes que vino a suplir -- en parte -- estos obstáculos fue `C <https://es.wikipedia.org/wiki/C_(lenguaje_de_programaci%C3%B3n)>`__. Considerado para muchas personas como un referente en cuanto a los lenguajes de programación, permite hacer uso de instrucciones más claras y potentes. El mismo ejemplo anterior del programa *"Hello, World"* se escribiría así en lenguaje *C*:
 
 .. code-block:: C
 
@@ -61,7 +61,7 @@ Aunque el lenguaje ensamblador nos facilita un poco la tarea de desarrollar prog
 Python
 ======
 
-Si seguimos "subiendo" en esta lista de lenguajes de programación, podemos llegar hasta `Python`_. Se dice que es un lenguaje de *más alto nivel* en el sentido de que sus instrucciones son más entendibles por un humano. Veamos cómo se escribiría el programa *"Hello, World"* en el lenguaje de programación Python::
+Si seguimos "subiendo" en esta lista de lenguajes de programación, podemos llegar hasta `Python <https://es.wikipedia.org/wiki/Python>`__. Se dice que es un lenguaje de *más alto nivel* en el sentido de que sus instrucciones son más entendibles por un humano. Veamos cómo se escribiría el programa *"Hello, World"* en el lenguaje de programación Python::
 
     print('Hello, World')
 
@@ -70,7 +70,7 @@ Si seguimos "subiendo" en esta lista de lenguajes de programación, podemos lleg
 Compiladores
 ============
 
-Los `compiladores`_ son programas que convierten un lenguaje "cualquiera" en *código máquina*. Se pueden ver como traductores, permitiendo a la máquina interpretar lo que queremos hacer.
+Los `compiladores <https://es.wikipedia.org/wiki/Compilador>`__ son programas que convierten un lenguaje "cualquiera" en *código máquina*. Se pueden ver como traductores, permitiendo a la máquina interpretar lo que queremos hacer.
 
 .. figure:: img/compiler.png
 
@@ -87,12 +87,8 @@ Los `compiladores`_ son programas que convierten un lenguaje "cualquiera" en *c�
 
 .. --------------- Hyperlinks ---------------
 
-.. _C: https://es.wikipedia.org/wiki/C_(lenguaje_de_programaci%C3%B3n)
 .. _Flaticon: http://flaticon.com/
 .. _Garett Mizunaka: https://unsplash.com/@garett3?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText
-.. _Python: https://es.wikipedia.org/wiki/Python
 .. _arquitectura x86: https://es.wikipedia.org/wiki/X86
-.. _compiladores: https://es.wikipedia.org/wiki/Compilador
-.. _código máquina: https://es.wikipedia.org/wiki/Lenguaje_de_m%C3%A1quina
 .. _ejemplo de código en ensamblador: https://cs.lmu.edu/~ray/notes/x86assembly/
 .. _sistema binario: https://es.wikipedia.org/wiki/Sistema_binario
