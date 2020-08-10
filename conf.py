@@ -29,7 +29,7 @@ author = 'Sergio Delgado Quintero'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = []
+extensions = ['sphinx.ext.autosectionlabel']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -83,3 +83,5 @@ latex_elements = {
 latex_logo = '_static/python-solo-logo-3D.png'
 
 latex_documents = [('index', 'main.tex', description, author, 'manual',)]
+
+autosectionlabel_prefix_document = True
