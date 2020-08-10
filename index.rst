@@ -5,8 +5,10 @@
 
 .. include:: README.rst
 
-.. tip::
-   Para volver al comienzo de la página, en cualquier lugar del sitio, basta con pulsar en el logotipo superior izquierdo.
+.. only:: html
+
+   .. tip::
+      Para volver al comienzo de la página, en cualquier lugar del sitio, basta con pulsar en el logotipo superior izquierdo.
 
 .. toctree::
 
