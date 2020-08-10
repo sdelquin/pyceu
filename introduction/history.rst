@@ -39,6 +39,8 @@ Desde la década de los 1950 se han sucedido multitud de lenguajes de programaci
 
     Cronología de los lenguajes de programación más destacados
 
+El **número** actual de lenguajes de programación depende de lo que se considere un *lenguaje de programación* y a *quién se pregunte*. Según `TIOBE <https://www.tiobe.com/tiobe-index/programming-languages-definition/#instances>`_ más de 250; según `Wikipedia <https://en.wikipedia.org/wiki/List_of_programming_languages>`__ más de 700, según `Language List <http://www.info.univ-angers.fr/~gh/hilapr/langlist/langlist.htm>`_ más de 2500; y para una cifra muy alta podemos considerar a `Online Historical Encyclopaedia of Programming Languages`_ que se acerca a los **9000**.
+
 Creadores de lenguajes de programación
 ======================================
 
@@ -69,3 +71,4 @@ El avance de la computación está íntimamente relacionado con el desarrollo de
 .. _circuitos integrados: https://es.wikipedia.org/wiki/Circuito_integrado
 .. _transistores: https://es.wikipedia.org/wiki/Transistor
 .. _tubos de vacío: https://es.wikipedia.org/wiki/Computadora_de_tubos_de_vac%C3%ADo
+.. _Online Historical Encyclopaedia of Programming Languages: http://hopl.info/
