@@ -61,9 +61,7 @@ Aunque el lenguaje ensamblador nos facilita un poco la tarea de desarrollar prog
 Python
 ======
 
-Si seguimos "subiendo" en esta lista de lenguajes de programación, podemos llegar hasta `Python`_. Se dice que es un lenguaje de *más alto nivel* en el sentido de que sus instrucciones son más entendibles por un humano. Veamos cómo se escribiría el programa *"Hello, World"* en el lenguaje de programación Python:
-
-.. code-block::
+Si seguimos "subiendo" en esta lista de lenguajes de programación, podemos llegar hasta `Python`_. Se dice que es un lenguaje de *más alto nivel* en el sentido de que sus instrucciones son más entendibles por un humano. Veamos cómo se escribiría el programa *"Hello, World"* en el lenguaje de programación Python::
 
     print('Hello, World')
 
