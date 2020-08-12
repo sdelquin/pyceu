@@ -19,8 +19,8 @@ div.customabout a:hover {
   border-bottom: none;
 }
 
-div.breadcrumbs {
-  color: grey;
-  font-size: 10pt;
-  text-align: center;
+/* fix scroll on sidebar */
+div.sphinxsidebar {
+  max-height: 100%;
+  overflow-y: auto;
 }
