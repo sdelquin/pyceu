@@ -32,7 +32,7 @@ Podemos observar que la pantalla está dividida en 3 paneles:
 * *Panel derecho* que contiene el **depurador**. Más concretamente se trata de la ventana de variables donde podemos *inspeccionar* el valor de las mismas.
 
 Versiones de Python
-===================
+-------------------
 
 Existen múltiples versiones de Python. Desde el lanzamiento de la versión 1.0 en 1994 se han ido liberando versiones, cada vez, con nuevas características que aportan riqueza al lenguaje:
 
@@ -57,21 +57,21 @@ El intérprete de Python (por lo general) se identifica claramente porque posee 
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
 
-Para hacer una primera prueba del intérprete vamos a retomar el primer programa que se suele hacer. Es el llamado :ref:`"Hello World" <introduction/machine:Ensamblador>`. Para ello escribimos lo siguiente en el intérprete y pulsamos la tecla :kbd:`ENTER`::
+Para hacer una primera prueba del intérprete vamos a retomar el primer programa que se suele hacer. Es el llamado :ref:`"Hello, World" <introduction/machine:Ensamblador>`. Para ello escribimos lo siguiente en el intérprete y pulsamos la tecla :kbd:`ENTER`::
 
-    >>> print('Hello World')
-    Hello World
+    >>> print('Hello, World')
+    Hello, World
 
-Lo que hemos hecho es indicarle a Python que ejecute como **entrada** la instrucción ``print('Hello World')``. La **salida** es el texto ``Hello World`` que lo vemos en la siguiente línea (*ya sin el prompt* ``>>>``).
+Lo que hemos hecho es indicarle a Python que ejecute como **entrada** la instrucción ``print('Hello, World')``. La **salida** es el texto ``Hello, World`` que lo vemos en la siguiente línea (*ya sin el prompt* ``>>>``).
 
 Probando el editor
 ==================
 
-Ahora vamos a realizar la misma operación, pero en vez de ejecutar la instrucción directamente en el intérprete, vamos a crear un fichero y guardarlo con la sentencia que nos interesa. Para ello escribimos ``print('Hello World')`` en el panel de edición (*superior*) y luego guardamos el archivo con el nombre ``helloworld.py`` [#save-file]_:
+Ahora vamos a realizar la misma operación, pero en vez de ejecutar la instrucción directamente en el intérprete, vamos a crear un fichero y guardarlo con la sentencia que nos interesa. Para ello escribimos ``print('Hello, World')`` en el panel de edición (*superior*) y luego guardamos el archivo con el nombre ``helloworld.py`` [#save-file]_:
 
 .. figure:: img/thonny-save.png
 
-   Guardando nuestro primer programa Python
+   Guardando nuestro primer programa en Python
 
 .. important:: Los ficheros que contienen programas hechos en Python siempre deben tener la extensión ``.py``
 
@@ -86,16 +86,16 @@ Nos falta por probar el depurador o "debugger". Aunque su funcionamiento va much
     :linenos:
     :emphasize-lines: 1
 
-    msg = 'Hello World'
+    msg = 'Hello, World'
     print(msg)
 
 Aunque ya lo veremos en profundidad, lo que hemos hecho es incorporar una variable ``msg`` en la *línea 1* para luego utilizarla al mostrar por pantalla su contenido. Si ahora volvemos a ejecutar nuestro programa veremos que en el panel de variables nos aparece la siguiente información:
 
-+---------+-------------------+
-|  Name   |       Value       |
-+=========+===================+
-| ``msg`` | ``'Hello World'`` |
-+---------+-------------------+
++---------+--------------------+
+|  Name   |       Value        |
++=========+====================+
+| ``msg`` | ``'Hello, World'`` |
++---------+--------------------+
 
 También existe la posibilidad, a través del depurador, de ir ejecutando nuestro programa **paso a paso**. Para ello basta con pulsar en el botón que tiene un *insecto*. Ahí comienza la sesión de depuración y podemos avanzar instrucción por instrucción usando la tecla :kbd:`F7`:
 
