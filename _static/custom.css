@@ -24,3 +24,8 @@ div.sphinxsidebar {
   max-height: 100%;
   overflow-y: auto;
 }
+
+/* Much improved spacing around code blocks */
+div.highlight pre {
+  padding: 11px 14px;
+}
