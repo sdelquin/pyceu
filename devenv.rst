@@ -7,4 +7,5 @@ Para poder utilizar Python debemos preparar nuestra máquina con las herramienta
 .. toctree::
 
     devenv/thonny
+    devenv/real-context
 
