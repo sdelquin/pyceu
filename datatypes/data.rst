@@ -142,20 +142,63 @@ Recordemos que los nombres de variables deben seguir unas :ref:`reglas estableci
     :emphasize-lines: 1, 7, 13
 
     >>> 7floor = 40  # el nombre empieza por un dígito
-    File "<stdin>", line 1
+      File "<stdin>", line 1
         7floor = 40
-            ^
+             ^
     SyntaxError: invalid syntax
 
     >>> for = 'Bucle'  # el nombre usa la palabra reservada "for"
-    File "<stdin>", line 1
+      File "<stdin>", line 1
         for = 'Bucle'
             ^
     SyntaxError: invalid syntax
 
     >>> screen-size = 14  # el nombre usa un caracter no válido
-    File "<stdin>", line 1
+      File "<stdin>", line 1
     SyntaxError: can't assign to operator
+
+Asignando una variable a otra variable
+--------------------------------------
+
+Las asignaciones que hemos hecho hasta ahora han sido de un **valor literal** a una variable. Pero nada impide que podamos hacer asignaciones de una variable a otra variable:
+
+.. code-block::
+    :emphasize-lines: 2
+
+    >>> people = 157503
+    >>> total_population = people
+    >>> total_population
+    157503
+
+Eso sí, la variable que utilicemos como valor de asignación **debe existir previamente**, ya que si no es así, obtendremos un error informando de que no está definida:
+
+.. code-block::
+    :emphasize-lines: 1
+
+    >>> total_population = lot_of_people
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    NameError: name 'lot_of_people' is not defined
+
+De hecho, en el *lado derecho* de la asignación pueden aparecer *expresiones* más complejas que se verán en su momento.
+
+Conocer el valor de una variable
+--------------------------------
+
+Hemos visto previamente cómo asignar un valor a una variable, pero aún no sabemos cómo "comprobar" el valor que tiene dicha variable. Para ello podemos utilizar dos estrategias:
+
+1. Si estamos en una "shell" de Python, basta con que usemos el nombre de la variable::
+
+    >>> final_stock = 38934
+    >>> final_stock
+    38934
+
+2. Si estamos escribiendo un programa desde el editor, podemos hacer uso de ``print``::
+
+    final_stock = 38934
+    print(final_stock)    
+
+.. note:: ``print`` sirve también cuando estamos en una sesión interactiva de Python ("shell")
 
 .. rubric:: AMPLIAR CONOCIMIENTOS
 
