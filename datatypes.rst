@@ -7,3 +7,4 @@ Igual que en el mundo real cada objeto pertenece a una categoría, en programaci
 .. toctree::
 
     datatypes/data
+    datatypes/numbers
