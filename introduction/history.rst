@@ -52,12 +52,14 @@ El avance de la computación está íntimamente relacionado con el desarrollo de
     :header-rows: 1
     :class: longtable
 
+
+
 .. --------------- Footnotes ---------------
 
-.. [#circo-unsplash] Foto original por `Dario Veronesi`_ en Unsplash
-.. [#adalovelace] Fuente: `Meatze`_
-.. [#prog-history] Fuente: `Universidad Técnica del Norte`_
-.. [#proglangs-creators] Fuente: `Wikipedia <https://es.wikipedia.org/wiki/Historia_de_los_lenguajes_de_programaci%C3%B3n>`_
+.. [#circo-unsplash] Foto original por `Dario Veronesi`_ en Unsplash.
+.. [#adalovelace] Fuente: `Meatze`_.
+.. [#prog-history] Fuente: `Universidad Técnica del Norte`_.
+.. [#proglangs-creators] Fuente: `Wikipedia <https://es.wikipedia.org/wiki/Historia_de_los_lenguajes_de_programaci%C3%B3n>`_.
 
 .. --------------- Hyperlinks ---------------
 

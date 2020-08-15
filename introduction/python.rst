@@ -133,10 +133,12 @@ En su `traducción de la Wikipedia <https://es.wikipedia.org/wiki/Zen_de_Python>
 * Si la implementación es fácil de explicar, puede que sea una buena idea.
 * Los espacios de nombres son una gran idea, ¡tengamos más de esos!
 
+
+
 .. --------------- Footnotes ---------------
 
-.. [#python-unsplash] Foto original por `Markéta Marcellová`_ en Unsplash
-.. [#pithonic] Dícese de algo/alguien que sigue las convenciones de Python
+.. [#python-unsplash] Foto original por `Markéta Marcellová`_ en Unsplash.
+.. [#pithonic] Dícese de algo/alguien que sigue las convenciones de Python.
 
 .. --------------- Hyperlinks ---------------
 

@@ -80,10 +80,12 @@ Los `compiladores <https://es.wikipedia.org/wiki/Compilador>`__ son programas qu
 
     Para ser más exactos, en Python hablamos de un **intérprete** en vez de un compilador, pero a los efectos es prácticamente lo mismo. La diferencia está en que el intérprete realiza la "compilación" (*interpretación*) y la "ejecución" de una vez, mientras que el compilador genera un formato "ejecutable" (*código objeto*) que se ejecuta en otra fase posterior.
 
+
+
 .. --------------- Footnotes ---------------
 
-.. [#machine-unsplash] Foto original por `Garett Mizunaka`_ en Unsplash
-.. [#compiler] Iconos originales por `Flaticon`_
+.. [#machine-unsplash] Foto original por `Garett Mizunaka`_ en Unsplash.
+.. [#compiler] Iconos originales por `Flaticon`_.
 
 .. --------------- Hyperlinks ---------------
 

@@ -103,10 +103,12 @@ También existe la posibilidad, a través del depurador, de ir ejecutando nuestr
 
    Depurando nuestro primer programa en Python
 
+
+
 .. --------------- Footnotes ---------------
 
-.. [#thonny-unsplash] Foto original de portada por `freddie marriage`_ en Unsplash
-.. [#prompt] Término inglés que se refiere al símbolo que precede la línea de comandos
+.. [#thonny-unsplash] Foto original de portada por `freddie marriage`_ en Unsplash.
+.. [#prompt] Término inglés que se refiere al símbolo que precede la línea de comandos.
 .. [#save-file] La carpeta donde se guarden los archivos de código no es crítico para su ejecución, pero sí es importante mantener un orden y una organización para tener localizados nuestros ficheros y proyectos.
 
 .. --------------- Hyperlinks ---------------

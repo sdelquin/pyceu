@@ -304,7 +304,7 @@ Para poder **comprobar el tipo** que tiene una variable podemos hacer uso de la 
 
 .. --------------- Footnotes ---------------
 
-.. [#dice-unsplash] Foto original de portada por `Brett Jordan`_ en Unsplash
+.. [#dice-unsplash] Foto original de portada por `Brett Jordan`_ en Unsplash.
 .. [#root] No siempre es una raíz cuadrada porque se invierten numerador y denominador.
 .. [#floating-point] Punto o coma flotante es una `notación científica <https://es.wikipedia.org/wiki/Coma_flotante#:~:text=La%20representaci%C3%B3n%20de%20punto%20flotante,se%20pueden%20realizar%20operaciones%20aritm%C3%A9ticas.>`_ usada por computadores.
 

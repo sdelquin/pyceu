@@ -152,14 +152,16 @@ Para la instalación de WSL hay que seguir los siguientes pasos:
 
 En este punto, WSL debería estar instalado correctamente, y debería también aparecer en el *menú Inicio*.
 
+
+
 .. --------------- Footnotes ---------------
 
-.. [#rocket-unsplash] Foto original de portada por `SpaceX <https://unsplash.com/@spacex?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText>`_ en Unsplash
-.. [#vanilla-installation] También llamada "vanilla installation" ya que es la que viene por defecto y no se hace ningúna personalización
-.. [#ide] Integrated Development Environment
-.. [#machine-learning] Término inglés utilizado para hacer referencia a algoritmos de aprendizaje automático
-.. [#kernel] Proceso específico para un lenguaje de programación que ejecuta instrucciones y actúa como interfaz de entrada/salida
-.. [#wsl-acronym] Windows Subsystem for Linux
+.. [#rocket-unsplash] Foto original de portada por `SpaceX <https://unsplash.com/@spacex?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText>`_ en Unsplash.
+.. [#vanilla-installation] También llamada "vanilla installation" ya que es la que viene por defecto y no se hace ningúna personalización.
+.. [#ide] Integrated Development Environment.
+.. [#machine-learning] Término inglés utilizado para hacer referencia a algoritmos de aprendizaje automático.
+.. [#kernel] Proceso específico para un lenguaje de programación que ejecuta instrucciones y actúa como interfaz de entrada/salida.
+.. [#wsl-acronym] Windows Subsystem for Linux.
 
 .. --------------- Hyperlinks ---------------
 

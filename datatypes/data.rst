@@ -207,13 +207,14 @@ Hemos visto previamente cómo asignar un valor a una variable, pero aún no sabe
 * `Immutability in Python <https://realpython.com/courses/immutability-python/>`_
 
 
+
 .. --------------- Footnotes ---------------
 
-.. [#love-unsplash] Foto original de portada por `Alexander Sinn`_ en Unsplash
-.. [#special-chars] Para ser exactos, sí se pueden utilizar otros caracteres, e incluso *emojis* en los nombres de variables, aunque no suele ser una práctica extendida, ya que podría dificultar la legibilidad
-.. [#case-sensitive] Sensible a cambios en mayúsculas y minúsculas
-.. [#naming-pep8] Más información sobre convenciones de nombres en `PEP 8 <https://www.python.org/dev/peps/pep-0008/#naming-conventions>`__
-.. [#peps-link] Del término inglés "Python Enhancement Proposals"
+.. [#love-unsplash] Foto original de portada por `Alexander Sinn`_ en Unsplash.
+.. [#special-chars] Para ser exactos, sí se pueden utilizar otros caracteres, e incluso *emojis* en los nombres de variables, aunque no suele ser una práctica extendida, ya que podría dificultar la legibilidad.
+.. [#case-sensitive] Sensible a cambios en mayúsculas y minúsculas.
+.. [#naming-pep8] Más información sobre convenciones de nombres en `PEP 8 <https://www.python.org/dev/peps/pep-0008/#naming-conventions>`__.
+.. [#peps-link] Del término inglés "Python Enhancement Proposals".
 
 .. --------------- Hyperlinks ---------------
 
