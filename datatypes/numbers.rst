@@ -201,10 +201,112 @@ Hecho en Python::
     >>> 4 ** 0.5
     2.0
 
+Flotantes
+=========
+
+Los números en **punto flotante** [#floating-point]_ tienen **parte decimal**. Veamos algunos ejemplos de flotantes en Python.
+
+.. code-block::
+    :caption: Distintas formas de escribir el flotante *5.0*
+
+    >>> 5.0
+    5.0
+    >>> 5.
+    5.0
+    >>> 05.0
+    5.0
+    >>> 05.
+    5.0
+    >>> 5e0
+    5.0
+
+Conversión de tipos
+===================
+
+El hecho de que existan distintos tipos de datos en Python (y en el resto de lenguajes de programación) es una ventaja a la hora de representar la información del mundo real de la mejor manera posible. Pero también se hace necesario buscar mecanismos para convertir unos tipos de datos en otros.
+
+Conversión implícita
+--------------------
+
+Cuando mezclamos enteros, booleanos y flotantes, Python realiza automáticamente una conversión implícita (o **promoción**) de los valores al tipo de "mayor rango". Veamos algunos ejemplos de esto::
+
+    >>> True + 25
+    26
+    >>> 7 * False
+    0
+    >>> True + False
+    1
+    >>> 21.8 + True
+    22.8
+    >>> 10 + 11.3
+    21.3
+
+Podemos resumir la conversión implícita en la siguiente tabla:
+
++----------+-----------+-----------+
+|  Tipo 1  |  Tipo 2   | Resultado |
++==========+===========+===========+
+| ``bool`` | ``int``   | ``int``   |
++----------+-----------+-----------+
+| ``bool`` | ``float`` | ``float`` |
++----------+-----------+-----------+
+| ``int``  | ``float`` | ``float`` |
++----------+-----------+-----------+
+
+Conversión explícita
+--------------------
+
+Aunque más adelante veremos el concepto de **función**, desde ahora podemos decir que existen una serie de funciones para realizar conversiones explícitas de un tipo a otro:
+
+``bool()``
+    Convierte el tipo a *booleano*.
+
+``int()``
+    Convierte el tipo a *entero*.
+
+``float()``
+    Convierte el tipo a *flotante*.
+
+Veamos algunos ejemplos de estas funciones::
+
+    >>> bool(1)
+    True
+    >>> bool(0)
+    False
+    >>> int(True)
+    1
+    >>> int(25.5)
+    25
+    >>> float(False)
+    0.0
+    >>> float(10)
+    10.0
+
+Para poder **comprobar el tipo** que tiene una variable podemos hacer uso de la función ``type()``::
+
+    >>> is_raining = False
+    >>> type(is_raining)
+    <class 'bool'>
+    >>> sound_level = 35
+    >>> type(sound_level)
+    <class 'int'>
+    >>> temperature = 36.6
+    >>> type(temperature)
+    <class 'float'>
+
+.. rubric:: AMPLIAR CONOCIMIENTOS
+
+* `The Python Square Root Function <https://realpython.com/python-square-root-function/>`_
+* `How to Round Numbers in Python <https://realpython.com/python-rounding/>`_
+* `Operators and Expressions in Python <https://realpython.com/python-operators-expressions/>`_
+
+
+
 .. --------------- Footnotes ---------------
 
 .. [#dice-unsplash] Foto original de portada por `Brett Jordan`_ en Unsplash
 .. [#root] No siempre es una raíz cuadrada porque se invierten numerador y denominador.
+.. [#floating-point] Punto o coma flotante es una `notación científica <https://es.wikipedia.org/wiki/Coma_flotante#:~:text=La%20representaci%C3%B3n%20de%20punto%20flotante,se%20pueden%20realizar%20operaciones%20aritm%C3%A9ticas.>`_ usada por computadores.
 
 .. --------------- Hyperlinks ---------------
 
