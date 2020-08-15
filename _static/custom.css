@@ -6,6 +6,10 @@ dl.footnote {
   margin-top: 4rem;
 }
 
+dl.footnote dd p {
+  margin-bottom: 0.5rem;
+}
+
 div.footer {
   margin-top: 4rem;
 }
