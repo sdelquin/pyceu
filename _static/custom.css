@@ -1,29 +1,35 @@
+/* Smooth the scroll */
 html {
   scroll-behavior: smooth;
 }
 
+/* Increase spacing above footnotes block */
 dl.footnote {
   margin-top: 4rem;
 }
 
+/* Reduce spacing among footnotes */
 dl.footnote dd p {
   margin-bottom: 0.5rem;
 }
 
+/* Increase spacing above footer / signature */
 div.footer {
   margin-top: 4rem;
 }
 
+/* Font size fot custom TOC */
 ul.toptoc {
   font-size: 18px;
 }
 
+/* Remove underline on custom about (logo) link */
 div.customabout a,
 div.customabout a:hover {
   border-bottom: none;
 }
 
-/* fix scroll on sidebar */
+/* Fix scroll on sidebar */
 div.sphinxsidebar {
   max-height: 100%;
   overflow-y: auto;
