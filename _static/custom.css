@@ -39,3 +39,16 @@ div.sphinxsidebar {
 div.highlight pre {
   padding: 11px 14px;
 }
+
+/* Custom colors for admonitions */
+div.admonition.note {
+  background-color: #dff3f9;
+}
+
+div.admonition.important {
+  background-color: #fae4b1;
+}
+
+div.admonition.tip {
+  background-color: #cff3d5;
+}

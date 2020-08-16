@@ -59,7 +59,6 @@ html_theme_options = {
     'logo': 'python-solo-logo-3D.png',
     'page_width': '1008px',
     'show_powered_by': True,
-    'note_bg': '#fae4b1',
     'fixed_sidebar': True,
 }
 
