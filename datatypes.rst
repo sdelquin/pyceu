@@ -8,3 +8,4 @@ Igual que en el mundo real cada objeto pertenece a una categoría, en programaci
 
     datatypes/data
     datatypes/numbers
+    datatypes/strings
