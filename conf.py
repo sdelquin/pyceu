@@ -75,6 +75,9 @@ html_sidebars = {
     '**': ['customabout.html', 'innertoc.html', 'searchbox.html'],
 }
 
+html_css_files = ['custom.css']
+html_js_files = ['custom.js']
+
 latex_elements = {
     'pointsize': '12pt',
 }
