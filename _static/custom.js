@@ -1,7 +1,6 @@
 // Source: https://github.com/python/python-docs-theme/blob/master/python_docs_theme/static/copybutton.js
 
 $(document).ready(function () {
-  console.log('hola socio')
   /* Add a [>>>] button on the top-right corner of code samples to hide
    * the >>> and ... prompts and the output and thus make the code
    * copyable. */
