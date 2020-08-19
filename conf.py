@@ -20,7 +20,7 @@
 project = 'python-ucticee'
 # Description just for Latex purposes
 description = 'Introducción a la programación con Python (UCTICEE)'
-copyright = 'MMXXX <a href="https://sdelquin.me">Sergio Delgado Quintero</a>'
+copyright = '2020 <a href="https://sdelquin.me">Sergio Delgado Quintero</a>'
 author = 'Sergio Delgado Quintero'
 
 
