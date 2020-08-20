@@ -7,3 +7,4 @@ Todo programa informático está formado por :ref:`instrucciones <introduction/m
 .. toctree::
 
     controlflow/conditionals
+    controlflow/loops
