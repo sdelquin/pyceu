@@ -7,3 +7,4 @@ Si bien ya hemos visto una sección sobre :ref:`Tipos de datos <datatypes:Tipos 
 .. toctree::
 
     datastructures/lists
+    datastructures/tuples
