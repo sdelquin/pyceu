@@ -113,6 +113,8 @@ Una posible solución a este error es reescribir la condición de parada en el b
 
 .. tip:: Para abortar una situación de *bucle infinito* podemos pulsar en el teclado la combinación :kbd:`CTRL-C`. Se puede ver reflejado en el intérprete de Python por ``KeyboardInterrupt``.
 
+.. _for-sentence:
+
 La sentencia ``for``
 ====================
 
@@ -186,7 +188,7 @@ Generar secuencias de números
 
 La función ``range()`` devuelve un *flujo de números* en el rango especificado, sin necesidad de crear y almacenar previamente una larga estructura de datos. Esto permite generar rangos enormes sin consumir toda la *memoria* del sistema.
 
-El uso de ``range()`` es similar a los :ref:`"slices" <datatypes/strings:Troceado de cadenas>`: ``range(start, stop, step)``. Podemos omitir ``start`` y el rango empezaría en 0. El único valor requerido es ``stop`` y el último valor generado será justo el anterior a este. El valor por defecto de ``step`` es 1, pero se puede ir "hacia detrás" con -1.
+El uso de ``range()`` es similar a los :ref:`"slices" <datatypes/strings:Trocear una cadena>`: ``range(start, stop, step)``. Podemos omitir ``start`` y el rango empezaría en 0. El único valor requerido es ``stop`` y el último valor generado será justo el anterior a este. El valor por defecto de ``step`` es 1, pero se puede ir "hacia detrás" con -1.
 
 ``range()`` devuelve un *objeto iterable*, así que necesitamos obtener los valores paso a paso con una sentencia ``for ... in`` [#convert-list]_. Veamos diferentes ejemplos de uso:
 

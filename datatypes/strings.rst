@@ -209,8 +209,8 @@ Las cadenas de texto son tipos de datos **inmutables**. Es por ello que no podem
 
 .. tip:: Existen formas de modificar una cadena de texto que veremos más adelante, aunque realmente no estemos transformando el original sino que se crea un nuevo objeto con las modificaciones.
 
-Troceado de cadenas
-~~~~~~~~~~~~~~~~~~~
+Trocear una cadena
+~~~~~~~~~~~~~~~~~~
 
 Es posible extraer "trozos" ("rebanadas") de una cadena de texto [#slice]_. Tenemos varias aproximaciones a ello:
 

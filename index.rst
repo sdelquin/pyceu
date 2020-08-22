@@ -18,3 +18,4 @@
    devenv
    datatypes
    controlflow
+   datastructures
