@@ -8,3 +8,4 @@ Si bien ya hemos visto una sección sobre :ref:`Tipos de datos <datatypes:Tipos 
 
     datastructures/lists
     datastructures/tuples
+    datastructures/dicts
