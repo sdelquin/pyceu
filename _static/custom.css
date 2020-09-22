@@ -61,6 +61,11 @@ div.admonition.tip {
   background-color: #cff3d5;
 }
 
+/* Add space above searchbox */
+div#searchbox {
+  margin-top: 20px;
+}
+
 .copybutton {
   cursor: pointer;
   position: absolute;
