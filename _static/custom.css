@@ -31,8 +31,16 @@ div.customabout a:hover {
 
 /* Fix scroll on sidebar */
 div.sphinxsidebar {
-  max-height: 100%;
+  max-height: calc(100% - 30px);
   overflow-y: auto;
+}
+
+/* Remove too much space above sidear */
+div.sphinxsidebarwrapper {
+  padding-top: 0;
+}
+div.sphinxsidebarwrapper p.logo {
+  margin-top: 0;
 }
 
 /* Much improved spacing around code blocks */
