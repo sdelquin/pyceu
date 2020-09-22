@@ -46,6 +46,7 @@ language = 'es'
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
+autosectionlabel_prefix_document = True
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -78,6 +79,8 @@ html_sidebars = {
 html_css_files = ['custom.css']
 html_js_files = ['custom.js']
 
+# -- Latex configuration ---------------------------------------------------
+
 latex_elements = {
     'pointsize': '12pt',
 }
@@ -85,5 +88,3 @@ latex_elements = {
 latex_logo = '_static/python-solo-logo-3D.png'
 
 latex_documents = [('index', 'main.tex', description, author, 'manual',)]
-
-autosectionlabel_prefix_document = True
