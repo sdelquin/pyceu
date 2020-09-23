@@ -282,7 +282,6 @@ Veamos un ejemplo::
 - `Documenting Python Code: A Complete Guide <https://realpython.com/courses/documenting-python-code/>`_
 - `Thinking Recursively in Python <https://realpython.com/courses/thinking-recursively-python/>`_
 - `Writing Comments in Python <https://realpython.com/courses/writing-comments-python/>`_
-- `Documenting Python Code: A Complete Guide <https://realpython.com/documenting-python-code/>`_
 
 
 
