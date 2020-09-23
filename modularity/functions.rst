@@ -197,6 +197,14 @@ Llamada a la función indicando un postre concreto::
 
 .. important:: Los valores por defecto en los parámetros se calculan cuando se **define** la función, no cuando se **ejecuta**.
 
+.. rubric:: AMPLIAR CONOCIMIENTOS
+
+- `Defining Your Own Python Function <https://realpython.com/defining-your-own-python-function/>`_
+- `Python args and kwargs: Demystified <https://realpython.com/courses/python-kwargs-and-args/>`_
+- `Documenting Python Code: A Complete Guide <https://realpython.com/courses/documenting-python-code/>`_
+- `Thinking Recursively in Python <https://realpython.com/courses/thinking-recursively-python/>`_
+- `Writing Comments in Python <https://realpython.com/courses/writing-comments-python/>`_
+
 
 .. --------------- Footnotes ---------------
 
