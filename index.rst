@@ -19,3 +19,4 @@
    datatypes
    controlflow
    datastructures
+   modularity
