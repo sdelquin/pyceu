@@ -2,7 +2,7 @@
 Funciones
 *********
 
-.. image:: img/nathan-dumlao-6Lh0bRb9LOA-unsplash.png
+.. image:: img/nathan-dumlao-6Lh0bRb9LOA-unsplash.jpg
 
 Hasta ahora todo lo que hemos hecho han sido breves fragmentos de código Python. Esto puede ser razonable para pequeñas tareas, pero nadie quiere reescribir los fragmentos de código cada vez. Necesitamos una manera de organizar nuestro código en piezas manejables. [#brewery-unsplash]_ 
 
