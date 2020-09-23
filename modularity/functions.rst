@@ -197,6 +197,84 @@ Llamada a la función indicando un postre concreto::
 
 .. important:: Los valores por defecto en los parámetros se calculan cuando se **define** la función, no cuando se **ejecuta**.
 
+Documentación
+=============
+
+Ya hemos visto que en Python podemos incluir :ref:`comentarios <controlflow/conditionals:Comentarios>` para explicar mejor determinadas zonas de nuestro código.
+
+Del mismo modo podemos (y en muchos casos **debemos**) adjuntar **documentación** a la definición de una función incluyendo una cadena de texto (**docstring**) al comienzo de su cuerpo::
+
+    >>> def echo(anything):
+    ...     'echo returns its input argument'
+    ...     return anything
+    ...
+
+La forma más ortodoxa de escribir un ``docstring`` es utilizando *triples comillas*::
+
+    >>> def print_if_true(thing, check):
+    ...     '''
+    ...     Prints the first argument if a second argument is true.
+    ...     The operation is:
+    ...         1. Check whether the *second* argument is true.
+    ...         2. If it is, print the *first* argument.
+    ...     '''
+    ...     if check:
+    ...         print(thing)
+
+Para ver el ``docstring`` de una función, basta con utilizar ``help``::
+
+    >>> help(print_if_true)
+
+    Help on function print_if_true in module __main__:
+
+    print_if_true(thing, check)
+        Prints the first argument if a second argument is true.
+        The operation is:
+            1. Check whether the *second* argument is true.
+            2. If it is, print the *first* argument.
+
+Explicación de parámetros
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Como ya se ha visto es posible documentar una función utilizando un ``docstring``. Pero la redacción y el formato de esta cadena de texto puede ser muy variada. Existen distintas distintas formas de documentar una función (u otros objetos) [#docstring-formats]_ pero vamos a centrarnos en el modelo **NumPy/SciPy**. 
+
+Este modelo se basa en:
+
+* Una primera línea de **descripción de la función**.
+* A continuación especificamos las características de los **parámetros** (incluyendo sus tipos) usando el encabezado ``Parameters``.
+* Por último, si la función **retorna un valor**, lo indicamos con el encabezado ``Returns``.
+
+Veamos un ejemplo::
+
+    >>> def substract(value1, value2, vabs=False):
+    ...     '''Substract two values with choice of absolute value
+    ...
+    ...     Parameters
+    ...     ----------
+    ...     value1 : int
+    ...         First value in substraction
+    ...     value2 : int
+    ...         Second value in substraction
+    ...     vabs : bool
+    ...         Indicates if absolute value is performed over the substraction
+    ...
+    ...     Returns
+    ...     -------
+    ...     int
+    ...         Substraction of input values
+    ...     '''
+    ...     result = value1 - value2
+    ...     if vabs:
+    ...         result = abs(result)
+    ...     return result
+    ...
+
+    >>> substract(3, 5)
+    -2
+
+    >>> substract(3, 5, True)
+    2
+
 .. rubric:: AMPLIAR CONOCIMIENTOS
 
 - `Defining Your Own Python Function <https://realpython.com/defining-your-own-python-function/>`_
@@ -204,13 +282,17 @@ Llamada a la función indicando un postre concreto::
 - `Documenting Python Code: A Complete Guide <https://realpython.com/courses/documenting-python-code/>`_
 - `Thinking Recursively in Python <https://realpython.com/courses/thinking-recursively-python/>`_
 - `Writing Comments in Python <https://realpython.com/courses/writing-comments-python/>`_
+- `Documenting Python Code: A Complete Guide <https://realpython.com/documenting-python-code/>`_
+
 
 
 .. --------------- Footnotes ---------------
 
 .. [#brewery-unsplash] Foto original por `Nathan Dumlao`_ en Unsplash.
 .. [#blogic] Término para identificar el "algoritmo" o secuencia de instrucciones derivadas del procesamiento que corresponda.
+.. [#docstring-formats] Véase `Docstring Formats`_.
 
 .. --------------- Hyperlinks ---------------
 
 .. _Nathan Dumlao: https://unsplash.com/@nate_dumlao?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText
+.. _DocString Formats: https://realpython.com/documenting-python-code/#docstring-formats
