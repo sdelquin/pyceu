@@ -10,3 +10,4 @@ Si bien ya hemos visto una sección sobre :ref:`Tipos de datos <datatypes:Tipos 
     datastructures/tuples
     datastructures/dicts
     datastructures/sets
+    datastructures/files
