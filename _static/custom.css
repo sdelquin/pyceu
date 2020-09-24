@@ -61,6 +61,10 @@ div.admonition.tip {
   background-color: #cff3d5;
 }
 
+div.admonition.hint {
+  background-color: #fff1ff;
+}
+
 /* Add space above searchbox */
 div#searchbox {
   margin-top: 20px;
