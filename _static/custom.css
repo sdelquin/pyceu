@@ -70,6 +70,14 @@ div#searchbox {
   margin-top: 20px;
 }
 
+/* Change background color of download links */
+code.download {
+  background-color: #a1da754a;
+}
+code.download:hover {
+  background-color: #a1da759c;
+}
+
 .copybutton {
   cursor: pointer;
   position: absolute;
