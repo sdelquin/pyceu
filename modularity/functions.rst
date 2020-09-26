@@ -275,6 +275,66 @@ Veamos un ejemplo::
     >>> substract(3, 5, True)
     2
 
+Espacios de nombres
+===================
+
+Un nombre puede hacer referencia a múltiples cosas, dependiendo de dónde lo estemos usando. Los programas en Python tienen diferentes **espacios de nombres**, secciones donde un nombre particular es único e independiente del mismo nombre en otros espacios de nombres.
+
+Cada función define su propio espacio de nombres. Si se define una variable ``x`` en el programa principal y otra variable ``x`` dentro de una función, hacen referencia a cosas diferentes. Dicho esto, también es posible (*aunque desaconsejado*) acceder al espacio de nombres global dentro de las funciones.
+
+En el siguiente ejemplo se define una variable global (*primer nivel*) y luego mostramos su valor directamente y mediante una función::
+
+    >>> animal = 'tiger'
+
+    >>> def print_global():
+    ...     print('inside print_global:', animal)
+    ...
+
+    >>> print('at the top level:', animal)
+    at the top level: tiger
+
+    >>> print_global()
+    inside print_global: tiger
+
+Ejecución **paso a paso** a través de *Python Tutor*:
+
+.. only:: latex
+
+    https://cutt.ly/3fMI8de
+
+.. only:: html
+
+    .. raw:: html
+
+        <iframe width="800" height="420" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=animal%20%3D%20'tiger'%0A%0Adef%20print_global%28%29%3A%0A%20%20%20%20print%28'inside%20print_global%3A',%20animal%29%0A%0A%0Aprint%28'at%20the%20top%20level%3A',%20animal%29%0A%0A%0Aprint_global%28%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+Sin embargo, si creamos una variable dentro de la función que también tenga el nombre ``animal``, realmente estaremos creando una nueva variable distinta de la global::
+
+    >>> animal = 'tiger'
+
+    >>> def change_local():
+    ...     animal = 'panther'
+    ...     print('inside change_local:', animal)
+    ...
+
+    >>> print('at the top level:', animal)
+    at the top level: tiger
+
+    >>> change_local()
+    inside change_local: panther
+
+Ejecución **paso a paso** a través de *Python Tutor*:
+
+.. only:: latex
+
+    https://cutt.ly/ifMOeYf
+
+.. only:: html
+
+    .. raw:: html
+
+        <iframe width="800" height="440" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=animal%20%3D%20'tiger'%0A%0Adef%20change_local%28%29%3A%0A%20%20%20%20animal%20%3D%20'panther'%0A%20%20%20%20print%28'inside%20change_local%3A',%20animal%29%0A%0A%0Aprint%28'at%20the%20top%20level%3A',%20animal%29%0A%0A%0Achange_local%28%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
 .. rubric:: AMPLIAR CONOCIMIENTOS
 
 - `Defining Your Own Python Function <https://realpython.com/defining-your-own-python-function/>`_
