@@ -65,6 +65,12 @@ div.admonition.hint {
   background-color: #fff1ff;
 }
 
+/* Custom admonition for exercises */
+div.admonition.exercise {
+  background-color: #edfff2;
+  border: 1px solid #3b7b49;
+}
+
 /* Add space above searchbox */
 div#searchbox {
   margin-top: 20px;
@@ -78,6 +84,7 @@ code.download:hover {
   background-color: #a1da759c;
 }
 
+/* Button to remove prompt in Python code */
 .copybutton {
   cursor: pointer;
   position: absolute;
