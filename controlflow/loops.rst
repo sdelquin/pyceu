@@ -356,6 +356,11 @@ Ejecución **paso a paso** a través de *Python Tutor*:
     * Podemos añadir todos los niveles de anidamiento que queramos. Eso sí, hay que tener en cuenta que cada nuevo nivel de anidamiento supone un importante aumento de la `complejidad ciclomática`_ de nuestro código, lo que se traduce en mayores tiempos de ejecución.
     * Los bucles anidados también se pueden aplicar a la sentencia ``while``.
 
+.. admonition:: Ejercicio
+    :class: exercise
+
+    Imprima los 100 primeros números de la `sucesión de Fibonacci`_: :math:`0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, \dots` 
+
 .. rubric:: AMPLIAR CONOCIMIENTOS
 
 * `The Python range() Function <https://realpython.com/courses/python-range-function/>`_
@@ -375,3 +380,4 @@ Ejecución **paso a paso** a través de *Python Tutor*:
 
 .. _Gary Lopater: https://unsplash.com/@glopater?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText
 .. _complejidad ciclomática: https://es.wikipedia.org/wiki/Complejidad_ciclom%C3%A1tica
+.. _sucesión de Fibonacci: https://es.wikipedia.org/wiki/Sucesi%C3%B3n_de_Fibonacci

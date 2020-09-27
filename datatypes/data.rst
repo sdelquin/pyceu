@@ -221,6 +221,14 @@ Para poder descubrir el tipo de un literal o una variable, Python nos ofrece la 
     >>> type(sound_speed)
     float
 
+.. admonition:: Ejercicio
+    :class: exercise
+
+    1. Asigna un valor entero ``2001`` a la variable ``space_odyssey`` y muestra su valor.
+    2. Descubre el tipo del literal ``'Good night & Good luck'``.
+    3. Identifica el tipo del literal ``True``.
+    4. Asigna la expresión ``5 + 2.0`` a la variable ``result`` y muestra su tipo.
+
 .. rubric:: AMPLIAR CONOCIMIENTOS
 
 * `Basic Data Types in Python <https://realpython.com/courses/python-data-types/>`_

@@ -335,6 +335,24 @@ Ejecución **paso a paso** a través de *Python Tutor*:
 
         <iframe width="800" height="440" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=animal%20%3D%20'tiger'%0A%0Adef%20change_local%28%29%3A%0A%20%20%20%20animal%20%3D%20'panther'%0A%20%20%20%20print%28'inside%20change_local%3A',%20animal%29%0A%0A%0Aprint%28'at%20the%20top%20level%3A',%20animal%29%0A%0A%0Achange_local%28%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
+.. admonition:: Ejercicio
+    :class: exercise
+
+    .. rubric:: Primera parte
+
+    Escriba una función ``factorial`` que reciba un único parámetro ``n`` y devuelva su factorial.
+
+    *El factorial de un número n se define como*:
+    
+    .. math:: 
+        n! = n \cdot (n - 1) \cdot (n - 2) \cdot \ldots \cdot 1
+    
+    **Ejemplo**
+        * Entrada: ``5``
+        * Salida: ``120``
+
+
+
 .. rubric:: AMPLIAR CONOCIMIENTOS
 
 - `Defining Your Own Python Function <https://realpython.com/defining-your-own-python-function/>`_

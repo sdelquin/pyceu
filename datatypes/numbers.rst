@@ -294,6 +294,22 @@ Para poder **comprobar el tipo** que tiene una variable podemos hacer uso de la 
     >>> type(temperature)
     <class 'float'>
 
+.. admonition:: Ejercicio
+    :class: exercise
+
+    Existe una aproximación al seno de un ángulo :math:`x` expresado en *grados*:
+
+    .. math:: 
+        sin(x) \approx \frac{4x(180 - x)}{40500 - x(180 - x)}
+
+    Calcule dicha aproximación utilizando operaciones en Python. Descomponga la expresión en subcálculos almacenados en variables. Tenga en cuenta aquellas expresiones comunes para no repetir cálculos y seguir el `principio DRY`_.
+
+    ¿Qué tal funciona la aproximación? Compare sus resultados con estos:
+
+    - :math:`sin(90) = 1.0`
+    - :math:`sin(45) = 0.7071067811865475`
+    - :math:`sin(50) = 0.766044443118978`
+
 .. rubric:: AMPLIAR CONOCIMIENTOS
 
 * `The Python Square Root Function <https://realpython.com/python-square-root-function/>`_
@@ -314,3 +330,4 @@ Para poder **comprobar el tipo** que tiene una variable podemos hacer uso de la 
 .. _George Boole: https://es.wikipedia.org/wiki/George_Boole
 .. _Álgebra de Boole: https://es.wikipedia.org/wiki/%C3%81lgebra_de_Boole
 .. _Lógica binaria: https://es.wikipedia.org/wiki/L%C3%B3gica_binaria
+.. _principio DRY: https://es.wikipedia.org/wiki/No_te_repitas
