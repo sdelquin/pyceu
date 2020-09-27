@@ -51,24 +51,28 @@ div.highlight pre {
 /* Custom colors for admonitions */
 div.admonition.note {
   background-color: #dff3f9;
+  border: 1px solid #84a9b7;
 }
 
 div.admonition.important {
   background-color: #fae4b1;
+  border: 1px solid #bbb246;
 }
 
 div.admonition.tip {
   background-color: #cff3d5;
+  border: 1px solid #9ead99;
 }
 
 div.admonition.hint {
   background-color: #fff1ff;
+  border: 1px solid #baa6bb;
 }
 
 /* Custom admonition for exercises */
 div.admonition.exercise {
-  background-color: #edfff2;
-  border: 1px solid #3b7b49;
+  background-color: #ffeddb;
+  border: 1px solid #dab47a;
 }
 
 /* Add space above searchbox */
