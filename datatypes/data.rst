@@ -200,6 +200,27 @@ Hemos visto previamente cómo asignar un valor a una variable, pero aún no sabe
 
 .. note:: ``print`` sirve también cuando estamos en una sesión interactiva de Python ("shell")
 
+Conocer el tipo de una variable
+-------------------------------
+
+Para poder descubrir el tipo de un literal o una variable, Python nos ofrece la función ``type()``. Veamos algunos ejemplos de su uso::
+
+    >>> type(9)
+    int
+
+    >>> type(1.2)
+    float
+
+    >>> height = 3718
+
+    >>> type(height)
+    int
+
+    >>> sound_speed = 343.2
+
+    >>> type(sound_speed)
+    float
+
 .. rubric:: AMPLIAR CONOCIMIENTOS
 
 * `Basic Data Types in Python <https://realpython.com/courses/python-data-types/>`_
