@@ -17,9 +17,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'python-ucticee'
+project = 'pyceu'
 # Description just for Latex purposes
-description = 'Introducción a la programación con Python (UCTICEE)'
+description = 'Introducción al lenguaje de programación Python'
 copyright = '2020 <a href="https://sdelquin.me">Sergio Delgado Quintero</a>'
 author = 'Sergio Delgado Quintero'
 
@@ -87,4 +87,12 @@ latex_elements = {
 
 latex_logo = '_static/python-solo-logo-3D.png'
 
-latex_documents = [('index', 'main.tex', description, author, 'manual',)]
+latex_documents = [
+    (
+        'index',
+        'main.tex',
+        description,
+        author,
+        'manual',
+    )
+]

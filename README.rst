@@ -1,7 +1,7 @@
-Introducción a la programación con Python (UCTICEE)
-===================================================
+Introducción al lenguaje de programación Python
+===============================================
 
-Materiales para el curso de introducción a la programación con Python dentro del proyecto `UCTICEE`_ (Uso y Calidad de las TIC en el entorno educativo) cofinanciado al 85% por el `Fondo Europeo de Desarrollo Regional`_, en el marco del `Plan Canario de Formación del profesorado`_ de la `Consejería de Educación del Gobierno de Canarias`_.
+Materiales para el curso de **Introducción al lenguaje de programación Python** dentro del proyecto `UCTICEE`_ (Uso y Calidad de las TIC en el entorno educativo) cofinanciado al 85% por el `Fondo Europeo de Desarrollo Regional`_, en el marco del `Plan Canario de Formación del profesorado`_ de la `Consejería de Educación del Gobierno de Canarias`_.
 
 .. image:: _static/python-logo-3d.png
 
