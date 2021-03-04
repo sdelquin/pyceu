@@ -3,6 +3,7 @@ Tareas
 ######
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
+   :glob:
 
-   statements/assignment3.1
+   statements/*
