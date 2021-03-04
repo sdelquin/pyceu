@@ -13,7 +13,7 @@ Pero aún seguimos con el problema de cómo hacer que un ordenador (o máquina) 
 
 Si intentamos visualizar un programa en código máquina, únicamente obtendríamos una secuencia de ceros y unos:
 
-.. code-block:: raw
+.. code-block::
 
     00001000 00000010 01111011 10101100 10010111 11011001 01000000 01100010 
     00110100 00010111 01101111 10111001 01010110 00110001 00101010 00011111 
