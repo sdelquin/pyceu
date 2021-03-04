@@ -2,4 +2,7 @@
 .DS_Store
 _build
 resources
+__pycache__
 *.pyc
+solutions
+testingbench.py
