@@ -252,13 +252,6 @@ De hecho, si lo pensamos, estamos reproduciendo bastante bien el *lenguaje natur
 * Si hace frío, coge chaqueta.
 * Si no hace frío, usa camiseta. 
 
-.. admonition:: Ejercicio
-    :class: exercise
-
-    Dada una variable ``year`` con un valor entero, compruebe si dicho año es bisiesto o no.
-
-    *Un año es bisiesto en el calendario Gregoriano, si es divisible entre 4 y no divisible entre 100, o bien si es divisible entre 400*. Puede hacer la comprobación en `esta lista de años bisiestos <https://kalender-365.de/leap-years.php>`_.
-
 .. rubric:: AMPLIAR CONOCIMIENTOS
 
 * `How to Use the Python or Operator <https://realpython.com/python-or-operator/>`_

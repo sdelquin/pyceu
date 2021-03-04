@@ -728,14 +728,6 @@ Ejecución **paso a paso** a través de *Python Tutor*:
 
         <iframe width="800" height="520" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=fruit_shop%20%3D%20%5B'Naranjas',%20'Manzanas',%20'Mel%C3%B3n'%5D%0Abutcher_shop%20%3D%20%5B'Pollo',%20'Hamburguesas',%20'Lomo'%5D%0Adelicatessen%20%3D%20%5B'Jam%C3%B3n',%20'Queso',%20'Salami',%20'Mortadela'%5D%0Ahygiene%20%3D%20%5B'Jab%C3%B3n',%20'Desodorante',%20'Crema'%5D%0Abakery%20%3D%20%5B'Pan',%20'Croissant',%20'Magdalenas'%5D%0A%0Ashopping%20%3D%20%5B%5D%0A%0Ashopping.append%28fruit_shop%29%0Ashopping.append%28butcher_shop%29%0Ashopping.append%28delicatessen%29%0Ashopping.append%28hygiene%29%0Ashopping.append%28bakery%29%0A%0Aprint%28shopping%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-.. admonition:: Ejercicio
-    :class: exercise
-
-    Lea :ref:`desde teclado <datatypes/strings:Leer datos desde teclado>` una cadena de texto con números separados por comas. Sin utilizar las :ref:`funciones matemáticas <datastructures/lists:Funciones matemáticas>`, obtenga la media de dichos valores (*muestre el resultado con 2 decimales*).
-
-    **Ejemplo**
-        * Entrada: ``'32,56,21,99,12,17'``
-        * Salida: ``37.50``
 
 .. rubric:: AMPLIAR CONOCIMIENTOS
 

@@ -404,13 +404,6 @@ Supongamos que disponemos de los datos de una persona y queremos formar una fras
 
 Los "f-strings" proporcionan una gran variedad de **opciones de formateado**: ancho del texto, número de decimales, tamaño de la cifra, alineación, etc. Muchas de estas facilidades se pueden consultar en el artículo `Best of Python3.6 f-strings`_ [#best-fstrings]_
 
-.. admonition:: Ejercicio
-    :class: exercise
-
-    Obtenga el número de palabras que contiene la siguiente cadena de texto::
-
-        quote = 'Before software can be reusable, it first has to be usable'
-
 .. rubric:: AMPLIAR CONOCIMIENTOS
 
 * `A Guide to the Newer Python String Format Techniques <https://realpython.com/python-formatted-output/>`_

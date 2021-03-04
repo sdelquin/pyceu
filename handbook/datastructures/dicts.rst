@@ -463,15 +463,6 @@ Una forma muy habitual de trabajar con diccionarios es empezar con uno vacío e 
 
 .. note:: Hemos utilizando la función ``enumerate()`` que ya vimos para las listas en el apartado: :ref:`datastructures/lists:Iterar usando enumeración`.
 
-.. admonition:: Ejercicio
-    :class: exercise
-
-    Usando un diccionario, cuente el número de veces que se repite cada letra en una cadena de texto dada.
-
-    **Ejemplo**
-        * Entrada: ``'boom'``
-        * Salida: ``{'b': 1, 'o': 2, 'm': 1}`` 
-
 .. rubric:: AMPLIAR CONOCIMIENTOS
 
 * `Using the Python defaultdict Type for Handling Missing Keys <https://realpython.com/python-defaultdict/>`_
