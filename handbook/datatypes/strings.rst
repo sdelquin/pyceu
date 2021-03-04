@@ -63,6 +63,17 @@ Podemos crear "strings" a partir de otros tipos de datos usando la función ``st
     >>> str(21.7)
     '21.7'
 
+También podemos convertir "strings" a otros tipos de datos::
+
+    >>> int('7')
+    7
+    >>> float('3.77')
+    3.77
+    >>> bool('1')
+    True
+    >>> bool('')
+    False
+
 Secuencias de escape
 ====================
 
