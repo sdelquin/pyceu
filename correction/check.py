@@ -2,11 +2,12 @@ import os
 import re
 import subprocess
 import sys
+from pathlib import Path
 
+import yaml
 from rich.console import Console
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
-from testingbench import get_bench
 
 console = Console()
 
@@ -23,9 +24,9 @@ def parse_exception(exception_message):
         return 'Exception'
 
 
-def run_test(task_filename, args):
-    command = f'python {task_filename} {args}'
-    console.print(f'[dark_goldenrod]INPUT: {command}')
+def run_test(filename, args, desired_output):
+    command = f'python {filename} {args}'
+    console.print(f'[dark_goldenrod]$ {command}')
     try:
         output = subprocess.check_output(
             command, encoding='utf-8', shell=True, stderr=subprocess.STDOUT
@@ -34,25 +35,50 @@ def run_test(task_filename, args):
         output = parse_exception(err.output)
     else:
         output = output.strip().split('\n')[-1]
-    return output
+    code_works = output == desired_output
+    return output, code_works
 
 
-def handle_task(task_id, task_filename):
-    os.environ['CHECK'] = '1'
+def inject_checking_code(code, input_varnames, output_varnames):
+    code = 'import sys\n\n' + code
+
+    for i, varname in enumerate(input_varnames):
+        code = re.sub(rf'{varname} *=.*', f'{varname} = sys.argv[{i + 1}]', code, count=1)
+
+    print_statements = []
+    for varname in output_varnames:
+        print_statements.append(f"print(globals().get('{varname}', 'UNDEF'), end=' ')")
+    print_statements = '\n'.join(print_statements)
+
+    code = code + '\n' + print_statements + '\n'
+    return code
+
+
+def handle_assignment(asgmt_id, asgmt_filename):
     passed = []
-    for args, desired_output in get_bench(task_id):
-        args = ' '.join(args)
-        desired_output = ' '.join(desired_output)
-        output = run_test(task_filename, args)
+    config = yaml.load(Path('config.yml').read_text(), Loader=yaml.FullLoader)[asgmt_id]
+    asgmt_file = Path(asgmt_filename)
+    asgmt_code = asgmt_file.read_text()
+    injected_asgmt_code = inject_checking_code(
+        asgmt_code, config['varnames']['input'], config['varnames']['output']
+    )
+    injected_asgmt_filename = asgmt_file.stem + '.injected' + asgmt_file.suffix
+    injected_asgmt_file = Path(injected_asgmt_filename)
+    injected_asgmt_file.write_text(injected_asgmt_code)
+    for case in config['cases']:
+        args = ' '.join(str(v) for v in case['input'])
+        desired_output = ' '.join(str(v) for v in case['output'])
+        output, code_works = run_test(injected_asgmt_filename, args, desired_output)
         print('Desired output:', desired_output)
-        is_right_task = output == desired_output
-        color, symbol = CORRECTION_DISPLAY[is_right_task][:2]
-        passed.append(is_right_task)
+        color, symbol = CORRECTION_DISPLAY[code_works][:2]
         console.print(f'[{color}]Program output: {output} {symbol}')
+        passed.append(code_works)
 
     color, _, mark, symbol = CORRECTION_DISPLAY[all(passed)]
     print('-------------------------------------')
     console.print(f'[{color}]{mark} ({sum(passed)}/{len(passed)}) {symbol}')
+
+    injected_asgmt_file.unlink()
 
 
 def download_task(task_url):
@@ -79,4 +105,4 @@ def download_task(task_url):
 
 
 if __name__ == '__main__':
-    handle_task(sys.argv[1], sys.argv[2])
+    handle_assignment(sys.argv[1], sys.argv[2])
