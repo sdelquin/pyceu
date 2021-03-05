@@ -40,8 +40,9 @@ def run_test(filename, args, desired_output):
 
 
 def inject_checking_code(code, input_vars, output_vars):
+    # imports
     code = 'import sys\n\n' + code
-
+    # initial values for input variables
     for i, var in enumerate(input_vars):
         if isinstance(var, dict):
             # typecast is set
@@ -51,7 +52,7 @@ def inject_checking_code(code, input_vars, output_vars):
         code = re.sub(
             rf'{varname} *=.*', f'{varname} = {cast}(sys.argv[{i + 1}])', code, count=1
         )
-
+    # print statements for output variables
     print_statements = []
     for varname in output_vars:
         print_statements.append(f"print(globals().get('{varname}', 'UNDEF'), end=' ')")
@@ -61,9 +62,7 @@ def inject_checking_code(code, input_vars, output_vars):
     return code
 
 
-def handle_assignment(asgmt_id, asgmt_filename):
-    passed = []
-    config = yaml.load(Path('config.yml').read_text(), Loader=yaml.FullLoader)[asgmt_id]
+def create_injected_asgmt_file(asgmt_filename, config):
     asgmt_file = Path(asgmt_filename)
     asgmt_code = asgmt_file.read_text()
     injected_asgmt_code = inject_checking_code(
@@ -72,10 +71,18 @@ def handle_assignment(asgmt_id, asgmt_filename):
     injected_asgmt_filename = asgmt_file.stem + '.injected' + asgmt_file.suffix
     injected_asgmt_file = Path(injected_asgmt_filename)
     injected_asgmt_file.write_text(injected_asgmt_code)
+    return injected_asgmt_file
+
+
+def handle_assignment(asgmt_id, asgmt_filename):
+    passed = []
+    config = yaml.load(Path('config.yml').read_text(), Loader=yaml.FullLoader)[asgmt_id]
+    injected_asgmt_file = create_injected_asgmt_file(asgmt_filename, config)
+
     for case in config['cases']:
         args = ' '.join(str(v) for v in case['input'])
         desired_output = ' '.join(str(v) for v in case['output'])
-        output, code_works = run_test(injected_asgmt_filename, args, desired_output)
+        output, code_works = run_test(injected_asgmt_file.name, args, desired_output)
         print('Desired output:', desired_output)
         color, symbol = CORRECTION_DISPLAY[code_works][:2]
         console.print(f'[{color}]Program output: {output} {symbol}')
