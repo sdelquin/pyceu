@@ -90,7 +90,7 @@ latex_logo = '_static/python-solo-logo-3D.png'
 latex_documents = [
     (
         'index',
-        'main.tex',
+        'pyceu-handbook.tex',
         description,
         author,
         'manual',
