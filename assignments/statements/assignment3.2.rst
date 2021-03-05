@@ -6,29 +6,28 @@ Dada una ecuación de segundo grado :math:`ax^2 + bx + c = 0` calcula los valore
 
 Utiliza esta plantilla para hacer la tarea::
 
-    import os
-    import sys
+    # asigna valores iniciales
+    a = 1
+    b = -5
+    c = -84
 
-    # ↓ asigna valores iniciales
-    a = 3
-    b = 5
-    c = 6
-    # ↑ asigna valores iniciales
+    # tu código debajo de aquí
 
-    # =========== NO TOCAR ===========
-    if os.getenv('CHECK'):
-        a, b, c = [int(v) for v in sys.argv[1:]]
-    # ================================
+.. tip:: Trata de separar los cálculos parciales en variables intermedias, y no repitas cálculos, intenta reutilizar variables con cálculos ya hechos.
 
-    # ↓ tu código debajo de aquí
+.. note:: Puedes comprobar tus soluciones con `esta calculadora online <http://es.onlinemschool.com/math/assistance/equation/quadratic/>`_ o bien utilizar datos de entrada de algunas `ecuaciones ya resueltas <https://www.superprof.es/apuntes/escolar/matematicas/algebra/ecuaciones/ejercicios-ecuaciones-de-segundo-grado.html>`_.
 
-    # ↑ tu código encima de aquí
+Variables
+=========
 
-    # =========== NO TOCAR ===========
-    if os.getenv('CHECK'):
-        print(locals().get('x1', 'UNDEF'), locals().get('x2', 'UNDEF'))
-    # ================================
-
-Puedes comprobar soluciones con `esta calculadora online <http://es.onlinemschool.com/math/assistance/equation/quadratic/>`_.
++-------+--------+
+| Input | Output |
++=======+========+
+| ``a`` | ``x1`` |
++-------+--------+
+| ``b`` | ``x2`` |
++-------+--------+
+| ``c`` |        |
++-------+--------+
 
 .. include:: ../notice.rst

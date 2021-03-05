@@ -9,25 +9,4 @@ Tarea 3.1: Datos
 5.	Asigna la expresión ``result + 3.0`` a la variable ``result2`` y muestra su valor y su tipo. ¿Notas algo raro?
 6.	Realiza la operación ``7 / 4`` y asígnala a la variable ``quotient``. Ahora realiza la operación ``7 // 4`` y asígnala a la variable ``quotient2``. Mira sus resultados y reflexiona.
 
-Utiliza esta plantilla para hacer la tarea::
-
-   import os
-
-   # ↓ tu código debajo de aquí
-
-   # ↑ tu código encima de aquí
-
-   # =========== NO TOCAR ===========
-   if os.getenv('CHECK'):
-       print(
-           locals().get('bttf', 'UNDEF'),
-           locals().get('song', 'UNDEF'),
-           locals().get('make_war', 'UNDEF'),
-           locals().get('result', 'UNDEF'),
-           locals().get('result2', 'UNDEF'),
-           locals().get('quotient', 'UNDEF'),
-           locals().get('quotient2', 'UNDEF'),
-       )
-   # ================================
-
 .. include:: ../notice.rst
