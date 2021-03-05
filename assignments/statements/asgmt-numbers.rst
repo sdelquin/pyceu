@@ -13,20 +13,33 @@ Utiliza esta plantilla para hacer la tarea::
 
     # tu código debajo de aquí
 
-.. tip:: Trata de separar los cálculos parciales en variables intermedias, y no repitas cálculos, intenta reutilizar variables con cálculos ya hechos.
+.. tip::
+    - Trata de *separar los cálculos* parciales en variables intermedias.
+    - No repitas cálculos, intenta *reutilizar variables* con cálculos ya hechos.
+    - Recuerda que la *raíz cuadrada* se puede expresar en términos de *exponenciación*.
 
 .. note:: Puedes comprobar tus soluciones con `esta calculadora online <http://es.onlinemschool.com/math/assistance/equation/quadratic/>`_ o bien utilizar datos de entrada de algunas `ecuaciones ya resueltas <https://www.superprof.es/apuntes/escolar/matematicas/algebra/ecuaciones/ejercicios-ecuaciones-de-segundo-grado.html>`_.
 
-.. rubric:: Variables
+.. rubric:: Variables de entrada
 
-+-------+--------+
-| Input | Output |
-+=======+========+
-| ``a`` | ``x1`` |
-+-------+--------+
-| ``b`` | ``x2`` |
-+-------+--------+
-| ``c`` |        |
-+-------+--------+
++--------+---------+----------------------------+
+| Nombre |  Tipo   |        Descripción         |
++========+=========+============================+
+| ``a``  | ``int`` | Coeficiente de :math:`x^2` |
++--------+---------+----------------------------+
+| ``b``  | ``int`` | Coeficiente de :math:`x`   |
++--------+---------+----------------------------+
+| ``c``  | ``int`` | Término independiente      |
++--------+---------+----------------------------+
+
+.. rubric:: Variables de salida
+
++--------+-----------+---------------------------------+
+| Nombre |   Tipo    |           Descripción           |
++========+===========+=================================+
+| ``x1`` | ``float`` | Primera solución de la ecuación |
++--------+-----------+---------------------------------+
+| ``x2`` | ``float`` | Segunda solución de la ecuación |
++--------+-----------+---------------------------------+
 
 .. include:: ../notice.rst
