@@ -39,14 +39,21 @@ def run_test(filename, args, desired_output):
     return output, code_works
 
 
-def inject_checking_code(code, input_varnames, output_varnames):
+def inject_checking_code(code, input_vars, output_vars):
     code = 'import sys\n\n' + code
 
-    for i, varname in enumerate(input_varnames):
-        code = re.sub(rf'{varname} *=.*', f'{varname} = sys.argv[{i + 1}]', code, count=1)
+    for i, var in enumerate(input_vars):
+        if isinstance(var, dict):
+            # typecast is set
+            varname, cast = tuple(var.items())[0]
+        else:
+            varname, cast = var, 'str'
+        code = re.sub(
+            rf'{varname} *=.*', f'{varname} = {cast}(sys.argv[{i + 1}])', code, count=1
+        )
 
     print_statements = []
-    for varname in output_varnames:
+    for varname in output_vars:
         print_statements.append(f"print(globals().get('{varname}', 'UNDEF'), end=' ')")
     print_statements = '\n'.join(print_statements)
 
@@ -60,7 +67,7 @@ def handle_assignment(asgmt_id, asgmt_filename):
     asgmt_file = Path(asgmt_filename)
     asgmt_code = asgmt_file.read_text()
     injected_asgmt_code = inject_checking_code(
-        asgmt_code, config['varnames']['input'], config['varnames']['output']
+        asgmt_code, config['vars']['input'], config['vars']['output']
     )
     injected_asgmt_filename = asgmt_file.stem + '.injected' + asgmt_file.suffix
     injected_asgmt_file = Path(injected_asgmt_filename)

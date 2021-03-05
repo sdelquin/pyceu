@@ -1,5 +1,5 @@
 "3.1":
-  varnames:
+  vars:
     input: []
     output:
       - bttf
@@ -21,26 +21,26 @@
         - 1
 
 "3.2":
-  varnames:
+  vars:
     input:
-      - a
-      - b
-      - c
+      - a: int
+      - b: int
+      - c: int
     output:
       - x1
       - x2
   cases:
     - input: [2, -7, 3]
       output: [3.0, 0.5]
-    - input: [-1, 7, 10]
+    - input: [-1, 7, -10]
       output: [2.0, 5.0]
-    - input: [-1, -4, 4]
+    - input: [1, -4, 4]
       output: [2.0, 2.0]
     - input: [7, 21, -28]
       output: [1.0, -4.0]
 
 "3.3":
-  varnames:
+  vars:
     input:
       - text
     output:
