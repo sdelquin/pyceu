@@ -17,8 +17,7 @@ Utiliza esta plantilla para hacer la tarea::
 
 .. note:: Puedes comprobar tus soluciones con `esta calculadora online <http://es.onlinemschool.com/math/assistance/equation/quadratic/>`_ o bien utilizar datos de entrada de algunas `ecuaciones ya resueltas <https://www.superprof.es/apuntes/escolar/matematicas/algebra/ecuaciones/ejercicios-ecuaciones-de-segundo-grado.html>`_.
 
-Variables
-=========
+.. rubric:: Variables
 
 +-------+--------+
 | Input | Output |
