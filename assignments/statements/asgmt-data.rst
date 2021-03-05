@@ -1,6 +1,6 @@
-****************
-Tarea 3.1: Datos
-****************
+************
+Tarea: Datos
+************
 
 1.	Asigna el valor entero ``1985`` a la variable ``bttf`` y muestra su valor.
 2.	Descubre el tipo del literal ``'Castle on the Hill'`` después de asignarlo a la variable ``song``.
