@@ -18,16 +18,9 @@ Utiliza esta plantilla para hacer la tarea::
 
     # tu código debajo de aquí
 
-Aquí tienes un **ejemplo** con el resultado que debería dar tu programa:
+Para los valores de entrada de la plantilla, el resultado debería ser::
 
-.. table::
-    :align: left
-
-    +-----------------+----------------------------+
-    |     Entrada     |           Salida           |
-    +=================+============================+
-    | ``2toc-penny3`` | ``TOCTOC#PennyPennyPenny`` |
-    +-----------------+----------------------------+
+    result = 'TOCTOC#PennyPennyPenny'
 
 Las **variables de entrada** que debes inicializar en tu programa son las siguientes:
 

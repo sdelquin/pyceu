@@ -13,6 +13,11 @@ Utiliza esta plantilla para hacer la tarea::
 
     # tu código debajo de aquí
 
+Para los valores de entrada de la plantilla, el resultado debería ser::
+
+    x1 = -7
+    x2 = 12
+
 .. tip::
     - Trata de *separar los cálculos* parciales en variables intermedias.
     - No repitas cálculos, intenta *reutilizar variables* con cálculos ya hechos.
@@ -20,26 +25,32 @@ Utiliza esta plantilla para hacer la tarea::
 
 .. note:: Puedes comprobar tus soluciones con `esta calculadora online <http://es.onlinemschool.com/math/assistance/equation/quadratic/>`_ o bien utilizar datos de entrada de algunas `ecuaciones ya resueltas <https://www.superprof.es/apuntes/escolar/matematicas/algebra/ecuaciones/ejercicios-ecuaciones-de-segundo-grado.html>`_.
 
-.. rubric:: Variables de entrada
+Las **variables de entrada** que debes inicializar en tu programa son las siguientes:
 
-+--------+---------+----------------------------+
-| Nombre |  Tipo   |        Descripción         |
-+========+=========+============================+
-| ``a``  | ``int`` | Coeficiente de :math:`x^2` |
-+--------+---------+----------------------------+
-| ``b``  | ``int`` | Coeficiente de :math:`x`   |
-+--------+---------+----------------------------+
-| ``c``  | ``int`` | Término independiente      |
-+--------+---------+----------------------------+
+.. table::
+    :align: left
 
-.. rubric:: Variables de salida
+    +--------+---------+----------------------------+
+    | Nombre |  Tipo   |        Descripción         |
+    +========+=========+============================+
+    | ``a``  | ``int`` | Coeficiente de :math:`x^2` |
+    +--------+---------+----------------------------+
+    | ``b``  | ``int`` | Coeficiente de :math:`x`   |
+    +--------+---------+----------------------------+
+    | ``c``  | ``int`` | Término independiente      |
+    +--------+---------+----------------------------+
 
-+--------+-----------+---------------------------------+
-| Nombre |   Tipo    |           Descripción           |
-+========+===========+=================================+
-| ``x1`` | ``float`` | Primera solución de la ecuación |
-+--------+-----------+---------------------------------+
-| ``x2`` | ``float`` | Segunda solución de la ecuación |
-+--------+-----------+---------------------------------+
+Las **variables de salida** que debes obtener en tu programa son las siguientes:
+
+.. table::
+    :align: left
+
+    +--------+-----------+---------------------------------+
+    | Nombre |   Tipo    |           Descripción           |
+    +========+===========+=================================+
+    | ``x1`` | ``float`` | Primera solución de la ecuación |
+    +--------+-----------+---------------------------------+
+    | ``x2`` | ``float`` | Segunda solución de la ecuación |
+    +--------+-----------+---------------------------------+
 
 .. include:: ../notice.rst
