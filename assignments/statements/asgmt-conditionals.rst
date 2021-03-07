@@ -55,6 +55,12 @@ Las **variables de salida** que debes obtener en tu programa son las siguientes:
 
 El siguiente diagrama explica el árbol de decisiones:
 
-.. image:: img/eso-promote.png
+.. only:: latex
+
+    .. image:: img/eso-promote.png
+
+.. only:: html
+
+    .. image:: img/eso-promote.svg
 
 .. include:: ../notice.rst
