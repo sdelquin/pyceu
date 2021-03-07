@@ -6,4 +6,7 @@ Tareas
    :maxdepth: 1
    :glob:
 
-   statements/*
+   statements/asgmt-data
+   statements/asgmt-numbers
+   statements/asgmt-strings
+   statements/asgmt-conditionals
