@@ -11,3 +11,4 @@ Tareas
    statements/asgmt-strings
    statements/asgmt-conditionals
    statements/asgmt-loops
+   statements/asgmt-lists
