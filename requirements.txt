@@ -1,3 +1,4 @@
 sphinx
 selenium
 rich
+pyyaml
