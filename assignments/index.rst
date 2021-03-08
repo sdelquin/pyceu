@@ -10,3 +10,4 @@ Tareas
    statements/asgmt-numbers
    statements/asgmt-strings
    statements/asgmt-conditionals
+   statements/asgmt-loops
