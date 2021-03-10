@@ -14,7 +14,7 @@ Se pide transformar una cadena de texto de entrada ``text`` en función de unas 
 Utiliza esta plantilla para hacer la tarea::
 
     # asigna valores iniciales
-    text = '2toc-3penny'
+    text = '2toc-penny3'
 
     # tu código debajo de aquí
 

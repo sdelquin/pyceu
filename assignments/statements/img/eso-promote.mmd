@@ -1,7 +1,7 @@
 flowchart LR
     A[START] --> B{num_fails?}
     B -- < 2 --> C[Promote]
-    B -- == 2 --> D{Spanish & <br> Math?}
+    B -- == 2 --> D{Spanish & <br> Math failed?}
     B -- > 2 --> E[Not promote]
     D -- No --> C
     D -- Yes --> E

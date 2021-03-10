@@ -14,7 +14,7 @@ Necesitaremos 2 funciones::
 
 .. important:: La función ``get_primes()`` hará uso de la función ``is_prime()``.
 
-Escribe un programa en Python que parta de un número entero (indicando cuántos primos se quieren calcular) y genere **una lista** con dichos números primos.
+Escribe un programa en Python que dado un número entero (indicando cuántos primos se quieren calcular) genere **una lista** con dichos números primos.
 
 Utiliza esta plantilla para hacer la tarea::
 

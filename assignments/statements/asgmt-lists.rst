@@ -2,7 +2,7 @@
 Tarea: Listas
 *************
 
-Escribe un programa en Python que parta de una *cadena de texto* con notas entre 0 y 9 separadas por comas (sin espacios). El programa deberá calcular el número de notas únicas que hay en la entrada.
+Escribe un programa en Python que parta de una *cadena de texto* con notas entre 0 y 10 separadas por comas (sin espacios). El programa deberá calcular el **número de notas únicas** que hay en la entrada.
 
 Utiliza esta plantilla para hacer la tarea::
 
