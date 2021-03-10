@@ -13,4 +13,5 @@ Tareas
    statements/asgmt-loops
    statements/asgmt-lists
    statements/asgmt-dicts
+   statements/asgmt-files
    statements/asgmt-functions
