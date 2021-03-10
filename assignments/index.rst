@@ -12,3 +12,4 @@ Tareas
    statements/asgmt-conditionals
    statements/asgmt-loops
    statements/asgmt-lists
+   statements/asgmt-dicts
