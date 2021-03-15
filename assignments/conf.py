@@ -67,6 +67,7 @@ latex_elements = {
 \usepackage{titlesec}
 \newcommand{\sectionbreak}{\clearpage}
 \setcounter{secnumdepth}{0}
+\pagenumbering{gobble}
     ''',
 }
 
