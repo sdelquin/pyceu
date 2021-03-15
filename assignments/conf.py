@@ -63,6 +63,11 @@ html_static_path = ['_static']
 
 latex_elements = {
     'pointsize': '12pt',
+    'preamble': r'''
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+\setcounter{secnumdepth}{0}
+    ''',
 }
 
 latex_documents = [
@@ -71,6 +76,6 @@ latex_documents = [
         'pyceu-assignments.tex',
         description,
         author,
-        'manual',
+        'howto',
     )
 ]
