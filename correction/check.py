@@ -16,9 +16,15 @@ CORRECTION_DISPLAY = (
 
 def parse_exception(exception_message):
     if m := re.search(r'\w+Error:.*', exception_message):
-        return m.group()
+        exception_type = m.group()
+        if m := re.search(r'line \d+', exception_message):
+            exception_at = m.group()
+            exception_summary = f'{exception_type} ({exception_at})'
+        else:
+            exception_summary = exception_type
     else:
-        return 'Exception'
+        exception_summary = 'Exception'
+    return exception_summary
 
 
 def run_test(filename, args, desired_output):
@@ -71,6 +77,8 @@ def create_injected_asgmt_file(asgmt_file: Path, config: list):
 
 
 def handle_assignment(asgmt_id: str, asgmt_file: Path):
+    console.print(f'[white bold]Checking "{asgmt_file.name}"\n')
+
     passed = []
     config = yaml.load(Path('config.yml').read_text(), Loader=yaml.FullLoader)[asgmt_id]
     injected_asgmt_file = create_injected_asgmt_file(asgmt_file, config)
@@ -89,28 +97,26 @@ def handle_assignment(asgmt_id: str, asgmt_file: Path):
     print('-------------------------------------')
     console.print(f'[{color}]{mark} ({sum(passed)}/{len(passed)}) {symbol}')
 
-    injected_asgmt_file.unlink()
-    return all_passed
+    if not all_passed:
+        console.print(f'[dark_goldenrod]{injected_asgmt_file}\n\n')
+        console.print(injected_asgmt_file.read_text())
+
+    # asgmt_file.unlink()
+    # injected_asgmt_file.unlink()
 
 
 if __name__ == '__main__':
     """
-    sys.argv[1]: task identifier as written in config.yml
-    sys.argv[2]: path to the folder where tasks are saved (e.g. ~/Downloads)
+    sys.argv[1]: assignment identifier as written in config.yml
+    sys.argv[2]: path to the folder where assignments are saved (e.g. ~/Downloads)
     """
-    task_id = sys.argv[1]
-    task_folder = Path(sys.argv[2])
+    asgmt_id = sys.argv[1]
+    asgmt_folder = Path(sys.argv[2])
     try:
         # It expects only one .py file to be checked
-        task_file = next(task_folder.glob('*.py'))
+        asgmt_file = next(asgmt_folder.glob('*.py'))
     except StopIteration:
-        console.print(f'[dark_orange]No .py files found in {task_folder}')
+        console.print(f'[dark_orange]No .py files found in {asgmt_folder}')
         sys.exit()
 
-    console.print(f'[white bold]Checking "{task_file.name}"\n')
-    if not handle_assignment(task_id, task_file):
-        filename = task_file.name
-        sep = '-' * len(filename)
-        console.print(f'[dark_goldenrod]\n{filename}\n{sep}')
-        console.print(task_file.read_text())
-    task_file.unlink()
+    handle_assignment(asgmt_id, asgmt_file)
