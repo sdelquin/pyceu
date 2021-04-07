@@ -2,7 +2,17 @@
 Tarea: Números
 ******************
 
-Dada una ecuación de segundo grado :math:`ax^2 + bx + c = 0` calcula los valores de :math:`x` que satisfacen la igualdad. No te preocupes de los casos en los que la ecuación no tiene solución o en los que hay infinitas soluciones.
+Dada una ecuación de segundo grado :math:`ax^2 + bx + c = 0` calcula los valores de :math:`x` que satisfacen la igualdad.
+
+.. math::
+    :nowrap:
+
+    \begin{eqnarray*}
+       x1 & = & \frac{-b + \sqrt{b^2 - 4ac}}{2a} \\
+       x2 & = & \frac{-b - \sqrt{b^2 - 4ac}}{2a}
+    \end{eqnarray*}
+
+*No te preocupes de los casos en los que la ecuación no tiene solución o en los que hay infinitas soluciones.*
 
 Utiliza esta plantilla para hacer la tarea::
 

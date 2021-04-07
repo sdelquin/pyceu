@@ -11,9 +11,9 @@ Utiliza esta plantilla para hacer la tarea::
 
     # tu código debajo de aquí
 
-    Para los valores de entrada de la plantilla, el resultado debería ser::
-    
-        notebook = {'juan': 1, 'antonio': 7, 'inma': 9, 'pepe': 3, 'sara': 5}
+Para los valores de entrada de la plantilla, el resultado debería ser::
+
+    notebook = {'juan': 1, 'antonio': 7, 'inma': 9, 'pepe': 3, 'sara': 5}
 
 .. important::
     - Fíjate que los bloques de alumnado están separados por comas ``,`` y dentro de ese bloque, el nombre y la calificación están separados por dos puntos ``:``

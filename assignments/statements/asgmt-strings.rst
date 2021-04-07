@@ -44,4 +44,6 @@ Las **variables de salida** que debes obtener en tu programa son las siguientes:
     | ``result`` | ``str`` | Cadena de texto con las transformaciones |
     +------------+---------+------------------------------------------+
 
+.. important:: Recuerda que tu programa debe funcionar para distintas cadenas de entrada, y que las repeticiones de las cadenas también son variables según lo que se indique.
+
 .. include:: ../notice.rst
