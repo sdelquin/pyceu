@@ -126,6 +126,5 @@ if __name__ == '__main__':
         asgmt_file = next(asgmt_folder.glob('*.py'))
     except StopIteration:
         console.print(f'[orange_red1]⚠️  No .py files found in {asgmt_folder}')
-        sys.exit()
-
-    handle_assignment(asgmt_id, asgmt_file)
+    else:
+        handle_assignment(asgmt_id, asgmt_file)
