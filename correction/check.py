@@ -6,8 +6,6 @@ from pathlib import Path
 
 import yaml
 from rich.console import Console
-from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
 
 console = Console()
 
@@ -15,6 +13,7 @@ CORRECTION_DISPLAY = (
     ('red', '❌', 'NO APTO', '🙁'),
     ('green', '✅', 'APTO', '🥳'),
 )
+TASK_FILENAME = 'task.py'
 
 
 def parse_exception(exception_message):
@@ -88,35 +87,23 @@ def handle_assignment(asgmt_id, asgmt_filename):
         console.print(f'[{color}]Program output: {output} {symbol}')
         passed.append(code_works)
 
-    color, _, mark, symbol = CORRECTION_DISPLAY[all(passed)]
+    all_passed = all(passed)
+    color, _, mark, symbol = CORRECTION_DISPLAY[all_passed]
     print('-------------------------------------')
     console.print(f'[{color}]{mark} ({sum(passed)}/{len(passed)}) {symbol}')
 
     injected_asgmt_file.unlink()
-
-
-def download_task(task_url):
-    options = Options()
-    options.headless = True
-
-    profile = webdriver.FirefoxProfile()
-    profile.set_preference('browser.download.folderList', 2)
-    profile.set_preference('browser.download.dir', os.getcwd())
-    profile.set_preference('browser.helperApps.neverAsk.saveToDisk', 'application/pdf')
-    profile.set_preference('pdfjs.disabled', True)
-
-    driver = webdriver.Firefox(options=options, firefox_profile=profile)
-    driver.get(task_url)
-
-    element = driver.find_element_by_id('username')
-    element.send_keys()  # GobCan CAS username
-    element = driver.find_element_by_id('password')
-    element.send_keys()  # GobCan CAS password
-    element = driver.find_element_by_id('btn-login')
-    element.click()
-
-    os.rename('whatever.py', 'task.py')
+    return all_passed
 
 
 if __name__ == '__main__':
-    handle_assignment(sys.argv[1], sys.argv[2])
+    task_id = sys.argv[1]
+    task_path = sys.argv[2]
+    task_file = Path(task_path)
+
+    if not handle_assignment(task_id, task_file.absolute()):
+        filename = task_file.name
+        sep = '-' * len(filename)
+        console.print(f'[dark_goldenrod]\n{filename}\n{sep}')
+        console.print(task_file.read_text())
+    os.remove(task_file)
