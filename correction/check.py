@@ -5,6 +5,9 @@ from pathlib import Path
 
 import yaml
 from rich.console import Console
+from rich.markdown import Markdown
+from rich.panel import Panel
+from rich.syntax import Syntax
 
 console = Console()
 
@@ -29,7 +32,7 @@ def parse_exception(exception_message):
 
 def run_test(filename, args, desired_output):
     command = f'python "{filename}" {args}'
-    console.print(f'[dark_goldenrod]$ {command}')
+    console.print(f'[bold cyan]$ {command}')
     try:
         output = subprocess.check_output(
             command, encoding='utf-8', shell=True, stderr=subprocess.STDOUT
@@ -77,7 +80,8 @@ def create_injected_asgmt_file(asgmt_file: Path, config: list):
 
 
 def handle_assignment(asgmt_id: str, asgmt_file: Path):
-    console.print(f'[white bold]Checking "{asgmt_file.name}"\n')
+    markdown = Markdown(f'# {asgmt_file.name}')
+    console.print(markdown)
 
     passed = []
     config = yaml.load(Path('config.yml').read_text(), Loader=yaml.FullLoader)[asgmt_id]
@@ -94,15 +98,20 @@ def handle_assignment(asgmt_id: str, asgmt_file: Path):
 
     all_passed = all(passed)
     color, _, mark, symbol = CORRECTION_DISPLAY[all_passed]
-    print('-------------------------------------')
-    console.print(f'[{color}]{mark} ({sum(passed)}/{len(passed)}) {symbol}')
+    msg = f'{mark} ({sum(passed)}/{len(passed)}) {symbol}'
+    panel = Panel(msg, expand=False, style=color)
+    console.print(panel)
 
     if not all_passed:
-        console.print(f'[dark_goldenrod]{injected_asgmt_file}\n\n')
-        console.print(injected_asgmt_file.read_text())
+        syntax = Syntax(
+            injected_asgmt_file.read_text(),
+            'python',
+            line_numbers=True,
+        )
+        console.print(syntax)
 
-    # asgmt_file.unlink()
-    # injected_asgmt_file.unlink()
+    asgmt_file.unlink()
+    injected_asgmt_file.unlink()
 
 
 if __name__ == '__main__':
@@ -116,7 +125,7 @@ if __name__ == '__main__':
         # It expects only one .py file to be checked
         asgmt_file = next(asgmt_folder.glob('*.py'))
     except StopIteration:
-        console.print(f'[dark_orange]No .py files found in {asgmt_folder}')
+        console.print(f'[orange_red1]⚠️  No .py files found in {asgmt_folder}')
         sys.exit()
 
     handle_assignment(asgmt_id, asgmt_file)
