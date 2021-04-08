@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 from pathlib import Path
 
+import services
 import typer
-import yaml
 from check import handle_assignment
 from rich.console import Console
 
@@ -13,7 +13,7 @@ app = typer.Typer(add_completion=False)
 @app.command()
 def check(
     asgmt_id: str = typer.Argument(
-        ..., help='Assignment identifier as written in config.yml'
+        ..., help='Assignment identifier as written in testbench (e.g. dicts)'
     ),
     asgmt_folder_path: str = typer.Argument(
         ..., help='Path to the folder where assignments are saved (e.g. ~/Downloads)'
@@ -35,9 +35,9 @@ def check(
 
 @app.command()
 def list_asgmts():
-    '''List available assignments identifiers'''
-    config = yaml.load(Path('config.yml').read_text(), Loader=yaml.FullLoader)
-    asgmts_ids = '\n'.join(config.keys())
+    '''List available assignments identifiers on testbench'''
+    testbench = services.read_testbench()
+    asgmts_ids = '\n'.join(testbench.keys())
     print(asgmts_ids)
 
 

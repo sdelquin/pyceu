@@ -5,4 +5,4 @@ resources
 __pycache__
 *.pyc
 solutions
-correction/config.yml
+correction/testbench.yml

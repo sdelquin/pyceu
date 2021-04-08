@@ -2,7 +2,7 @@ import re
 import subprocess
 from pathlib import Path
 
-import yaml
+import services
 from rich.console import Console
 from rich.markdown import Markdown
 from rich.panel import Panel
@@ -97,7 +97,7 @@ def handle_assignment(asgmt_id: str, asgmt_file: Path, clean_files):
     securize_code(asgmt_file)
 
     passed = []
-    config = yaml.load(Path('config.yml').read_text(), Loader=yaml.FullLoader)[asgmt_id]
+    config = services.read_testbench()[asgmt_id]
     injected_asgmt_file = create_injected_asgmt_file(asgmt_file, config)
 
     for case in config['cases']:
