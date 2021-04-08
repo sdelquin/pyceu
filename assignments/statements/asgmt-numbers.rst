@@ -25,8 +25,8 @@ Utiliza esta plantilla para hacer la tarea::
 
 Para los valores de entrada de la plantilla, el resultado debería ser::
 
-    x1 = -7
-    x2 = 12
+    x1 = 12
+    x2 = -7 
 
 .. tip::
     - Trata de *separar los cálculos* parciales en variables intermedias.
