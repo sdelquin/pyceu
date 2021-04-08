@@ -3,30 +3,13 @@ import subprocess
 from pathlib import Path
 
 import services
+import settings
 from rich.console import Console
 from rich.markdown import Markdown
 from rich.panel import Panel
 from rich.syntax import Syntax
 
 console = Console()
-
-CORRECTION_DISPLAY = (
-    ('red', '❌', 'NO APTO', '🙁'),
-    ('green', '✅', 'APTO', '🥳'),
-)
-
-
-def parse_exception(exception_message):
-    if m := re.search(r'\w+Error:.*', exception_message):
-        exception_type = m.group()
-        if m := re.search(r'line \d+', exception_message):
-            exception_at = m.group()
-            exception_summary = f'{exception_type} ({exception_at})'
-        else:
-            exception_summary = exception_type
-    else:
-        exception_summary = 'Exception'
-    return exception_summary
 
 
 def run_test(filename, args, desired_output):
@@ -37,7 +20,7 @@ def run_test(filename, args, desired_output):
             command, encoding='utf-8', shell=True, stderr=subprocess.STDOUT
         )
     except Exception as err:
-        output = parse_exception(err.output)
+        output = services.parse_exception(err.output)
     else:
         output = output.strip().split('\n')[-1]
     code_works = output == desired_output
@@ -105,12 +88,12 @@ def handle_assignment(asgmt_id: str, asgmt_file: Path, clean_files):
         desired_output = ' '.join(str(v) for v in case['output'])
         output, code_works = run_test(injected_asgmt_file.name, args, desired_output)
         print('Desired output:', desired_output)
-        color, symbol = CORRECTION_DISPLAY[code_works][:2]
+        color, symbol = settings.CORRECTION_DISPLAY[code_works][:2]
         console.print(f'[{color}]Program output: {output} {symbol}')
         passed.append(code_works)
 
     all_passed = all(passed)
-    color, _, mark, symbol = CORRECTION_DISPLAY[all_passed]
+    color, _, mark, symbol = settings.CORRECTION_DISPLAY[all_passed]
     msg = f'{mark} ({sum(passed)}/{len(passed)}) {symbol}'
     panel = Panel(msg, expand=False, style=color)
     console.print(panel)
