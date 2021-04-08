@@ -1,8 +1,11 @@
 import re
 from pathlib import Path
+from rich.console import Console
 
 import settings
 import yaml
+
+console = Console()
 
 
 def read_testbench(filepath: str = settings.TESTBENCH):
@@ -20,3 +23,7 @@ def parse_exception(exception_message):
     else:
         exception_summary = 'Exception'
     return exception_summary
+
+
+def show_error(msg: str):
+    console.print(f'[orange_red1]⚠️  {msg}')

@@ -29,7 +29,7 @@ def check(
         # It expects only one .py file to be checked
         asgmt_file = next(asgmt_folder.glob('*.py'))
     except StopIteration:
-        console.print(f'[orange_red1]⚠️  No .py files found in {asgmt_folder}')
+        services.show_error(f'No .py files found in {asgmt_folder}')
     else:
         handle_assignment(asgmt_id, asgmt_file, not keep_files)
 

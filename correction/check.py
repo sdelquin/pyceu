@@ -80,7 +80,11 @@ def handle_assignment(asgmt_id: str, asgmt_file: Path, clean_files):
     securize_code(asgmt_file)
 
     passed = []
-    config = services.read_testbench()[asgmt_id]
+    try:
+        config = services.read_testbench()[asgmt_id]
+    except KeyError:
+        services.show_error(f'Assignment id "{asgmt_id}" not found!')
+        return
     injected_asgmt_file = create_injected_asgmt_file(asgmt_file, config)
 
     for case in config['cases']:
