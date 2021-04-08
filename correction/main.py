@@ -5,6 +5,7 @@ import services
 import typer
 from check import handle_assignment
 from rich.console import Console
+from rich.table import Table
 
 console = Console()
 app = typer.Typer(add_completion=False)
@@ -37,8 +38,13 @@ def check(
 def list_asgmts():
     '''List available assignments identifiers on testbench'''
     testbench = services.read_testbench()
-    asgmts_ids = '\n'.join(testbench.keys())
-    print(asgmts_ids)
+
+    table = Table(title='Available assignments')
+    table.add_column("id", justify="right", style="cyan", no_wrap=True)
+    table.add_column("title", justify="left", style="magenta", no_wrap=True)
+    for asgmt_id, data in testbench.items():
+        table.add_row(asgmt_id, data['title'])
+    console.print(table)
 
 
 if __name__ == '__main__':
