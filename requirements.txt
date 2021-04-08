@@ -1,3 +1,4 @@
 sphinx
 rich
 pyyaml
+typer

@@ -1,8 +1,8 @@
 import re
 import subprocess
-import sys
 from pathlib import Path
 
+import typer
 import yaml
 from rich.console import Console
 from rich.markdown import Markdown
@@ -91,7 +91,7 @@ def securize_code(asgmt_file: Path):
     asgmt_file.write_text('\n'.join(securized_code))
 
 
-def handle_assignment(asgmt_id: str, asgmt_file: Path):
+def handle_assignment(asgmt_id: str, asgmt_file: Path, clean_files):
     markdown = Markdown(f'# {asgmt_file.name}')
     console.print(markdown)
 
@@ -124,21 +124,34 @@ def handle_assignment(asgmt_id: str, asgmt_file: Path):
         )
         console.print(syntax)
 
-    asgmt_file.unlink()
-    injected_asgmt_file.unlink()
+    if clean_files:
+        asgmt_file.unlink()
+        injected_asgmt_file.unlink()
 
 
-if __name__ == '__main__':
-    """
-    sys.argv[1]: assignment identifier as written in config.yml
-    sys.argv[2]: path to the folder where assignments are saved (e.g. ~/Downloads)
-    """
-    asgmt_id = sys.argv[1]
-    asgmt_folder = Path(sys.argv[2])
+def main(
+    asgmt_id: str = typer.Argument(
+        ..., help='Assignment identifier as written in config.yml'
+    ),
+    asgmt_folder_path: str = typer.Argument(
+        ..., help='Path to the folder where assignments are saved (e.g. ~/Downloads)'
+    ),
+    keep_files: bool = typer.Option(
+        False, '-k', help='Do not remove input file (and injected code) after execution'
+    ),
+):
+    asgmt_folder = Path(asgmt_folder_path)
     try:
         # It expects only one .py file to be checked
         asgmt_file = next(asgmt_folder.glob('*.py'))
     except StopIteration:
         console.print(f'[orange_red1]⚠️  No .py files found in {asgmt_folder}')
     else:
-        handle_assignment(asgmt_id, asgmt_file)
+        handle_assignment(asgmt_id, asgmt_file, not keep_files)
+
+
+if __name__ == '__main__':
+    # https://bit.ly/3t2hLRx
+    app = typer.Typer(add_completion=False)
+    app.command()(main)
+    app()
