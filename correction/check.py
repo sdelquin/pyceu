@@ -79,9 +79,23 @@ def create_injected_asgmt_file(asgmt_file: Path, config: list):
     return injected_asgmt_file
 
 
+def securize_code(asgmt_file: Path):
+    asgmt_code = asgmt_file.read_text()
+    securized_code = []
+    for line in asgmt_code.split('\n'):
+        if re.search(r'\bimport\b', line):
+            securized_line = '#' + line
+        else:
+            securized_line = line
+        securized_code.append(securized_line)
+    asgmt_file.write_text('\n'.join(securized_code))
+
+
 def handle_assignment(asgmt_id: str, asgmt_file: Path):
     markdown = Markdown(f'# {asgmt_file.name}')
     console.print(markdown)
+
+    securize_code(asgmt_file)
 
     passed = []
     config = yaml.load(Path('config.yml').read_text(), Loader=yaml.FullLoader)[asgmt_id]
