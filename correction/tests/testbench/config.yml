@@ -1,0 +1,19 @@
+basic:
+  title: "Basic Test Bench"
+  vars:
+    input:
+      - a: int
+      - b: int
+    output:
+      - result
+  cases:
+    - input:
+        - 2
+        - 3
+      output:
+        - 5
+    - input:
+        - 6
+        - 4
+      output:
+        - 10

@@ -1,15 +1,11 @@
 import re
 from pathlib import Path
-from rich.console import Console
 
-import settings
 import yaml
+from rich.console import Console
+from rich.table import Table
 
 console = Console()
-
-
-def read_testbench(filepath: str = settings.TESTBENCH):
-    return yaml.load(Path(filepath).read_text(), Loader=yaml.FullLoader)
 
 
 def parse_exception(exception_message):
@@ -27,3 +23,20 @@ def parse_exception(exception_message):
 
 def show_error(msg: str):
     console.print(f'[orange_red1]⚠️  {msg}')
+
+
+def read_testbench(testbench_path: str, asgmt_id: str = None):
+    testbench = Path(testbench_path)
+    payload = yaml.load(testbench.read_text(), Loader=yaml.FullLoader)
+    if asgmt_id is not None:
+        payload = payload[asgmt_id]
+    return payload
+
+
+def show_testbench(testbench: dict):
+    table = Table(title='Available assignments')
+    table.add_column("id", justify="right", style="cyan", no_wrap=True)
+    table.add_column("title", justify="left", style="magenta", no_wrap=True)
+    for asgmt_id, data in testbench.items():
+        table.add_row(asgmt_id, data['title'])
+    console.print(table)

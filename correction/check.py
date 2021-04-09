@@ -84,21 +84,15 @@ def create_securized_asgmt_file(asgmt_file: Path):
     return securized_asgmt_file
 
 
-def handle_assignment(asgmt_id: str, asgmt_file: Path, clean_files):
+def handle_assignment(asgmt_file: Path, testbench: list, clean_files: bool = True):
     markdown = Markdown(f'# {asgmt_file.name}')
     console.print(markdown)
 
-    try:
-        config = services.read_testbench()[asgmt_id]
-    except KeyError:
-        services.show_error(f'Assignment id "{asgmt_id}" not found!')
-        return
-
     securized_asgmt_file = create_securized_asgmt_file(asgmt_file)
-    injected_asgmt_file = create_injected_asgmt_file(securized_asgmt_file, config)
+    injected_asgmt_file = create_injected_asgmt_file(securized_asgmt_file, testbench)
 
     passed = []
-    for case in config['cases']:
+    for case in testbench['cases']:
         args = ' '.join(str(v) for v in case['input'])
         desired_output = ' '.join(str(v) for v in case['output'])
         output, code_works = run_test(injected_asgmt_file.name, args, desired_output)
