@@ -1,3 +1,4 @@
+import os
 import re
 from pathlib import Path
 
@@ -29,3 +30,28 @@ def test_list_asgmts(capsys):
     captured = capsys.readouterr()
     assert 'basic' in captured.out
     assert 'Basic Test Bench' in captured.out
+
+
+def test_clean_files():
+    dummy_filename = 'dummy.file'
+    dummy_file = Path(dummy_filename)
+    dummy_file.write_text('Just dummy!')
+    services.clean_files(dummy_file)
+    assert os.path.isfile(dummy_filename) is False
+
+
+def test_show_code(capsys):
+    services.show_code(Path(__file__))
+    captured = capsys.readouterr()
+    assert 'def test_show_code(capsys):' in captured.out
+
+
+def test_benchtest_results(capsys):
+    benchtest_results = [True, False, True]
+    correction_display = (
+        ('red', '❌', 'NO APTO', '🙁'),
+        ('green', '✅', 'APTO', '🥳'),
+    )
+    services.show_benchtest_results(benchtest_results, correction_display)
+    captured = capsys.readouterr()
+    assert 'NO APTO' in captured.out

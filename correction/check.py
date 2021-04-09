@@ -6,9 +6,7 @@ import services
 import settings
 from rich.console import Console
 from rich.markdown import Markdown
-from rich.panel import Panel
 from rich.prompt import Confirm
-from rich.syntax import Syntax
 
 console = Console()
 
@@ -84,6 +82,16 @@ def create_securized_asgmt_file(asgmt_file: Path):
     return securized_asgmt_file
 
 
+def handle_testbench_case(case: dict, injected_asgmt_file: Path):
+    args = ' '.join(str(v) for v in case['input'])
+    desired_output = ' '.join(str(v) for v in case['output'])
+    output, code_works = run_test(injected_asgmt_file.name, args, desired_output)
+    print('Desired output:', desired_output)
+    color, symbol = settings.CORRECTION_DISPLAY[code_works][:2]
+    console.print(f'[{color}]Program output: {output} {symbol}')
+    return code_works
+
+
 def handle_assignment(asgmt_file: Path, testbench: list, clean_files: bool = True):
     markdown = Markdown(f'# {asgmt_file.name}')
     console.print(markdown)
@@ -91,35 +99,15 @@ def handle_assignment(asgmt_file: Path, testbench: list, clean_files: bool = Tru
     securized_asgmt_file = create_securized_asgmt_file(asgmt_file)
     injected_asgmt_file = create_injected_asgmt_file(securized_asgmt_file, testbench)
 
-    passed = []
-    for case in testbench['cases']:
-        args = ' '.join(str(v) for v in case['input'])
-        desired_output = ' '.join(str(v) for v in case['output'])
-        output, code_works = run_test(injected_asgmt_file.name, args, desired_output)
-        print('Desired output:', desired_output)
-        color, symbol = settings.CORRECTION_DISPLAY[code_works][:2]
-        console.print(f'[{color}]Program output: {output} {symbol}')
-        passed.append(code_works)
+    passed = [handle_testbench_case(c, injected_asgmt_file) for c in testbench['cases']]
+    services.show_benchtest_results(passed, settings.CORRECTION_DISPLAY)
 
     all_passed = all(passed)
-    color, _, mark, symbol = settings.CORRECTION_DISPLAY[all_passed]
-    msg = f'{mark} ({sum(passed)}/{len(passed)}) {symbol}'
-    panel = Panel(msg, expand=False, style=color)
-    console.print(panel)
 
-    view_code = Confirm.ask('Do you want to see the code?', default=not all_passed)
-    if view_code:
+    if Confirm.ask('Do you want to see the code?', default=not all_passed):
         file_to_show = asgmt_file if all_passed else injected_asgmt_file
-        console.print(f'[bold green_yellow]>> {file_to_show.name}')
-        syntax = Syntax(
-            file_to_show.read_text(),
-            'python',
-            line_numbers=True,
-        )
-        console.print(syntax)
+        services.show_code(file_to_show)
 
     if clean_files:
         console.print('[magenta]Cleaning temp files and assignment code...')
-        asgmt_file.unlink()
-        securized_asgmt_file.unlink()
-        injected_asgmt_file.unlink()
+        services.clean_files(asgmt_file, securized_asgmt_file, injected_asgmt_file)

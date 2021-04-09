@@ -45,10 +45,6 @@ def test_run(asgmt_file, testbench):
     testbench = testbench.get(ASGMT_ID)
     injected_asgmt_file = check.create_injected_asgmt_file(asgmt_file, testbench)
     for case in testbench['cases']:
-        args = ' '.join(str(v) for v in case['input'])
-        desired_output = ' '.join(str(v) for v in case['output'])
-        output, code_works = check.run_test(injected_asgmt_file.name, args, desired_output)
-        assert isinstance(output, str)
-        assert output != ''
+        code_works = check.handle_testbench_case(case, injected_asgmt_file)
         assert code_works is True
     injected_asgmt_file.unlink()
