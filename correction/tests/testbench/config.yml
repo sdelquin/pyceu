@@ -17,6 +17,9 @@ basic:
         - 4
       output:
         - 10
-  expects:
-    - "+"
-    - for
+  feedback:
+    expected:
+      - regex: '\+'
+        feedback: Deberías usar el operador suma
+      - regex: for
+        feedback: Deberías usar el bucle for

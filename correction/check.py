@@ -92,13 +92,19 @@ def handle_testbench_case(case: dict, injected_asgmt_file: Path):
     return code_works
 
 
-def check_expected_items(asgmt_file: Path, testbench: dict):
-    not_found_items = []
+def contrib_feedback(asgmt_file: Path, testbench: dict):
+    feedback_items = []
     code = asgmt_file.read_text()
-    for expected_item in testbench.get('expects', []):
-        if expected_item not in code:
-            not_found_items.append(expected_item)
-    return not_found_items
+    feedback = testbench.get('feedback', {})
+    expected = feedback.get('expected', [])
+    for item in expected:
+        if not re.search(item['regex'], code):
+            feedback_items.append(item)
+    unexpected = feedback.get('unexpected', [])
+    for item in unexpected:
+        if re.search(item['regex'], code):
+            feedback_items.append(item)
+    return feedback_items
 
 
 def handle_assignment(asgmt_file: Path, testbench: dict, clean_files: bool = True):
@@ -113,11 +119,9 @@ def handle_assignment(asgmt_file: Path, testbench: dict, clean_files: bool = Tru
 
     all_passed = all(passed)
 
-    if all_passed and (not_found_items := check_expected_items(asgmt_file, testbench)):
-        display_items = ', '.join(not_found_items)
-        console.print(
-            '[orange_red1]⚠️  Some expected items were not found: ' f'[bold]{display_items}'
-        )
+    if all_passed and (not_found_items := contrib_feedback(asgmt_file, testbench)):
+        display_items = '\n'.join([f'• {item["feedback"]}.' for item in not_found_items])
+        console.print(f'[orange_red1]Feedback:\n{display_items}')
 
     if Confirm.ask('Do you want to see the code?', default=not all_passed):
         file_to_show = asgmt_file if all_passed else injected_asgmt_file

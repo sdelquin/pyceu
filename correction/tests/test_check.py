@@ -48,6 +48,6 @@ def test_run(asgmt_file, testbench):
     injected_asgmt_file.unlink()
 
 
-def test_check_expected_items(asgmt_file, testbench):
-    not_found_items = check.check_expected_items(asgmt_file, testbench)
-    assert not_found_items == ['for']
+def test_contrib_feedback(asgmt_file, testbench):
+    feedback = check.contrib_feedback(asgmt_file, testbench)
+    assert feedback[0]['regex'] == 'for'
