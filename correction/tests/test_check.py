@@ -20,7 +20,7 @@ def asgmt_file():
 @pytest.fixture
 def testbench():
     f = PWD / TESTBENCH_FILEPATH
-    return services.read_testbench(f)
+    return services.read_testbench(f)[ASGMT_ID]
 
 
 def test_securized_code(asgmt_file):
@@ -32,7 +32,6 @@ def test_securized_code(asgmt_file):
 
 
 def test_injected_code(asgmt_file, testbench):
-    testbench = testbench.get(ASGMT_ID)
     injected_asgmt_file = check.create_injected_asgmt_file(asgmt_file, testbench)
     assert isinstance(injected_asgmt_file, Path)
     injected_code = injected_asgmt_file.read_text()
@@ -42,9 +41,13 @@ def test_injected_code(asgmt_file, testbench):
 
 
 def test_run(asgmt_file, testbench):
-    testbench = testbench.get(ASGMT_ID)
     injected_asgmt_file = check.create_injected_asgmt_file(asgmt_file, testbench)
     for case in testbench['cases']:
         code_works = check.handle_testbench_case(case, injected_asgmt_file)
         assert code_works is True
     injected_asgmt_file.unlink()
+
+
+def test_check_expected_items(asgmt_file, testbench):
+    not_found_items = check.check_expected_items(asgmt_file, testbench)
+    assert not_found_items == ['for']

@@ -24,7 +24,7 @@ def parse_exception(exception_message):
 
 
 def show_error(msg: str):
-    console.print(f'[orange_red1]⚠️  {msg}')
+    console.print(f'[red1]❌️  {msg}')
 
 
 def read_testbench(testbench_path: str, asgmt_id: str = None):

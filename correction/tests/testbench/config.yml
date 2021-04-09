@@ -17,3 +17,6 @@ basic:
         - 4
       output:
         - 10
+  expects:
+    - "+"
+    - for

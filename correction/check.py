@@ -92,7 +92,16 @@ def handle_testbench_case(case: dict, injected_asgmt_file: Path):
     return code_works
 
 
-def handle_assignment(asgmt_file: Path, testbench: list, clean_files: bool = True):
+def check_expected_items(asgmt_file: Path, testbench: dict):
+    not_found_items = []
+    code = asgmt_file.read_text()
+    for expected_item in testbench.get('expects', []):
+        if expected_item not in code:
+            not_found_items.append(expected_item)
+    return not_found_items
+
+
+def handle_assignment(asgmt_file: Path, testbench: dict, clean_files: bool = True):
     markdown = Markdown(f'# {asgmt_file.name}')
     console.print(markdown)
 
@@ -103,6 +112,12 @@ def handle_assignment(asgmt_file: Path, testbench: list, clean_files: bool = Tru
     services.show_benchtest_results(passed, settings.CORRECTION_DISPLAY)
 
     all_passed = all(passed)
+
+    if all_passed and (not_found_items := check_expected_items(asgmt_file, testbench)):
+        display_items = ', '.join(not_found_items)
+        console.print(
+            '[orange_red1]⚠️  Some expected items were not found: ' f'[bold]{display_items}'
+        )
 
     if Confirm.ask('Do you want to see the code?', default=not all_passed):
         file_to_show = asgmt_file if all_passed else injected_asgmt_file
