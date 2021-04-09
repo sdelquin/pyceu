@@ -7,6 +7,7 @@ import settings
 from rich.console import Console
 from rich.markdown import Markdown
 from rich.panel import Panel
+from rich.prompt import Confirm
 from rich.syntax import Syntax
 
 console = Console()
@@ -51,6 +52,7 @@ def inject_checking_code(code, input_vars, output_vars):
 
 
 def create_injected_asgmt_file(asgmt_file: Path, config: list):
+    console.print('[magenta]Injecting testing code...')
     asgmt_code = asgmt_file.read_text()
     injected_asgmt_code = inject_checking_code(
         asgmt_code, config['vars']['input'], config['vars']['output']
@@ -61,32 +63,41 @@ def create_injected_asgmt_file(asgmt_file: Path, config: list):
     return injected_asgmt_file
 
 
-def securize_code(asgmt_file: Path):
-    asgmt_code = asgmt_file.read_text()
+def securize_code(code: str):
     securized_code = []
-    for line in asgmt_code.split('\n'):
+    for line in code.split('\n'):
         if re.search(r'\bimport\b', line):
             securized_line = '#' + line
         else:
             securized_line = line
         securized_code.append(securized_line)
-    asgmt_file.write_text('\n'.join(securized_code))
+    return '\n'.join(securized_code)
+
+
+def create_securized_asgmt_file(asgmt_file: Path):
+    console.print('[magenta]Securizing input code...')
+    asgmt_code = asgmt_file.read_text()
+    securized_asgmt_code = securize_code(asgmt_code)
+    securized_asgmt_filename = asgmt_file.stem + '.securized' + asgmt_file.suffix
+    securized_asgmt_file = Path(securized_asgmt_filename)
+    securized_asgmt_file.write_text(securized_asgmt_code)
+    return securized_asgmt_file
 
 
 def handle_assignment(asgmt_id: str, asgmt_file: Path, clean_files):
     markdown = Markdown(f'# {asgmt_file.name}')
     console.print(markdown)
 
-    securize_code(asgmt_file)
-
-    passed = []
     try:
         config = services.read_testbench()[asgmt_id]
     except KeyError:
         services.show_error(f'Assignment id "{asgmt_id}" not found!')
         return
-    injected_asgmt_file = create_injected_asgmt_file(asgmt_file, config)
 
+    securized_asgmt_file = create_securized_asgmt_file(asgmt_file)
+    injected_asgmt_file = create_injected_asgmt_file(securized_asgmt_file, config)
+
+    passed = []
     for case in config['cases']:
         args = ' '.join(str(v) for v in case['input'])
         desired_output = ' '.join(str(v) for v in case['output'])
@@ -102,14 +113,19 @@ def handle_assignment(asgmt_id: str, asgmt_file: Path, clean_files):
     panel = Panel(msg, expand=False, style=color)
     console.print(panel)
 
-    if not all_passed:
+    view_code = Confirm.ask('Do you want to see the code?', default=not all_passed)
+    if view_code:
+        file_to_show = asgmt_file if all_passed else injected_asgmt_file
+        console.print(f'[bold green_yellow]>> {file_to_show.name}')
         syntax = Syntax(
-            injected_asgmt_file.read_text(),
+            file_to_show.read_text(),
             'python',
             line_numbers=True,
         )
         console.print(syntax)
 
     if clean_files:
+        console.print('[magenta]Cleaning temp files and assignment code...')
         asgmt_file.unlink()
+        securized_asgmt_file.unlink()
         injected_asgmt_file.unlink()
