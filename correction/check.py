@@ -92,10 +92,9 @@ def handle_testbench_case(case: dict, injected_asgmt_file: Path):
     return code_works
 
 
-def contrib_feedback(asgmt_file: Path, testbench: dict):
+def contrib_feedback(asgmt_file: Path, feedback: dict):
     feedback_items = []
     code = asgmt_file.read_text()
-    feedback = testbench.get('feedback', {})
     expected = feedback.get('expected', [])
     for item in expected:
         if not re.search(item['regex'], code):
@@ -107,7 +106,9 @@ def contrib_feedback(asgmt_file: Path, testbench: dict):
     return feedback_items
 
 
-def handle_assignment(asgmt_file: Path, testbench: dict, clean_files: bool = True):
+def handle_assignment(
+    asgmt_file: Path, testbench: dict, global_feedback: dict = {}, clean_files: bool = True
+):
     markdown = Markdown(f'# {asgmt_file.name}')
     console.print(markdown)
 
@@ -119,8 +120,11 @@ def handle_assignment(asgmt_file: Path, testbench: dict, clean_files: bool = Tru
 
     all_passed = all(passed)
 
-    if all_passed and (not_found_items := contrib_feedback(asgmt_file, testbench)):
-        display_items = '\n'.join([f'• {item["feedback"]}.' for item in not_found_items])
+    asgmt_feedback = testbench.get('feedback', {})
+    feedback = services.merge_feedbacks(asgmt_feedback, global_feedback)
+
+    if all_passed and (user_feedback := contrib_feedback(asgmt_file, feedback)):
+        display_items = '\n'.join([f'• {item["message"]}.' for item in user_feedback])
         console.print(f'[orange_red1]Feedback:\n{display_items}')
 
     if Confirm.ask('Do you want to see the code?', default=not all_passed):

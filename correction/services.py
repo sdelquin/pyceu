@@ -27,11 +27,11 @@ def show_error(msg: str):
     console.print(f'[red1]❌️  {msg}')
 
 
-def read_testbench(testbench_path: str, asgmt_id: str = None):
-    testbench = Path(testbench_path)
-    payload = yaml.load(testbench.read_text(), Loader=yaml.FullLoader)
-    if asgmt_id is not None:
-        payload = payload[asgmt_id]
+def read_config(config_path: str, key: list[str] = []):
+    config = Path(config_path)
+    payload = yaml.load(config.read_text(), Loader=yaml.FullLoader)
+    for k in key:
+        payload = payload.get(k, {})
     return payload
 
 
@@ -65,3 +65,10 @@ def show_benchtest_results(benchtest_results: list[bool], correction_display: tu
     msg = f'{mark} ({sum(benchtest_results)}/{len(benchtest_results)}) {symbol}'
     panel = Panel(msg, expand=False, style=color)
     console.print(panel)
+
+
+def merge_feedbacks(feedback1: dict, feedback2: dict):
+    feedback = feedback1 | feedback2
+    for key in feedback:
+        feedback[key] = feedback1.get(key, []) + feedback2.get(key, [])
+    return feedback

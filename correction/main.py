@@ -25,26 +25,35 @@ def check(
 ):
     '''Check assignments'''
     try:
-        testbench = services.read_testbench(settings.TESTBENCH, asgmt_id)
+        testbench = services.read_config(settings.CONFIG_FILE, ['testbench', asgmt_id])
     except FileNotFoundError:
-        services.show_error(f'Testbench file "{settings.TESTBENCH}" not found!')
-    except KeyError:
-        services.show_error(f'Assignment id "{asgmt_id}" not found!')
+        services.show_error(f'Testbench file "{settings.CONFIG_FILE}" not found!')
     else:
-        asgmt_folder = Path(asgmt_folder_path)
-        try:
-            # It expects only one .py file to be checked
-            asgmt_file = next(asgmt_folder.glob('*.py'))
-        except StopIteration:
-            services.show_error(f'No .py files found in {asgmt_folder}')
+        if not testbench:
+            f'Assignment id "{asgmt_id}" empty or not found on {settings.CONFIG_FILE}!'
         else:
-            handle_assignment(asgmt_file, testbench, clean_files=not keep_files)
+            asgmt_folder = Path(asgmt_folder_path)
+            try:
+                # It expects only one .py file to be checked
+                asgmt_file = next(asgmt_folder.glob('*.py'))
+            except StopIteration:
+                services.show_error(f'No .py files found in {asgmt_folder}')
+            else:
+                global_feedback = services.read_config(
+                    settings.CONFIG_FILE, ['global', 'feedback']
+                )
+                handle_assignment(
+                    asgmt_file,
+                    testbench,
+                    global_feedback=global_feedback,
+                    clean_files=not keep_files,
+                )
 
 
 @app.command()
 def list_asgmts():
     '''List available assignments identifiers on testbench'''
-    testbench = services.read_testbench(settings.TESTBENCH)
+    testbench = services.read_config(settings.CONFIG_FILE, ['testbench'])
     services.show_testbench(testbench)
 
 

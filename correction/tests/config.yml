@@ -1,0 +1,32 @@
+global:
+  feedback:
+    unexpected:
+      - regex: '[a-zA-Z_0-9]\s+\('
+        feedback: No deberías dejar espacio entre una llamada a función y su paréntesis
+
+testbench:
+  basic:
+    title: "Basic Test Bench"
+    vars:
+      input:
+        - a: int
+        - b: int
+      output:
+        - result
+    cases:
+      - input:
+          - 2
+          - 3
+        output:
+          - 5
+      - input:
+          - 6
+          - 4
+        output:
+          - 10
+    feedback:
+      expected:
+        - regex: '\+'
+          feedback: Deberías usar el operador suma
+        - regex: for
+          feedback: Deberías usar el bucle for

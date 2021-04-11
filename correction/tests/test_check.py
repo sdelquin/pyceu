@@ -2,25 +2,7 @@ import re
 from pathlib import Path
 
 import check
-import pytest
 import services
-
-PWD = Path(__file__).parent.absolute()
-
-ASGMT_FILEPATH = 'testbench/asgmt.py'
-TESTBENCH_FILEPATH = 'testbench/config.yml'
-ASGMT_ID = 'basic'
-
-
-@pytest.fixture
-def asgmt_file():
-    return PWD / ASGMT_FILEPATH
-
-
-@pytest.fixture
-def testbench():
-    f = PWD / TESTBENCH_FILEPATH
-    return services.read_testbench(f)[ASGMT_ID]
 
 
 def test_securized_code(asgmt_file):
@@ -48,6 +30,9 @@ def test_run(asgmt_file, testbench):
     injected_asgmt_file.unlink()
 
 
-def test_contrib_feedback(asgmt_file, testbench):
-    feedback = check.contrib_feedback(asgmt_file, testbench)
-    assert feedback[0]['regex'] == 'for'
+def test_contrib_feedback(asgmt_file, testbench, config_file):
+    global_feedback = services.read_config(config_file, ['global', 'feedback'])
+    asgmt_feedback = testbench.get('feedback', {})
+    feedback = services.merge_feedbacks(asgmt_feedback, global_feedback)
+    user_feedback = check.contrib_feedback(asgmt_file, feedback)
+    assert user_feedback[0]['regex'] == 'for'
