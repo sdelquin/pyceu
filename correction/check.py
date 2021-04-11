@@ -2,6 +2,7 @@ import re
 import subprocess
 from pathlib import Path
 
+import pyperclip
 import services
 import settings
 from rich.console import Console
@@ -125,6 +126,7 @@ def handle_assignment(
 
     if all_passed and (user_feedback := contrib_feedback(asgmt_file, feedback)):
         display_items = '\n'.join([f'• {item["message"]}.' for item in user_feedback])
+        pyperclip.copy(display_items)
         console.print(f'[orange_red1]Feedback:\n{display_items}')
 
     if Confirm.ask('Do you want to see the code?', default=not all_passed):

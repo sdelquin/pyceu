@@ -2,3 +2,4 @@ sphinx
 rich
 pyyaml
 typer
+pyperclip
