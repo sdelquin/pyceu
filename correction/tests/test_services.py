@@ -53,13 +53,12 @@ def test_show_testbench_results(capsys):
     assert 'NO APTO' in captured.out
 
 
-def test_merge_feedbacks():
-    f1 = {'a': [1, 2], 'b': [3, 4]}
-    f2 = {'b': [5, 6], 'c': [7, 8]}
+def test_merge_feedbacks_cfg():
+    f1 = {'expected': [1, 2], 'unexpected': [3, 4]}
+    f2 = {'unexpected': [5, 6]}
     f = services.merge_feedbacks_cfg(f1, f2)
-    assert f['a'] == [1, 2]
-    assert f['b'] == [3, 4, 5, 6]
-    assert f['c'] == [7, 8]
+    assert f['expected'] == [1, 2]
+    assert f['unexpected'] == [3, 4, 5, 6]
 
 
 def test_prepare_user_feedback():

@@ -68,10 +68,10 @@ def show_testbench_results(testbench_results: list[bool], correction_display: tu
 
 
 def merge_feedbacks_cfg(feedback1_cfg: dict, feedback2_cfg: dict):
-    feedback = feedback1_cfg | feedback2_cfg
-    for key in feedback:
-        feedback[key] = feedback1_cfg.get(key, []) + feedback2_cfg.get(key, [])
-    return feedback
+    feedback_cfg = {}
+    for key in ('expected', 'unexpected'):
+        feedback_cfg[key] = feedback1_cfg.get(key, []) + feedback2_cfg.get(key, [])
+    return feedback_cfg
 
 
 def prepare_user_feedback(user_feedback: list[dict]):
