@@ -45,7 +45,7 @@ def check(
                 handle_assignment(
                     asgmt_file,
                     testbench,
-                    global_feedback=global_feedback,
+                    global_feedback_cfg=global_feedback,
                     clean_files=not keep_files,
                 )
 

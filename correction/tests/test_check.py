@@ -25,15 +25,18 @@ def test_injected_code(asgmt_file, testbench):
 def test_run(asgmt_file, testbench):
     injected_asgmt_file = check.create_injected_asgmt_file(asgmt_file, testbench)
     for case in testbench['cases']:
-        code_works = check.handle_testbench_case(case, injected_asgmt_file)
+        code_works, exception_raised = check.handle_testbench_case(
+            case, injected_asgmt_file
+        )
         assert code_works is True
+        assert exception_raised is False
     injected_asgmt_file.unlink()
 
 
 def test_contrib_feedback(asgmt_file, testbench, config_file):
     global_feedback = services.read_config(config_file, ['global', 'feedback'])
     asgmt_feedback = testbench.get('feedback', {})
-    feedback = services.merge_feedbacks(asgmt_feedback, global_feedback)
+    feedback = services.merge_feedbacks_cfg(asgmt_feedback, global_feedback)
     user_feedback = check.contrib_feedback(asgmt_file, feedback)
     assert user_feedback[0]['regex'] == 'for'
     assert user_feedback[1]['linenos'] == [6]

@@ -59,18 +59,18 @@ def show_code(file: Path, language='python', line_numbers=True):
     console.print(syntax)
 
 
-def show_benchtest_results(benchtest_results: list[bool], correction_display: tuple):
-    all_passed = all(benchtest_results)
+def show_testbench_results(testbench_results: list[bool], correction_display: tuple):
+    all_passed = all(testbench_results)
     color, _, mark, symbol = correction_display[all_passed]
-    msg = f'{mark} ({sum(benchtest_results)}/{len(benchtest_results)}) {symbol}'
+    msg = f'{mark} ({sum(testbench_results)}/{len(testbench_results)}) {symbol}'
     panel = Panel(msg, expand=False, style=color)
     console.print(panel)
 
 
-def merge_feedbacks(feedback1: dict, feedback2: dict):
-    feedback = feedback1 | feedback2
+def merge_feedbacks_cfg(feedback1_cfg: dict, feedback2_cfg: dict):
+    feedback = feedback1_cfg | feedback2_cfg
     for key in feedback:
-        feedback[key] = feedback1.get(key, []) + feedback2.get(key, [])
+        feedback[key] = feedback1_cfg.get(key, []) + feedback2_cfg.get(key, [])
     return feedback
 
 

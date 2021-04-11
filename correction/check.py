@@ -21,10 +21,12 @@ def run_test(filename, args, desired_output):
         )
     except Exception as err:
         output = services.parse_exception(err.output)
+        exception_raised = True
     else:
         output = output.strip().split('\n')[-1]
+        exception_raised = False
     code_works = output == desired_output
-    return output, code_works
+    return output, code_works, exception_raised
 
 
 def inject_checking_code(code, input_vars, output_vars):
@@ -86,21 +88,23 @@ def create_securized_asgmt_file(asgmt_file: Path):
 def handle_testbench_case(case: dict, injected_asgmt_file: Path):
     args = ' '.join(str(v) for v in case['input'])
     desired_output = ' '.join(str(v) for v in case['output'])
-    output, code_works = run_test(injected_asgmt_file.name, args, desired_output)
+    output, code_works, exception_raised = run_test(
+        injected_asgmt_file.name, args, desired_output
+    )
     print('Desired output:', desired_output)
     color, symbol = settings.CORRECTION_DISPLAY[code_works][:2]
     console.print(f'[{color}]Program output: {output} {symbol}')
-    return code_works
+    return code_works, exception_raised
 
 
-def contrib_feedback(asgmt_file: Path, feedback: dict):
+def contrib_feedback(asgmt_file: Path, feedback_cfg: dict):
     feedback_items = []
     code = asgmt_file.read_text()
-    expected = feedback.get('expected', [])
+    expected = feedback_cfg.get('expected', [])
     for item in expected:
         if not re.search(item['regex'], code):
             feedback_items.append(item)
-    unexpected = feedback.get('unexpected', [])
+    unexpected = feedback_cfg.get('unexpected', [])
     for item in unexpected:
         item['linenos'] = []
         for lineno, line in enumerate(code.split('\n')):
@@ -114,7 +118,10 @@ def contrib_feedback(asgmt_file: Path, feedback: dict):
 
 
 def handle_assignment(
-    asgmt_file: Path, testbench: dict, global_feedback: dict = {}, clean_files: bool = True
+    asgmt_file: Path,
+    testbench: dict,
+    global_feedback_cfg: dict = {},
+    clean_files: bool = True,
 ):
     markdown = Markdown(f'# {asgmt_file.name}')
     console.print(markdown)
@@ -122,20 +129,26 @@ def handle_assignment(
     securized_asgmt_file = create_securized_asgmt_file(asgmt_file)
     injected_asgmt_file = create_injected_asgmt_file(securized_asgmt_file, testbench)
 
-    passed = [handle_testbench_case(c, injected_asgmt_file) for c in testbench['cases']]
-    services.show_benchtest_results(passed, settings.CORRECTION_DISPLAY)
+    code_works, exception_raised = [], []
+    for case in testbench['cases']:
+        cw, er = handle_testbench_case(case, injected_asgmt_file)
+        code_works.append(cw)
+        exception_raised.append(er)
 
-    all_passed = all(passed)
+    services.show_testbench_results(code_works, settings.CORRECTION_DISPLAY)
 
-    asgmt_feedback = testbench.get('feedback', {})
-    feedback = services.merge_feedbacks(asgmt_feedback, global_feedback)
+    code_always_works = all(code_works)
+    any_exception_raised = any(exception_raised)
 
-    if all_passed and (user_feedback := contrib_feedback(asgmt_file, feedback)):
+    asgmt_feedback_cfg = testbench.get('feedback', {})
+    feedback_cfg = services.merge_feedbacks_cfg(asgmt_feedback_cfg, global_feedback_cfg)
+
+    if code_always_works and (user_feedback := contrib_feedback(asgmt_file, feedback_cfg)):
         pyperclip.copy(display_items := services.prepare_user_feedback(user_feedback))
         console.print(f'[orange_red1]Feedback:\n{display_items}')
 
-    if Confirm.ask('Do you want to see the code?', default=not all_passed):
-        file_to_show = asgmt_file if all_passed else injected_asgmt_file
+    if Confirm.ask('Do you want to see the code?', default=True):
+        file_to_show = injected_asgmt_file if any_exception_raised else asgmt_file
         services.show_code(file_to_show)
 
     if clean_files:
