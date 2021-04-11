@@ -60,3 +60,16 @@ def test_merge_feedbacks():
     assert f['a'] == [1, 2]
     assert f['b'] == [3, 4, 5, 6]
     assert f['c'] == [7, 8]
+
+
+def test_prepare_user_feedback():
+    user_feedback = [
+        {'regex': 'foo', 'message': 'bar'},
+        {'regex': 'baa', 'message': 'bum', 'linenos': [1, 2, 3]},
+    ]
+    display_items = services.prepare_user_feedback(user_feedback)
+    assert 'bar' in display_items
+    assert 'bum' in display_items
+    assert 'L1' in display_items
+    assert 'L2' in display_items
+    assert 'L3' in display_items

@@ -72,3 +72,15 @@ def merge_feedbacks(feedback1: dict, feedback2: dict):
     for key in feedback:
         feedback[key] = feedback1.get(key, []) + feedback2.get(key, [])
     return feedback
+
+
+def prepare_user_feedback(user_feedback: list[dict]):
+    buffer = []
+    for item in user_feedback:
+        if linenos := item.get('linenos'):
+            linenos = '(' + ', '.join([f'L{n}' for n in linenos]) + ')'
+        else:
+            linenos = ''
+        message = f'- {item["message"]} {linenos}'
+        buffer.append(message)
+    return '\n'.join(buffer)

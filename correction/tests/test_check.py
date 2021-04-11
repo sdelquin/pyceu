@@ -36,3 +36,4 @@ def test_contrib_feedback(asgmt_file, testbench, config_file):
     feedback = services.merge_feedbacks(asgmt_feedback, global_feedback)
     user_feedback = check.contrib_feedback(asgmt_file, feedback)
     assert user_feedback[0]['regex'] == 'for'
+    assert user_feedback[1]['linenos'] == [6]

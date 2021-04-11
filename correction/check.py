@@ -102,7 +102,13 @@ def contrib_feedback(asgmt_file: Path, feedback: dict):
             feedback_items.append(item)
     unexpected = feedback.get('unexpected', [])
     for item in unexpected:
-        if re.search(item['regex'], code):
+        item['linenos'] = []
+        for lineno, line in enumerate(code.split('\n')):
+            if re.match(r'^\s*#.*', line):
+                continue
+            if re.search(item['regex'], line):
+                item['linenos'].append(lineno + 1)
+        if item['linenos']:
             feedback_items.append(item)
     return feedback_items
 
@@ -125,8 +131,7 @@ def handle_assignment(
     feedback = services.merge_feedbacks(asgmt_feedback, global_feedback)
 
     if all_passed and (user_feedback := contrib_feedback(asgmt_file, feedback)):
-        display_items = '\n'.join([f'• {item["message"]}.' for item in user_feedback])
-        pyperclip.copy(display_items)
+        pyperclip.copy(display_items := services.prepare_user_feedback(user_feedback))
         console.print(f'[orange_red1]Feedback:\n{display_items}')
 
     if Confirm.ask('Do you want to see the code?', default=not all_passed):
