@@ -81,6 +81,6 @@ def prepare_user_feedback(user_feedback: list[dict]):
             linenos = '(' + ', '.join([f'L{n}' for n in linenos]) + ')'
         else:
             linenos = ''
-        message = f'- {item["message"]} {linenos}'
+        message = f'- {item["message"]} {linenos}.'
         buffer.append(message)
     return '\n'.join(buffer)

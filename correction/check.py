@@ -144,12 +144,18 @@ def handle_assignment(
     feedback_cfg = services.merge_feedbacks_cfg(asgmt_feedback_cfg, global_feedback_cfg)
 
     if code_always_works and (user_feedback := contrib_feedback(asgmt_file, feedback_cfg)):
-        pyperclip.copy(display_items := services.prepare_user_feedback(user_feedback))
-        console.print(f'[orange_red1]Feedback:\n{display_items}')
+        pyperclip.copy(feedbacks_items := services.prepare_user_feedback(user_feedback))
+        console.print(f'[orange_red1]Feedback:\n{feedbacks_items}')
 
     if Confirm.ask('Do you want to see the code?', default=True):
         file_to_show = injected_asgmt_file if any_exception_raised else asgmt_file
         services.show_code(file_to_show)
+        if code_always_works and Confirm.ask(
+            'Do you want to add language feedback?', default=True
+        ):
+            pyperclip.copy(
+                '\n'.join([feedbacks_items, f'- {global_feedback_cfg["lang-message"]}.'])
+            )
 
     if clean_files:
         console.print('[magenta]Cleaning temp files and assignment code...')
