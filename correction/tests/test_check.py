@@ -2,7 +2,6 @@ import re
 from pathlib import Path
 
 import check
-import services
 
 
 def test_securized_code(asgmt_file):
@@ -33,10 +32,14 @@ def test_run(asgmt_file, testbench):
     injected_asgmt_file.unlink()
 
 
-def test_contrib_feedback(asgmt_file, testbench, config_file):
-    global_feedback = services.read_config(config_file, ['global', 'feedback'])
-    asgmt_feedback = testbench.get('feedback', {})
-    feedback = services.merge_feedbacks_cfg(asgmt_feedback, global_feedback)
-    user_feedback = check.contrib_feedback(asgmt_file, feedback)
+def test_get_runtime_feedback(asgmt_file, testbench, config_file):
+    feedback = testbench.get('feedback', {})
+    user_feedback = check.get_runtime_feedback(asgmt_file, feedback)
     assert user_feedback[0]['regex'] == 'for'
-    assert user_feedback[1]['linenos'] == [6]
+
+
+def test_get_style_feedback(asgmt_file):
+    style_feedback = check.get_style_feedback(asgmt_file)
+    assert "F401 'os' imported but unused" in style_feedback
+    assert "F401 'sys.argv' imported but unused" in style_feedback
+    assert "E211 whitespace before '('" in style_feedback

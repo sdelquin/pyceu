@@ -39,13 +39,13 @@ def check(
             except StopIteration:
                 services.show_error(f'No .py files found in {asgmt_folder}')
             else:
-                global_feedback = services.read_config(
+                global_feedback_cfg = services.read_config(
                     settings.CONFIG_FILE, ['global', 'feedback']
                 )
                 handle_assignment(
                     asgmt_file,
                     testbench,
-                    global_feedback_cfg=global_feedback,
+                    global_feedback_cfg=global_feedback_cfg,
                     clean_files=not keep_files,
                 )
 

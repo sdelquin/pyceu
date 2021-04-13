@@ -53,22 +53,32 @@ def test_show_testbench_results(capsys):
     assert 'NO APTO' in captured.out
 
 
-def test_merge_feedbacks_cfg():
-    f1 = {'expected': [1, 2], 'unexpected': [3, 4]}
-    f2 = {'unexpected': [5, 6]}
-    f = services.merge_feedbacks_cfg(f1, f2)
-    assert f['expected'] == [1, 2]
-    assert f['unexpected'] == [3, 4, 5, 6]
-
-
-def test_prepare_user_feedback():
+def test_prepare_runtime_feedback():
     user_feedback = [
         {'regex': 'foo', 'message': 'bar'},
-        {'regex': 'baa', 'message': 'bum', 'linenos': [1, 2, 3]},
+        {'regex': 'baa', 'message': 'bum'},
     ]
-    display_items = services.prepare_user_feedback(user_feedback)
+    display_items = services.prepare_runtime_feedback(user_feedback)
     assert 'bar' in display_items
     assert 'bum' in display_items
+
+
+def test_prepare_style_feedback():
+    style_feedback = """tests/asgmt.py:1:1: F401 'os' imported but unused
+tests/asgmt.py:2:1: F401 'sys.argv' imported but unused
+tests/asgmt.py:6:10: E211 whitespace before '('"""
+    display_items = services.prepare_style_feedback(style_feedback)
+    assert len(display_items.split('\n')) == 4  # 3 + heading
     assert 'L1' in display_items
     assert 'L2' in display_items
-    assert 'L3' in display_items
+    assert 'L6' in display_items
+    assert "'os' imported but unused" in display_items.lower()
+    assert "'sys.argv' imported but unused" in display_items.lower()
+    assert "whitespace before '('" in display_items.lower()
+
+
+def test_prepare_lang_feedback():
+    lang_feedback = 'whatelse'
+    display_items = services.prepare_lang_feedback(lang_feedback)
+    assert len(display_items.split('\n')) == 2  # 1 + heading
+    assert lang_feedback in display_items
