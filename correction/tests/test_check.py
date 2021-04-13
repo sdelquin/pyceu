@@ -36,3 +36,10 @@ def test_get_runtime_feedback(asgmt_file, testbench, config_file):
     feedback = testbench.get('feedback', {})
     user_feedback = check.get_runtime_feedback(asgmt_file, feedback)
     assert user_feedback[0]['regex'] == 'for'
+
+
+def test_get_style_feedback(asgmt_file):
+    style_feedback = check.get_style_feedback(asgmt_file)
+    assert "F401 'os' imported but unused" in style_feedback
+    assert "F401 'sys.argv' imported but unused" in style_feedback
+    assert "E211 whitespace before '('" in style_feedback

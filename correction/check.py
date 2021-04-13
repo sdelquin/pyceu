@@ -98,6 +98,7 @@ def handle_testbench_case(case: dict, injected_asgmt_file: Path):
 
 
 def get_runtime_feedback(asgmt_file: Path, feedback_cfg: dict):
+    console.print('[magenta]Getting runtime feedback...')
     feedback_items = []
     code = asgmt_file.read_text()
     expected = feedback_cfg.get('expected', [])
@@ -114,14 +115,26 @@ def get_runtime_feedback(asgmt_file: Path, feedback_cfg: dict):
     return feedback_items
 
 
+def get_style_feedback(asgmt_file: Path):
+    console.print('[magenta]Getting style feedback...')
+    command = f'flake8 "{asgmt_file}"'
+    return subprocess.run(
+        command,
+        capture_output=True,
+        encoding='utf-8',
+        shell=True,
+        check=False,
+    ).stdout
+
+
 def handle_assignment(
     asgmt_file: Path,
     testbench: dict,
     global_feedback_cfg: dict = {},
     clean_files: bool = True,
 ):
-    markdown = Markdown(f'# {asgmt_file.name}')
-    console.print(markdown)
+    console.print(Markdown(f'# {asgmt_file.name}'))
+    feedback_cfg = testbench.get('feedback', {})
 
     securized_asgmt_file = create_securized_asgmt_file(asgmt_file)
     injected_asgmt_file = create_injected_asgmt_file(securized_asgmt_file, testbench)
@@ -134,16 +147,20 @@ def handle_assignment(
 
     services.show_testbench_results(code_works, settings.CORRECTION_DISPLAY)
 
-    code_always_works = all(code_works)
-    any_exception_raised = any(exception_raised)
+    code_always_works, any_exception_raised = all(code_works), any(exception_raised)
+    clipboard = []
 
-    feedback_cfg = testbench.get('feedback', {})
     if code_always_works:
         runtime_feedback = get_runtime_feedback(asgmt_file, feedback_cfg)
-        pyperclip.copy(
-            feedbacks_items := services.prepare_runtime_feedback(runtime_feedback)
-        )
-        console.print(f'[orange_red1]Feedback:\n{feedbacks_items}')
+        style_feedback = get_style_feedback(asgmt_file)
+        feedbacks_items = services.prepare_runtime_feedback(runtime_feedback)
+        style_items = services.prepare_style_feedback(style_feedback)
+        if feedbacks_items:
+            console.print(f'[orange_red1]{feedbacks_items}')
+            clipboard.append(feedbacks_items)
+        if style_items:
+            console.print(f'[orange_red1]{style_items}')
+            clipboard.append(style_items)
 
     if Confirm.ask('Do you want to see the code?', default=True):
         file_to_show = injected_asgmt_file if any_exception_raised else asgmt_file
@@ -151,10 +168,15 @@ def handle_assignment(
         if code_always_works and Confirm.ask(
             'Do you want to add language feedback?', default=True
         ):
-            pyperclip.copy(
-                '\n'.join([feedbacks_items, f'- {global_feedback_cfg["lang-message"]}.'])
+            lang_feedback = services.prepare_lang_feedback(
+                global_feedback_cfg["lang-message"]
             )
+            console.print(f'[orange_red1]{lang_feedback}')
+            clipboard.append(lang_feedback)
 
     if clean_files:
         console.print('[magenta]Cleaning temp files and assignment code...')
         services.clean_files(asgmt_file, securized_asgmt_file, injected_asgmt_file)
+
+    console.print('[magenta]Copying feedback to clipboard...')
+    pyperclip.copy('\n\n'.join(clipboard))

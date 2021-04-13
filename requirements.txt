@@ -3,3 +3,4 @@ rich
 pyyaml
 typer
 pyperclip
+flake8

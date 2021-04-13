@@ -68,8 +68,30 @@ def show_testbench_results(testbench_results: list[bool], correction_display: tu
 
 
 def prepare_runtime_feedback(user_feedback: list[dict]):
-    buffer = []
+    buffer, header = list(), 'Runtime Feedback:'
     for item in user_feedback:
-        message = f'- {item["message"]}.'
+        message = f'- {item["message"]}'
         buffer.append(message)
+    if buffer:
+        buffer.insert(0, header)
+    return '\n'.join(buffer)
+
+
+def prepare_style_feedback(style_feedback: str):
+    buffer, header = list(), 'Style Feedback (flake8):'
+    for line in style_feedback.strip().split('\n'):
+        if s := re.search(r'(\d+):\d+: [FEW]\d+ (.*)$', line):
+            lineno, msg = s.groups()
+            message = f'- {msg.capitalize()} (L{lineno})'
+            buffer.append(message)
+    if buffer:
+        buffer.insert(0, header)
+    return '\n'.join(buffer)
+
+
+def prepare_lang_feedback(lang_feedback: str):
+    buffer, header = list(), 'Language Feedback:'
+    buffer.append(f'- {lang_feedback}')
+    if buffer:
+        buffer.insert(0, header)
     return '\n'.join(buffer)
