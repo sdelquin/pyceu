@@ -1,8 +1,6 @@
 global:
   feedback:
-    unexpected:
-      - regex: '[a-zA-Z_0-9]\s+\('
-        feedback: No deberías dejar espacio entre una llamada a función y su paréntesis
+    lang-message: Deberías usar nombres de variables/identificadores en inglés
 
 testbench:
   basic:

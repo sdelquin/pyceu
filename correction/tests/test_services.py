@@ -53,22 +53,11 @@ def test_show_testbench_results(capsys):
     assert 'NO APTO' in captured.out
 
 
-def test_merge_feedbacks_cfg():
-    f1 = {'expected': [1, 2], 'unexpected': [3, 4]}
-    f2 = {'unexpected': [5, 6]}
-    f = services.merge_feedbacks_cfg(f1, f2)
-    assert f['expected'] == [1, 2]
-    assert f['unexpected'] == [3, 4, 5, 6]
-
-
-def test_prepare_user_feedback():
+def test_prepare_runtime_feedback():
     user_feedback = [
         {'regex': 'foo', 'message': 'bar'},
-        {'regex': 'baa', 'message': 'bum', 'linenos': [1, 2, 3]},
+        {'regex': 'baa', 'message': 'bum'},
     ]
-    display_items = services.prepare_user_feedback(user_feedback)
+    display_items = services.prepare_runtime_feedback(user_feedback)
     assert 'bar' in display_items
     assert 'bum' in display_items
-    assert 'L1' in display_items
-    assert 'L2' in display_items
-    assert 'L3' in display_items

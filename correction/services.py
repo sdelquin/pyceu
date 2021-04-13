@@ -67,20 +67,9 @@ def show_testbench_results(testbench_results: list[bool], correction_display: tu
     console.print(panel)
 
 
-def merge_feedbacks_cfg(feedback1_cfg: dict, feedback2_cfg: dict):
-    feedback_cfg = {}
-    for key in ('expected', 'unexpected'):
-        feedback_cfg[key] = feedback1_cfg.get(key, []) + feedback2_cfg.get(key, [])
-    return feedback_cfg
-
-
-def prepare_user_feedback(user_feedback: list[dict]):
+def prepare_runtime_feedback(user_feedback: list[dict]):
     buffer = []
     for item in user_feedback:
-        if linenos := item.get('linenos'):
-            linenos = ' (' + ', '.join([f'L{n}' for n in linenos]) + ')'
-        else:
-            linenos = ''
-        message = f'- {item["message"]}{linenos}.'
+        message = f'- {item["message"]}.'
         buffer.append(message)
     return '\n'.join(buffer)

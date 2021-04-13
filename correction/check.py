@@ -97,13 +97,7 @@ def handle_testbench_case(case: dict, injected_asgmt_file: Path):
     return code_works, exception_raised
 
 
-def contrib_feedback(asgmt_file: Path, feedback_cfg: dict):
-    def item_inside_quotes(line: str, span: tuple[int]):
-        quotes_regex = '''['"]'''
-        quotes_left = len(re.findall(quotes_regex, line[: span[0]]))
-        quotes_right = len(re.findall(quotes_regex, line[span[1] :]))
-        return (quotes_left % 2) and (quotes_right % 2)
-
+def get_runtime_feedback(asgmt_file: Path, feedback_cfg: dict):
     feedback_items = []
     code = asgmt_file.read_text()
     expected = feedback_cfg.get('expected', [])
@@ -111,16 +105,12 @@ def contrib_feedback(asgmt_file: Path, feedback_cfg: dict):
         if not re.search(item['regex'], code):
             feedback_items.append(item)
     unexpected = feedback_cfg.get('unexpected', [])
-    for item in unexpected:
-        item['linenos'] = []
-        for lineno, line in enumerate(code.split('\n')):
-            if re.match(r'^\s*#.*', line):
-                continue
-            if s := re.search(item['regex'], line):
-                if not item_inside_quotes(line, s.span()):
-                    item['linenos'].append(lineno + 1)
-        if item['linenos']:
-            feedback_items.append(item)
+    for line in code.split('\n'):
+        if re.match(r'^\s*#.*', line):
+            continue
+        for item in unexpected:
+            if re.search(item['regex'], line):
+                feedback_items.append(item)
     return feedback_items
 
 
@@ -147,11 +137,12 @@ def handle_assignment(
     code_always_works = all(code_works)
     any_exception_raised = any(exception_raised)
 
-    asgmt_feedback_cfg = testbench.get('feedback', {})
-    feedback_cfg = services.merge_feedbacks_cfg(asgmt_feedback_cfg, global_feedback_cfg)
-
-    if code_always_works and (user_feedback := contrib_feedback(asgmt_file, feedback_cfg)):
-        pyperclip.copy(feedbacks_items := services.prepare_user_feedback(user_feedback))
+    feedback_cfg = testbench.get('feedback', {})
+    if code_always_works:
+        runtime_feedback = get_runtime_feedback(asgmt_file, feedback_cfg)
+        pyperclip.copy(
+            feedbacks_items := services.prepare_runtime_feedback(runtime_feedback)
+        )
         console.print(f'[orange_red1]Feedback:\n{feedbacks_items}')
 
     if Confirm.ask('Do you want to see the code?', default=True):
