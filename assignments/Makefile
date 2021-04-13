@@ -21,3 +21,9 @@ help:
 
 livehtml:
 	sphinx-autobuild $(ALLSPHINXOPTS) $(SOURCEDIR) $(BUILDDIR)/html
+
+# Split whole document into sections (by bookmarks)
+split: latexpdf
+	mkdir -p _build/split
+	cpdf -split-bookmarks 0 _build/latex/pyceu-assignments.pdf -o _build/split/@F_@N.pdf
+	open _build/split
