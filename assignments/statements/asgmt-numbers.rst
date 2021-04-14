@@ -17,16 +17,16 @@ Dada una ecuación de segundo grado :math:`ax^2 + bx + c = 0` calcula los valore
 Utiliza esta plantilla para hacer la tarea::
 
     # asigna valores iniciales
-    a = 1
-    b = -5
-    c = -84
+    a = 2
+    b = -14
+    c = 24
 
     # tu código debajo de aquí
 
 Para los valores de entrada de la plantilla, el resultado debería ser::
 
-    x1 = 12
-    x2 = -7 
+    x1 = 4
+    x2 = 3
 
 .. tip::
     - Trata de *separar los cálculos* parciales en variables intermedias.

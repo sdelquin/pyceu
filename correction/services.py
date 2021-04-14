@@ -27,15 +27,10 @@ def show_error(msg: str):
     console.print(f'[red1]❌️  {msg}')
 
 
-def read_config(config_path: str, key: list[str] = []):
-    config = Path(config_path)
-    payload = yaml.load(config.read_text(), Loader=yaml.FullLoader)
-    for k in key:
-        payload = payload.get(k, {})
-    return payload
-
-
-def show_testbench(testbench: dict):
+def list_asgmts(config_path: str):
+    config_file = Path(config_path)
+    config = yaml.load(config_file.read_text(), Loader=yaml.FullLoader)
+    testbench = config['testbench']
     table = Table(title='Available assignments')
     table.add_column("id", justify="right", style="cyan", no_wrap=True)
     table.add_column("title", justify="left", style="magenta", no_wrap=True)
@@ -95,3 +90,37 @@ def prepare_lang_feedback(lang_feedback: str):
     if buffer:
         buffer.insert(0, header)
     return '\n'.join(buffer)
+
+
+def securize_code(code: str):
+    securized_code = []
+    for line in code.split('\n'):
+        if re.search(r'\bimport\b', line):
+            securized_line = '# ' + line
+        else:
+            securized_line = line
+        securized_code.append(securized_line)
+    return '\n'.join(securized_code)
+
+
+def inject_checking_code(code: str, input_vars: list[str], output_vars: list[str]):
+    # imports
+    code = 'import sys\n\n' + code
+    # initial values for input variables
+    for i, var in enumerate(input_vars):
+        if isinstance(var, dict):
+            # typecast is set
+            varname, cast = tuple(var.items())[0]
+        else:
+            varname, cast = var, 'str'
+        code = re.sub(
+            rf'{varname} *=.*', f'{varname} = {cast}(sys.argv[{i + 1}])', code, count=1
+        )
+    # print statements for output variables
+    print_statements = []
+    for varname in output_vars:
+        print_statements.append(f"print(globals().get('{varname}', 'UNDEF'), end=' ')")
+    print_statements = '\n'.join(print_statements)
+
+    code = code + '\n' + print_statements + '\n'
+    return code

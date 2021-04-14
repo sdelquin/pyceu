@@ -4,8 +4,9 @@ from pathlib import Path
 import services
 import settings
 import typer
-from check import handle_assignment
 from rich.console import Console
+
+from correction import Marker
 
 console = Console()
 app = typer.Typer(add_completion=False)
@@ -24,37 +25,20 @@ def check(
     ),
 ):
     '''Check assignments'''
+    asgmt_folder = Path(asgmt_folder_path)
     try:
-        testbench = services.read_config(settings.CONFIG_FILE, ['testbench', asgmt_id])
-    except FileNotFoundError:
-        services.show_error(f'Testbench file "{settings.CONFIG_FILE}" not found!')
-    else:
-        if not testbench:
-            f'Assignment id "{asgmt_id}" empty or not found on {settings.CONFIG_FILE}!'
-        else:
-            asgmt_folder = Path(asgmt_folder_path)
-            try:
-                # It expects only one .py file to be checked
-                asgmt_file = next(asgmt_folder.glob('*.py'))
-            except StopIteration:
-                services.show_error(f'No .py files found in {asgmt_folder}')
-            else:
-                global_feedback_cfg = services.read_config(
-                    settings.CONFIG_FILE, ['global', 'feedback']
-                )
-                handle_assignment(
-                    asgmt_file,
-                    testbench,
-                    global_feedback_cfg=global_feedback_cfg,
-                    clean_files=not keep_files,
-                )
+        # It expects only one .py file to be checked
+        asgmt_file = next(asgmt_folder.glob('*.py'))
+    except StopIteration:
+        services.show_error(f'No .py files found in {asgmt_folder}')
+    marker = Marker(asgmt_file, Path(settings.CONFIG_FILE), asgmt_id)
+    marker.handle_assignment(clean_files=not keep_files)
 
 
 @app.command()
 def list_asgmts():
     '''List available assignments identifiers on testbench'''
-    testbench = services.read_config(settings.CONFIG_FILE, ['testbench'])
-    services.show_testbench(testbench)
+    services.list_asgmts(settings.CONFIG_FILE)
 
 
 if __name__ == '__main__':
