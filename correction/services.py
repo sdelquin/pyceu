@@ -95,3 +95,37 @@ def prepare_lang_feedback(lang_feedback: str):
     if buffer:
         buffer.insert(0, header)
     return '\n'.join(buffer)
+
+
+def securize_code(code: str):
+    securized_code = []
+    for line in code.split('\n'):
+        if re.search(r'\bimport\b', line):
+            securized_line = '# ' + line
+        else:
+            securized_line = line
+        securized_code.append(securized_line)
+    return '\n'.join(securized_code)
+
+
+def inject_checking_code(code: str, input_vars: list[str], output_vars: list[str]):
+    # imports
+    code = 'import sys\n\n' + code
+    # initial values for input variables
+    for i, var in enumerate(input_vars):
+        if isinstance(var, dict):
+            # typecast is set
+            varname, cast = tuple(var.items())[0]
+        else:
+            varname, cast = var, 'str'
+        code = re.sub(
+            rf'{varname} *=.*', f'{varname} = {cast}(sys.argv[{i + 1}])', code, count=1
+        )
+    # print statements for output variables
+    print_statements = []
+    for varname in output_vars:
+        print_statements.append(f"print(globals().get('{varname}', 'UNDEF'), end=' ')")
+    print_statements = '\n'.join(print_statements)
+
+    code = code + '\n' + print_statements + '\n'
+    return code

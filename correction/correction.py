@@ -49,32 +49,9 @@ class Marker:
         code_works = output == desired_output
         return output, code_works, exception_raised
 
-    @staticmethod
-    def inject_checking_code(code: str, input_vars: list[str], output_vars: list[str]):
-        # imports
-        code = 'import sys\n\n' + code
-        # initial values for input variables
-        for i, var in enumerate(input_vars):
-            if isinstance(var, dict):
-                # typecast is set
-                varname, cast = tuple(var.items())[0]
-            else:
-                varname, cast = var, 'str'
-            code = re.sub(
-                rf'{varname} *=.*', f'{varname} = {cast}(sys.argv[{i + 1}])', code, count=1
-            )
-        # print statements for output variables
-        print_statements = []
-        for varname in output_vars:
-            print_statements.append(f"print(globals().get('{varname}', 'UNDEF'), end=' ')")
-        print_statements = '\n'.join(print_statements)
-
-        code = code + '\n' + print_statements + '\n'
-        return code
-
     def create_injected_asgmt_file(self):
         self.console.print('[magenta]Injecting testing code...')
-        injected_asgmt_code = Marker.inject_checking_code(
+        injected_asgmt_code = services.inject_checking_code(
             self.asgmt_code,
             self.testbench_cfg['vars']['input'],
             self.testbench_cfg['vars']['output'],
@@ -86,20 +63,9 @@ class Marker:
         injected_asgmt_file.write_text(injected_asgmt_code)
         return injected_asgmt_file
 
-    @staticmethod
-    def securize_code(code: str):
-        securized_code = []
-        for line in code.split('\n'):
-            if re.search(r'\bimport\b', line):
-                securized_line = '# ' + line
-            else:
-                securized_line = line
-            securized_code.append(securized_line)
-        return '\n'.join(securized_code)
-
     def create_securized_asgmt_file(self):
         self.console.print('[magenta]Securizing input code...')
-        securized_asgmt_code = Marker.securize_code(self.asgmt_code)
+        securized_asgmt_code = services.securize_code(self.asgmt_code)
         securized_asgmt_filename = (
             self.asgmt_file.stem + '.securized' + self.asgmt_file.suffix
         )
