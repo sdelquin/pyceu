@@ -106,6 +106,19 @@ Veamos algunas pruebas de estos operadores::
 
 Es de buen estilo de programación **dejar un espacio** entre cada operador. Además hay que tener en cuenta que podemos obtener errores dependiendo de la operación (más bien de los *operandos*) que estemos utilizando, como es el caso de la *división por cero*.
 
+Prioridad y asociatividad
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Los operadores que :ref:`hemos visto <datatypes/numbers:Operaciones con enteros>` tienen una **prioridad** entre ellos, pero se recomienda encarecidamente la **asociatividad** mediante el uso de **paréntesis** para evitar confusiones. Veamos un ejemplo::
+
+    # La división tiene mayor prioridad que la suma
+    >>> 3 / 2 + 1
+    2.5
+
+    # Aplicamos asociatividad sobre la suma
+    >>> 3 / (2 + 1)
+    1.0    
+
 Asignación aumentada
 ~~~~~~~~~~~~~~~~~~~~
 
