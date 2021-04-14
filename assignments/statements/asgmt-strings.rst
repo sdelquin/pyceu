@@ -4,8 +4,8 @@ Tarea: Cadenas de texto
 
 Se pide transformar una cadena de texto de entrada ``text`` en función de unas reglas:
 
-- El **primer carácter** indica el número de veces que se repite la primera subcadena.
-- El **último carácter** indica el número de veces que se repite la última subcadena.
+- El **primer carácter** indica el número de veces que se repite la primera subcadena. *Puedes suponer sólo números del 1 al 9*.
+- El **último carácter** indica el número de veces que se repite la última subcadena. *Puedes suponer sólo números del 1 al 9*.
 - Las dos subcadenas de entrada están separadas *siempre* por un **guión medio**.
 - La primera subcadena, además de repetirla, hay que pasarla a **mayúsculas**.
 - La segunda subcadena, además de repetirla, hay que pasarla a **título**.
