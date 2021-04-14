@@ -16,21 +16,22 @@ CORRECTION_DISPLAY = (
 
 
 class Marker:
-    def __init__(self, asgmt_path: str, config_path: str, asgmt_id: str):
-        self.asgmt_file = Path(asgmt_path)
-        self.asgmt_code = self.asgmt_file.read_text()
+    def __init__(self, asgmt_file: Path, config_file: Path, asgmt_id: str):
+        self.asgmt_file = asgmt_file
+        self.config_file = config_file
 
-        self.config_file = Path(config_path)
+        self.asgmt_code = self.asgmt_file.read_text()
         self.config = yaml.load(self.config_file.read_text(), Loader=yaml.FullLoader)
+
         self.testbench_cfg = self.config['testbench'][asgmt_id]
         self.feedback_cfg = self.testbench_cfg.get('feedback', {})
         self.global_cfg = self.config.get('global', {})
         self.global_feedback_cfg = self.global_cfg.get('feedback', {})
 
+        self.console = Console()
+
         self.securized_asgmt_file = self.create_securized_asgmt_file()
         self.injected_asgmt_file = self.create_injected_asgmt_file()
-
-        self.console = Console()
 
     def run_test(self, args: list[str], desired_output: list[str]):
         command = f'python "{self.injected_asgmt_file}" {args}'
@@ -73,10 +74,10 @@ class Marker:
 
     def create_injected_asgmt_file(self):
         self.console.print('[magenta]Injecting testing code...')
-        injected_asgmt_code = Marker._inject_checking_code(
+        injected_asgmt_code = Marker.inject_checking_code(
             self.asgmt_code,
-            self.testbench['vars']['input'],
-            self.testbench['vars']['output'],
+            self.testbench_cfg['vars']['input'],
+            self.testbench_cfg['vars']['output'],
         )
         injected_asgmt_filename = (
             self.asgmt_file.stem + '.injected' + self.asgmt_file.suffix
