@@ -109,6 +109,39 @@ class Marker:
             check=False,
         ).stdout
 
+    def manage_feedback(self):
+        buffer = []
+        runtime_feedback = self.get_runtime_feedback()
+        style_feedback = self.get_style_feedback()
+        feedbacks_items = services.prepare_runtime_feedback(runtime_feedback)
+        style_items = services.prepare_style_feedback(style_feedback)
+
+        if feedbacks_items:
+            buffer.append(feedbacks_items)
+        if style_items:
+            buffer.append(style_items)
+
+        if feedbacks_items or style_items:
+            if Confirm.ask('Do you want to see the feedback?', default=True):
+                self.console.print(f'[orange_red1]{feedbacks_items}')
+                self.console.print(f'[orange_red1]{style_items}')
+
+        return '\n\n'.join(buffer)
+
+    def manage_code(self, code_always_works, any_exception_raised):
+        file_to_show = self.injected_asgmt_file if any_exception_raised else self.asgmt_file
+        services.show_code(file_to_show)
+        if code_always_works and Confirm.ask(
+            'Do you want to add language feedback?', default=True
+        ):
+            self.console.print('[magenta]Getting language feedback...')
+            lang_feedback = services.prepare_lang_feedback(
+                self.global_feedback_cfg.get('lang-message')
+            )
+            self.console.print(f'[orange_red1]{lang_feedback}')
+            return lang_feedback
+        return ''
+
     def handle_assignment(self, clean_files: bool = True):
         self.console.print(Markdown(f'# {self.asgmt_file}'))
 
@@ -124,30 +157,10 @@ class Marker:
         clipboard = []
 
         if code_always_works:
-            runtime_feedback = self.get_runtime_feedback()
-            style_feedback = self.get_style_feedback()
-            feedbacks_items = services.prepare_runtime_feedback(runtime_feedback)
-            style_items = services.prepare_style_feedback(style_feedback)
-            if feedbacks_items:
-                self.console.print(f'[orange_red1]{feedbacks_items}')
-                clipboard.append(feedbacks_items)
-            if style_items:
-                self.console.print(f'[orange_red1]{style_items}')
-                clipboard.append(style_items)
+            clipboard.append(self.manage_feedback())
 
         if Confirm.ask('Do you want to see the code?', default=True):
-            file_to_show = (
-                self.injected_asgmt_file if any_exception_raised else self.asgmt_file
-            )
-            services.show_code(file_to_show)
-            if code_always_works and Confirm.ask(
-                'Do you want to add language feedback?', default=True
-            ):
-                lang_feedback = services.prepare_lang_feedback(
-                    self.global_feedback_cfg.get('lang-message')
-                )
-                self.console.print(f'[orange_red1]{lang_feedback}')
-                clipboard.append(lang_feedback)
+            clipboard.append(self.manage_code(code_always_works, any_exception_raised))
 
         if clean_files:
             self.console.print('[magenta]Cleaning temp files and assignment code...')
