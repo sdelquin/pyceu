@@ -8,8 +8,8 @@ Dada una ecuación de segundo grado :math:`ax^2 + bx + c = 0` calcula los valore
     :nowrap:
 
     \begin{eqnarray*}
-       x1 & = & \frac{-b + \sqrt{b^2 - 4ac}}{2a} \\
-       x2 & = & \frac{-b - \sqrt{b^2 - 4ac}}{2a}
+       x1 & = & \frac{-b - \sqrt{b^2 - 4ac}}{2a} \\
+       x2 & = & \frac{-b + \sqrt{b^2 - 4ac}}{2a}
     \end{eqnarray*}
 
 *No te preocupes de los casos en los que la ecuación no tiene solución o en los que hay infinitas soluciones.*
@@ -25,8 +25,8 @@ Utiliza esta plantilla para hacer la tarea::
 
 Para los valores de entrada de la plantilla, el resultado debería ser::
 
-    x1 = 4
-    x2 = 3
+    x1 = 3
+    x2 = 4
 
 .. tip::
     - Trata de *separar los cálculos* parciales en variables intermedias.
