@@ -27,15 +27,10 @@ def show_error(msg: str):
     console.print(f'[red1]❌️  {msg}')
 
 
-def read_config(config_path: str, key: list[str] = []):
-    config = Path(config_path)
-    payload = yaml.load(config.read_text(), Loader=yaml.FullLoader)
-    for k in key:
-        payload = payload.get(k, {})
-    return payload
-
-
-def show_testbench(testbench: dict):
+def list_asgmts(config_path: str):
+    config_file = Path(config_path)
+    config = yaml.load(config_file.read_text(), Loader=yaml.FullLoader)
+    testbench = config['testbench']
     table = Table(title='Available assignments')
     table.add_column("id", justify="right", style="cyan", no_wrap=True)
     table.add_column("title", justify="left", style="magenta", no_wrap=True)

@@ -14,15 +14,8 @@ ZeroDivisionError: division by zero'''
     assert re.search(r'line \d+', exception_summary) is not None
 
 
-def test_read_config(config_file):
-    config = services.read_config(config_file)
-    assert isinstance(config, dict)
-    assert config['testbench']['basic']['title'] == 'Basic Test Bench'
-
-
 def test_list_asgmts(config_file, capsys):
-    testbench = services.read_config(config_file, ['testbench'])
-    services.show_testbench(testbench)
+    services.list_asgmts(config_file)
     captured = capsys.readouterr()
     assert 'basic' in captured.out
     assert 'Basic Test Bench' in captured.out

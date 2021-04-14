@@ -38,8 +38,7 @@ def check(
 @app.command()
 def list_asgmts():
     '''List available assignments identifiers on testbench'''
-    testbench = services.read_config(settings.CONFIG_FILE, ['testbench'])
-    services.show_testbench(testbench)
+    services.list_asgmts(settings.CONFIG_FILE)
 
 
 if __name__ == '__main__':
