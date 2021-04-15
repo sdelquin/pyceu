@@ -123,8 +123,10 @@ class Marker:
 
         if feedbacks_items or style_items:
             if Confirm.ask('Do you want to see the feedback?', default=True):
-                self.console.print(f'[orange_red1]{feedbacks_items}')
-                self.console.print(f'[orange_red1]{style_items}')
+                if feedbacks_items:
+                    self.console.print(f'[orange_red1]{feedbacks_items}')
+                if style_items:
+                    self.console.print(f'[orange_red1]{style_items}')
 
         return '\n\n'.join(buffer)
 
@@ -169,4 +171,4 @@ class Marker:
             )
 
         self.console.print('[magenta]Copying feedback to clipboard...')
-        pyperclip.copy('\n\n'.join(clipboard))
+        pyperclip.copy('\n\n'.join(clipboard).strip())
