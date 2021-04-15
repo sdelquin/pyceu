@@ -8,3 +8,4 @@ solutions
 correction/config.yml
 correction/*.securized.py
 correction/*.injected.py
+feedback.txt
