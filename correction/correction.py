@@ -30,7 +30,6 @@ class Marker:
 
         self.console = Console()
 
-        self.securized_asgmt_file = self.create_securized_asgmt_file()
         self.injected_asgmt_file = self.create_injected_asgmt_file()
 
     def run_test(self, args: list[str], desired_output: list[str]):
@@ -51,8 +50,9 @@ class Marker:
 
     def create_injected_asgmt_file(self):
         self.console.print('[magenta]Injecting testing code...')
+        securized_code = services.securize_code(self.asgmt_code)
         injected_asgmt_code = services.inject_checking_code(
-            self.asgmt_code,
+            securized_code,
             self.testbench_cfg['vars']['input'],
             self.testbench_cfg['vars']['output'],
         )
@@ -62,16 +62,6 @@ class Marker:
         injected_asgmt_file = Path(injected_asgmt_filename)
         injected_asgmt_file.write_text(injected_asgmt_code)
         return injected_asgmt_file
-
-    def create_securized_asgmt_file(self):
-        self.console.print('[magenta]Securizing input code...')
-        securized_asgmt_code = services.securize_code(self.asgmt_code)
-        securized_asgmt_filename = (
-            self.asgmt_file.stem + '.securized' + self.asgmt_file.suffix
-        )
-        securized_asgmt_file = Path(securized_asgmt_filename)
-        securized_asgmt_file.write_text(securized_asgmt_code)
-        return securized_asgmt_file
 
     def handle_testbench_case(self, testcase: dict):
         args = ' '.join(str(v) for v in testcase['input'])
@@ -166,9 +156,7 @@ class Marker:
 
         if clean_files:
             self.console.print('[magenta]Cleaning temp files and assignment code...')
-            services.clean_files(
-                self.asgmt_file, self.securized_asgmt_file, self.injected_asgmt_file
-            )
+            services.clean_files(self.asgmt_file, self.injected_asgmt_file)
 
         self.console.print('[magenta]Copying feedback to clipboard...')
         pyperclip.copy('\n\n'.join(clipboard).strip())

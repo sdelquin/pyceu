@@ -2,18 +2,13 @@ import re
 from pathlib import Path
 
 
-def test_securized_code(marker):
-    securized_asgmt_file = marker.create_securized_asgmt_file()
-    assert isinstance(securized_asgmt_file, Path)
-    securized_code = securized_asgmt_file.read_text()
-    assert re.findall(r'^[^#\n]*\bimport\b.*$', securized_code, re.MULTILINE) == []
-
-
 def test_injected_code(marker):
     injected_asgmt_file = marker.create_injected_asgmt_file()
     assert isinstance(injected_asgmt_file, Path)
     injected_code = injected_asgmt_file.read_text()
-    assert re.search(r'^import sys', injected_code) is not None
+    assert re.findall(r'^[^#\n]*\bimport\b.*$', injected_code, re.MULTILINE) == [
+        'import sys'
+    ]
     assert re.search(r'print\(globals.*\)$', injected_code) is not None
 
 

@@ -16,7 +16,6 @@ def marker():
     m = Marker(ASGMT_FILE, CONFIG_FILE, ASGMT_ID)
     yield m
     m.injected_asgmt_file.unlink()
-    m.securized_asgmt_file.unlink()
 
 
 @pytest.fixture

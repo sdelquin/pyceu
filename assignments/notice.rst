@@ -11,6 +11,7 @@ Sobre el código:
 - Si se proporciona, debes **copiar y pegar el texto de la plantilla** tal cual está en un nuevo fichero ``.py`` (No escribas **ningún código** antes de la primera línea de la plantilla).
 - **Utiliza los nombres de variables** exactamente como se indican en el enunciado.
 - **Asigna (si procede) los valores iniciales** de los argumentos (variables de entrada) en la sección indicada, modificando sus valores para probar tu programa. **No utilices** ``input()`` para las variables de entrada, asigna valores directamente.
+- **No hagas uso de** ``import``. No son necesarios para ninguna tarea y, además, no son objeto de estudio en este curso. *Esto favorece la búsqueda de soluciones propias*.
 - Tu programa debe funcionar con versiones de Python **>= 3.7**. Esto implica -- entre otras muchas cosas -- que el uso de ``print`` se debe hacer usando paréntesis.
 - Acostumbra a usar **nombres de variables en inglés** y que sean **representativos**. Es una buena práctica que permite reutilizar y mantener el código en un mundo globalizado, donde el inglés es el *idioma de facto* en tecnología.
 
