@@ -21,6 +21,7 @@ Puedes utilizar el siguiente fichero de datos como entrada a tu programa:
 .. note::
     - Guarda este contenido en un fichero llamado ``points.txt`` en la misma carpeta que tu código Python para que no tengas problemas de rutas.
     - Las coordenadas dentro de la misma línea están separadas por **espacio** y contienen **valores enteros** (para simplificar).
+    - **No es necesario** que subas el fichero de datos ``points.txt``, basta con adjuntar el fichero ``.py``.
 
 Utiliza esta plantilla para hacer la tarea::
 
