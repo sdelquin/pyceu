@@ -22,6 +22,14 @@ Para los valores de entrada de la plantilla, el resultado debería ser::
 
     result = 'toctoc#pennypennypenny'
 
+.. hint::
+    - Trata de hacer uso de la función ``find()``.
+    - Utiliza *concatenación* de cadenas de texto.
+    - El *troceado de cadenas* es un poderoso aliado.
+    - También tienes a tu disposición los *"f-strings"*.
+    - *No deberías* usar la función ``split()``.
+
+
 Las **variables de entrada** que debes inicializar en tu programa son las siguientes:
 
 .. table::

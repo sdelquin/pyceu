@@ -30,7 +30,7 @@ Para los valores de entrada de la plantilla, el resultado debería ser::
     x1 = 3
     x2 = 4
 
-.. tip::
+.. hint::
     - Trata de *separar los cálculos* parciales en variables intermedias.
     - No repitas cálculos, intenta *reutilizar variables* con cálculos ya hechos.
     - Recuerda que la *raíz cuadrada* se puede expresar en términos de *exponenciación*.

@@ -33,6 +33,11 @@ Utiliza esta plantilla para hacer la tarea::
     # tu código debajo de aquí
     f = open(filename)
 
+.. hint::
+    - Ten a mano las funciones ``strip()`` y ``split()``.
+    - También puedes hacer uso de ``append()`` para añadir elementos a una lista vacía.
+    - Python proporciona funciones sobre listas como ``min()``, ``max()`` y ``sum()``.
+
 Para los valores de entrada de la plantilla, el resultado debería ser::
 
     min_distance = 4.123105625617661

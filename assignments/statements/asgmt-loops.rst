@@ -17,6 +17,10 @@ Para los valores de entrada de la plantilla, el resultado debería ser::
 
     factorial = 120
 
+.. hint::
+    - Te recomiendo que uses la sentencia ``for``.
+    - Para generar rangos de números tienes a tu disposición la función ``range()``.
+
 Las **variables de entrada** que debes inicializar en tu programa son las siguientes:
 
 .. table::
