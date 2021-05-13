@@ -6,6 +6,8 @@ Escribe un programa en Python que parta de una *cadena de texto* con notas entre
 
 Utiliza esta plantilla para hacer la tarea::
 
+    # ASGMT lists
+
     # asigna valores iniciales
     marks = '3,4,3,2,7,8,9,1,1,5'
 

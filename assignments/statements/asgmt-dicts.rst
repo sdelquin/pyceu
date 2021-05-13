@@ -6,6 +6,8 @@ Escribe un programa en Python que use una *cadena de texto* con nombres de alumn
 
 Utiliza esta plantilla para hacer la tarea::
 
+    # ASGMT dicts
+
     # asigna valores iniciales
     marks = 'juan:1,antonio:7,inma:9,pepe:3,sara:5'
 

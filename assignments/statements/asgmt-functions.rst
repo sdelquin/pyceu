@@ -18,6 +18,8 @@ Escribe un programa en Python que dado un número entero (indicando cuántos pri
 
 Utiliza esta plantilla para hacer la tarea::
 
+    # ASGMT functions
+
     # asigna valores iniciales
     num_primes = 10
 

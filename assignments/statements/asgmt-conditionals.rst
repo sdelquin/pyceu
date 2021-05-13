@@ -14,6 +14,8 @@ Se pide hacer un programa que diga si el alumnado de la ESO promocionará al sig
 
 Utiliza esta plantilla para hacer la tarea::
 
+    # ASGMT conditionals
+
     # asigna valores iniciales
     num_fails = 2
     spanish_grade = 7
