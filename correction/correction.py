@@ -16,13 +16,15 @@ CORRECTION_DISPLAY = (
 
 
 class Marker:
-    def __init__(self, asgmt_file: Path, config_file: Path, asgmt_id: str):
+    def __init__(self, asgmt_file: Path, config_file: Path):
         self.asgmt_file = asgmt_file
         self.config_file = config_file
 
         self.asgmt_code = self.asgmt_file.read_text()
         self.config = yaml.load(self.config_file.read_text(), Loader=yaml.FullLoader)
 
+        if not (asgmt_id := services.get_asgmt_id(self.asgmt_code)):
+            raise AttributeError('Assignment id was not found on input file')
         self.testbench_cfg = self.config['testbench'][asgmt_id]
         self.feedback_cfg = self.testbench_cfg.get('feedback', {})
         self.global_cfg = self.config.get('global', {})
