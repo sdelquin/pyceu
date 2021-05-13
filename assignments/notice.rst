@@ -8,7 +8,7 @@
 
 Sobre el código:
 
-- Si se proporciona, debes **copiar y pegar el texto de la plantilla** tal cual está en un nuevo fichero ``.py`` (No escribas **ningún código** antes de la primera línea de la plantilla).
+- Si se proporciona, debes **copiar y pegar el texto de la plantilla** tal cual está en un nuevo fichero ``.py``. No escribas **ningún código** antes de la primera línea de la plantilla y **no borres** en ningún caso la línea ``# ASGMT <id>``.
 - **Utiliza los nombres de variables** exactamente como se indican en el enunciado.
 - **Asigna (si procede) los valores iniciales** de los argumentos (variables de entrada) en la sección indicada, modificando sus valores para probar tu programa. **No utilices** ``input()`` para las variables de entrada, asigna valores directamente.
 - **No hagas uso de** ``import``. No son necesarios para ninguna tarea y, además, no son objeto de estudio en este curso. *Esto favorece la búsqueda de soluciones propias*.
