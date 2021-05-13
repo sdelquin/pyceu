@@ -25,6 +25,8 @@ Puedes utilizar el siguiente fichero de datos como entrada a tu programa:
 
 Utiliza esta plantilla para hacer la tarea::
 
+    # ASGMT files
+
     # asigna valores iniciales
     filename = 'points.txt'
 

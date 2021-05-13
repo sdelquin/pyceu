@@ -9,4 +9,10 @@ Tarea: Datos
 5.	Asigna la expresión ``result + 3.0`` a la variable ``result2`` y muestra su valor y su tipo. ¿Notas algo raro?
 6.	Realiza la operación ``7 / 4`` y asígnala a la variable ``quotient``. Ahora realiza la operación ``7 // 4`` y asígnala a la variable ``quotient2``. Mira sus resultados y reflexiona.
 
+Utiliza esta plantilla para hacer la tarea::
+
+    # ASGMT data
+
+    # tu código debajo de aquí
+
 .. include:: ../notice.rst

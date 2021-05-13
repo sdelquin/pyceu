@@ -10,6 +10,12 @@ from rich.table import Table
 console = Console()
 
 
+def get_asgmt_id(asgmt_code: str) -> str:
+    asgmt_code = asgmt_code.strip()
+    if m := re.search(r'#\s+ASGMT\s+(\S+)', asgmt_code):
+        return m.groups()[0]
+
+
 def parse_exception(exception_message):
     if m := re.search(r'\w+Error:.*', exception_message):
         exception_type = m.group()

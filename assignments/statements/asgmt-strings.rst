@@ -13,6 +13,8 @@ Se pide transformar una cadena de texto de entrada ``text`` en función de unas 
 
 Utiliza esta plantilla para hacer la tarea::
 
+    # ASGMT strings
+
     # asigna valores iniciales
     text = '2toc-penny3'
 

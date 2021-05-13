@@ -5,6 +5,11 @@ from pathlib import Path
 import services
 
 
+def test_get_asgmt_id(asgmt_file):
+    asgmt_code = asgmt_file.read_text()
+    assert services.get_asgmt_id(asgmt_code) == 'basic'
+
+
 def test_parse_exception():
     exception = '''Traceback (most recent call last):
   File "<string>", line 1, in <module>

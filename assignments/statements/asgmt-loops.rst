@@ -6,6 +6,8 @@ Escribe un programa en Python que calcule el `factorial <https://es.wikipedia.or
 
 Utiliza esta plantilla para hacer la tarea::
 
+    # ASGMT loops
+
     # asigna valores iniciales
     n = 5
 
