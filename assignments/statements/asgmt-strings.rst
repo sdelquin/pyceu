@@ -7,8 +7,6 @@ Se pide transformar una cadena de texto de entrada ``text`` en función de unas 
 - El **primer carácter** indica el número de veces que se repite la primera subcadena. *Puedes suponer sólo números del 1 al 9*.
 - El **último carácter** indica el número de veces que se repite la última subcadena. *Puedes suponer sólo números del 1 al 9*.
 - Las dos subcadenas de entrada están separadas *siempre* por un **guión medio**.
-- La primera subcadena, además de repetirla, hay que pasarla a **mayúsculas**.
-- La segunda subcadena, además de repetirla, hay que pasarla a **título**.
 - Las dos subcadenas de salida deberán estar separadas por una **almohadilla**.
 
 Utiliza esta plantilla para hacer la tarea::
@@ -22,7 +20,7 @@ Utiliza esta plantilla para hacer la tarea::
 
 Para los valores de entrada de la plantilla, el resultado debería ser::
 
-    result = 'TOCTOC#PennyPennyPenny'
+    result = 'toctoc#pennypennypenny'
 
 Las **variables de entrada** que debes inicializar en tu programa son las siguientes:
 
