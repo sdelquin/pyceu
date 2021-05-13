@@ -8,12 +8,11 @@ PWD = Path(__file__).parent.absolute()
 
 ASGMT_FILE = PWD / 'asgmt.py'
 CONFIG_FILE = PWD / 'config.yml'
-ASGMT_ID = 'basic'
 
 
 @pytest.fixture
 def marker():
-    m = Marker(ASGMT_FILE, CONFIG_FILE, ASGMT_ID)
+    m = Marker(ASGMT_FILE, CONFIG_FILE)
     yield m
     m.injected_asgmt_file.unlink()
 
