@@ -17,6 +17,12 @@ Para los valores de entrada de la plantilla, el resultado debería ser::
 
     unique_num_marks = 8
 
+.. hint::
+    - La función ``split()`` te ayudará mucho en esta tarea.
+    - Recorrer elementos con un bucle ``for`` suele ser una buena idea.
+    - Para añadir elementos a una lista inicialmente vacía tienes la función ``append()``.
+    - No te olvides de que ``len()`` nos sirve para calcular la longitud de una lista.
+
 Las **variables de entrada** que debes inicializar en tu programa son las siguientes:
 
 .. table::

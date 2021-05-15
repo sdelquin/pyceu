@@ -28,7 +28,13 @@ Utiliza esta plantilla para hacer la tarea::
         # código de la función
 
     def get_primes(how_many):
-        # código de la función
+        primes = []
+        i = 2
+        while len(primes) < how_many:
+            if is_prime(i):
+                primes.append(i)
+            i += 1
+        return primes
     
     primes = get_primes(num_primes)  # no borrar esta línea
 

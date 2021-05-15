@@ -27,6 +27,9 @@ Para los valores de entrada de la plantilla, el resultado debería ser::
 
     promote = True
 
+.. hint::
+    - Recuerda que ``else`` + ``if`` se puede escribir como ``elif``.
+
 Las **variables de entrada** que debes inicializar en tu programa son las siguientes:
 
 .. table::
