@@ -4,3 +4,4 @@ pyyaml
 typer
 pyperclip
 flake8
+prettyconf

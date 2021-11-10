@@ -14,11 +14,14 @@ app = typer.Typer(add_completion=False)
 
 @app.command()
 def check(
-    asgmt_folder_path: str = typer.Argument(
-        ..., help='Path to the folder where assignments are saved (e.g. ~/Downloads)'
+    asgmt_folder_path: str = typer.Option(
+        settings.ASGMT_FOLDER_PATH,
+        '--folder',
+        '-f',
+        help='Path to the folder where assignments are saved.',
     ),
     keep_files: bool = typer.Option(
-        False, '-k', help='Do not remove input file (and injected code) after execution'
+        False, '-k', help='Do not remove input file (and injected code) after execution.'
     ),
 ):
     '''Check assignments'''
