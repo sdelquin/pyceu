@@ -2,7 +2,7 @@
 Tarea: Listas
 *************
 
-Escribe un programa en Python que parta de una *cadena de texto* con notas entre 0 y 10 separadas por comas (sin espacios). El programa deberá calcular el **número de notas diferentes** que hay en la entrada, independientemente de que se repitan o no.
+Escribe un programa en Python que parta de una *cadena de texto* con notas de tipo entero entre 0 y 10 separadas por comas (sin espacios). El programa deberá calcular el **número de aprobados y el número de suspensos** que hay en la entrada.
 
 Utiliza esta plantilla para hacer la tarea::
 
@@ -15,13 +15,14 @@ Utiliza esta plantilla para hacer la tarea::
 
 Para los valores de entrada de la plantilla, el resultado debería ser::
 
-    unique_num_marks = 8
+    passed = 4
+    failed = 6
 
 .. hint::
     - La función ``split()`` te ayudará mucho en esta tarea.
     - Recorrer elementos con un bucle ``for`` suele ser una buena idea.
-    - Para añadir elementos a una lista inicialmente vacía tienes la función ``append()``.
-    - No te olvides de que ``len()`` nos sirve para calcular la longitud de una lista.
+    - Recuerda usar variables acumuladoras.
+    - Ten en cuenta que habrá que convertir cada número a entero usando la función ``int()``
 
 Las **variables de entrada** que debes inicializar en tu programa son las siguientes:
 
@@ -39,10 +40,12 @@ Las **variables de salida** que debes obtener en tu programa son las siguientes:
 .. table::
     :align: left
 
-    +----------------------+---------+-------------------------------------+
-    |        Nombre        |  Tipo   |             Descripción             |
-    +======================+=========+=====================================+
-    | ``unique_num_marks`` | ``int`` | Número de notas diferentes (únicas) |
-    +----------------------+---------+-------------------------------------+
+    +------------+---------+---------------------+
+    |   Nombre   |  Tipo   |     Descripción     |
+    +============+=========+=====================+
+    | ``passed`` | ``int`` | Número de aprobados |
+    +------------+---------+---------------------+
+    | ``failed`` | ``int`` | Número de suspensos |
+    +------------+---------+---------------------+
 
 .. include:: ../notice.rst
