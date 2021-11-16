@@ -1,3 +1,4 @@
+import os
 import re
 from pathlib import Path
 
@@ -45,13 +46,8 @@ def list_asgmts(config_path: str):
     console.print(table)
 
 
-def clean_files(*files: list[Path]):
-    for file in files:
-        file.unlink()
-
-
 def show_code(file: Path, language='python', line_numbers=True):
-    console.print(f'[bold green_yellow]>> {file.name}')
+    console.print(f'[bold green_yellow]>> {file}')
     syntax = Syntax(
         file.read_text(),
         language,
@@ -130,3 +126,16 @@ def inject_checking_code(code: str, input_vars: list[str], output_vars: list[str
 
     code = code + '\n' + print_statements + '\n'
     return code
+
+
+def get_newest_file(target_folder: Path, pattern='*'):
+    '''Get the newest (last-modified) file in target_folder.'''
+    if list_of_files := list(target_folder.glob(pattern)):
+        newest_filename = max(list_of_files, key=os.path.getctime)
+        return Path(newest_filename)
+
+
+def get_asgmt_file(target_path: Path):
+    if target_path.is_file():
+        return target_path
+    return get_newest_file(target_path, '*.py')

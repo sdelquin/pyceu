@@ -1,6 +1,7 @@
 import re
 import subprocess
 from pathlib import Path
+from tempfile import NamedTemporaryFile
 
 import pyperclip
 import services
@@ -34,7 +35,7 @@ class Marker:
 
         self.injected_asgmt_file = self.create_injected_asgmt_file()
 
-    def run_test(self, args: list[str], desired_output: list[str]):
+    def run_test(self, args: str, desired_output: list[str]):
         command = f'python "{self.injected_asgmt_file}" {args}'
         self.console.print(f'[bold cyan]$ {command}')
         try:
@@ -58,15 +59,12 @@ class Marker:
             self.testbench_cfg['vars']['input'],
             self.testbench_cfg['vars']['output'],
         )
-        injected_asgmt_filename = (
-            self.asgmt_file.stem + '.injected' + self.asgmt_file.suffix
-        )
-        injected_asgmt_file = Path(injected_asgmt_filename)
+        injected_asgmt_file = Path(NamedTemporaryFile().name)
         injected_asgmt_file.write_text(injected_asgmt_code)
         return injected_asgmt_file
 
     def handle_testbench_case(self, testcase: dict):
-        args = ' '.join(str(v) for v in testcase['input'])
+        args = ' '.join(f'"{str(v)}"' for v in testcase['input'])
         desired_output = ' '.join(str(v) for v in testcase['output'])
         output, code_works, exception_raised = self.run_test(args, desired_output)
         print('Desired output:', desired_output)
@@ -136,7 +134,7 @@ class Marker:
             return lang_feedback
         return ''
 
-    def handle_assignment(self, clean_files: bool = True):
+    def handle_assignment(self):
         self.console.print(Markdown(f'# {self.asgmt_file}'))
 
         code_works, exception_raised = [], []
@@ -156,9 +154,7 @@ class Marker:
         if Confirm.ask('Do you want to see the code?', default=True):
             clipboard.append(self.manage_code(code_always_works, any_exception_raised))
 
-        if clean_files:
-            self.console.print('[magenta]Cleaning temp files and assignment code...')
-            services.clean_files(self.asgmt_file, self.injected_asgmt_file)
-
         self.console.print('[magenta]Copying feedback to clipboard...')
         pyperclip.copy('\n\n'.join(clipboard).strip())
+
+        self.injected_asgmt_file.unlink()

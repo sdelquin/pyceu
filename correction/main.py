@@ -14,30 +14,24 @@ app = typer.Typer(add_completion=False)
 
 @app.command()
 def check(
-    asgmt_folder_path: str = typer.Option(
+    asgmt_target_path: str = typer.Option(
         settings.ASGMT_FOLDER_PATH,
-        '--folder',
-        '-f',
-        help='Path to the folder where assignments are saved.',
-    ),
-    keep_files: bool = typer.Option(
-        False, '-k', help='Do not remove input file (and injected code) after execution.'
+        '--target',
+        '-t',
+        help='Target to file or folder where the assignments are taken from. '
+        'In case of a folder, only the newest .py file is taken',
     ),
 ):
     '''Check assignments'''
-    asgmt_folder = Path(asgmt_folder_path)
-    try:
-        # It expects only one .py file to be checked
-        asgmt_file = next(asgmt_folder.glob('*.py'))
-    except StopIteration:
-        services.show_error(f'No .py files found in {asgmt_folder}')
-    else:
+    if asgmt_file := services.get_asgmt_file(Path(asgmt_target_path)):
         try:
             marker = Marker(asgmt_file, Path(settings.CONFIG_FILE))
         except AttributeError as err:
             services.show_error(err)
         else:
-            marker.handle_assignment(clean_files=not keep_files)
+            marker.handle_assignment()
+    else:
+        services.show_error(f'No .py files found in {asgmt_target_path}')
 
 
 @app.command()
