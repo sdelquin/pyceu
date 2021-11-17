@@ -2,7 +2,7 @@
 Tarea: Condicionales
 ********************
 
-Criterios de promoción LOMCE en la ESO:
+Según el artículo 22 del `Real Decreto 1105/2014 <https://www.boe.es/buscar/act.php?id=BOE-A-2015-37>`_ sobre promoción LOMCE en la ESO:
 
 *El alumnado promocionará de curso cuando haya superado todas las materias cursadas o tenga
 evaluación negativa en dos materias como máximo, siempre que estas dos no se correspondan
