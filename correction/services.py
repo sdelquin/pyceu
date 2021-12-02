@@ -13,8 +13,8 @@ console = Console()
 
 def get_asgmt_id(asgmt_code: str) -> str:
     asgmt_code = asgmt_code.strip()
-    if m := re.search(r'#\s*ASGMT\s+(\S+)', asgmt_code):
-        return m.groups()[0]
+    if m := re.search(r'#\s*ASGMT\s+(\S+)', asgmt_code, re.IGNORECASE):
+        return m.groups()[0].lower()
 
 
 def parse_exception(exception_message):
