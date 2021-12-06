@@ -124,7 +124,7 @@ class Marker:
         file_to_show = self.injected_asgmt_file if any_exception_raised else self.asgmt_file
         services.show_code(file_to_show)
         if code_always_works and Confirm.ask(
-            'Do you want to add language feedback?', default=True
+            'Do you want to add language feedback?', default=False
         ):
             self.console.print('[magenta]Getting language feedback...')
             lang_feedback = services.prepare_lang_feedback(
