@@ -6,7 +6,7 @@ import settings
 import typer
 from rich.console import Console
 
-from correction import Marker
+from correction import AsgmtError, Marker
 
 console = Console()
 app = typer.Typer(add_completion=False)
@@ -26,7 +26,7 @@ def check(
     if asgmt_file := services.get_asgmt_file(Path(asgmt_target_path)):
         try:
             marker = Marker(asgmt_file, Path(settings.CONFIG_FILE))
-        except AttributeError as err:
+        except AsgmtError as err:
             services.show_error(err)
         else:
             marker.handle_assignment()

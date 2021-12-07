@@ -16,6 +16,10 @@ CORRECTION_DISPLAY = (
 )
 
 
+class AsgmtError(Exception):
+    pass
+
+
 class Marker:
     def __init__(self, asgmt_file: Path, config_file: Path):
         self.asgmt_file = asgmt_file
@@ -25,7 +29,9 @@ class Marker:
         self.config = yaml.load(self.config_file.read_text(), Loader=yaml.FullLoader)
 
         if not (asgmt_id := services.get_asgmt_id(self.asgmt_code)):
-            raise AttributeError('Assignment id was not found on input file')
+            raise AsgmtError('Assignment id was not found on input file')
+        if asgmt_id not in self.config['testbench']:
+            raise AsgmtError(f'Assignment id "{asgmt_id}" is not valid')
         self.testbench_cfg = self.config['testbench'][asgmt_id]
         self.feedback_cfg = self.testbench_cfg.get('feedback', {})
         self.global_cfg = self.config.get('global', {})
