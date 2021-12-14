@@ -121,7 +121,9 @@ def inject_checking_code(code: str, input_vars: list[str], output_vars: list[str
     # print statements for output variables
     print_statements = []
     for varname in output_vars:
-        print_statements.append(f"print(globals().get('{varname}', 'UNDEF'), end=' ')")
+        print_statements.append(
+            f"print(globals().get('{varname}', f'{varname}=UNDEF'), end=' ')"
+        )
     print_statements = '\n'.join(print_statements)
 
     code = code + '\n' + print_statements + '\n'
